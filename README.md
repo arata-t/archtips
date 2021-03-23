@@ -1,10 +1,11 @@
 # users
 | Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
 | nickname           | string | null :false               |
 | email              | string | null :false, unique :true |
 | encrypted_password | string | null :false               |
 | last_name          | string | null :false               |
-| first :name        | string | null :false               |
+| first_name         | string | null :false               |
 | introduction       | text   | null :false               |
 |                    |        |                           |
 ## Association
@@ -14,13 +15,13 @@ has_many :answers
 has_many :comments
 
 # tips
-| Column      | Type    | Options                       |
-| ----------- | ------- | ----------------------------- |
-| title       | string  | null :false                   |
-| category_id | string  | null :false                   |
-| description | text    | null :false                   |
-| user        | integer | null :false,foreign_key :true |
-|             |         |                               |
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| title       | string     | null :false                   |
+| category_id | string     | null :false                   |
+| description | text       | null :false                   |
+| user        | references | null :false,foreign_key :true |
+|             |            |                               |
 ## Association
 belongs_to :user
 has_many :comments
@@ -53,7 +54,7 @@ belongs_to :question
 | ------- | ---------- | ----------------------------- |
 | comment | text       | null :false                   |
 | tweet   | references | null :false,foreign_key :true |
-| user    | references | nul :false,foreign_key :true  |
+| user    | references | null :false,foreign_key :true |
 |         |            |                               |
 belongs_to :user
-belongs_to :tips
+belongs_to :tip
