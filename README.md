@@ -6,7 +6,7 @@
 | encrypted_password | string | null :false               |
 | last_name          | string | null :false               |
 | first_name         | string | null :false               |
-| introduction       | text   | null :false               |
+| introduction       | text   |                           |
 |                    |        |                           |
 ## Association
 has_many :tips
