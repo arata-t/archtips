@@ -1,0 +1,133 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  color:rgb(83, 83, 83);
+}
+
+.back {
+  background-color: white;
+}
+
+/* ----------top------------- */
+.top{
+  background-color: white;
+  width: 100vw;
+  height: 100px;
+  padding: 0px 40px;
+  border-bottom: 1.5px solid gray;
+  display: flex;
+  justify-content: space-between;
+}
+  .logo-area{
+    background-color: white;
+    width: 300px;
+    display: flex;
+  }
+    .logo-image{
+      width: 100px;
+      height: 100px;
+    }
+    .top-text{
+      font-size: 36px;
+      margin:20px 0 ;
+    }
+
+  .user-area{
+    width: 300px;
+    padding:20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+    .user-button{
+      margin: 20px;
+    }
+    .login-button{
+      margin:20px;
+    }
+
+/* -------------main-------------- */
+.main {
+  height: calc(100vh - 100px);
+  display: flex;
+  border-bottom:1px solid ;
+}
+/* ------------side-bar-------------- */
+  .side-bar {
+    background-color: white;
+    width: 300px;
+    padding-top: 10px;
+    border-right: 1.5px solid gray;
+    height: calc(100vh - 100px);
+  }
+    .new-tip,.new-question,.my-page,.search
+    {
+      padding: 15px 40px;
+      font-size: 21px;
+    }
+  /* ------------main-area----------------- */
+  .main-area{
+    
+    width: calc(100vw - 300px);
+    height: calc(100vh - 100px);
+    overflow: auto;
+  }
+    .main-top{
+      background-color: lightgray;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+    }
+      .new-tip-title{
+        padding: 20px;
+      }
+        .new-tip-title p{
+          font-size: 21px;
+        }
+      .search-area{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 300px;
+      }
+        .search-form{
+          border: 1px solid gray;
+          border-radius: 5px;
+          margin: 20px 5px;
+        }
+        .search-button{
+          border: 1px solid gray;
+          border-radius: 5px;
+          margin: 20px 20px 20px 5px ;
+          width: 40px;
+          text-align: center;
+        }
+/* -------------tips------------- */
+    .tips{
+      display: flex;
+      justify-content:space-between ;
+      padding: 20px;
+      border-bottom: 1.5px solid lightgrey;
+    }
+      .tips-description{
+        padding: 10px;
+      }
+        .tip-title{
+          font: 21px;
+          margin-bottom:10px ;
+        }
+        .tip-title-contents{
+          font: 14px;
+          margin-bottom: 15px;
+        }
+      .tips-image-field{
+        
+        width: 600px;
+      }
+       .up-image{
+         width:500px;
+         height: 400px;
+         border: 1px solid;
+       }
+
