@@ -5,6 +5,24 @@
   color:rgb(83, 83, 83);
 }
 
+.error_messages{
+  margin-bottom: 20px;
+  }
+
+.error_messages h2{
+display: none;
+}
+
+.error_messages li{
+  color: red;
+  list-style: none;
+}
+
+.login-flash-message{
+  color: red;
+  margin-bottom: 20px;
+}
+
 .back {
   background-color: white;
 }
@@ -39,11 +57,12 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    list-style: none;
   }
-    .user-button{
+    .user-button,.new-user-button{
       margin: 20px;
     }
-    .login-button{
+    .login-button,.logout-button{
       margin:20px;
     }
 
