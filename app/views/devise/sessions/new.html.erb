@@ -1,10 +1,5 @@
 <div class = "wrapper">
-  <div class = "header">
-    <div class="logo">
-    <img src="" alt="">
-      <a href="">Arch_Tips</a>
-    </div>
-  </div>
+  <%= render "devise/shared/header" %>
   <div class = "middle">
     <div class="left-contents">
       <div class="contents-text">
@@ -18,10 +13,10 @@
     <div class="session-contents">
       <div class="contents-box">
         <legend>ログイン</legend>
-            <div class='login-flash-message'>
-              <%= flash[:notice] %>
-              <%= flash[:alert] %>
-            </div>
+        <div class='login-flash-message'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
         <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
           <div class="field">
             <%= f.label :email %><br />
@@ -29,7 +24,7 @@
           </div>
           <br>
           <div class="field">
-            <%= f.label :password %><br />
+            <%= f.label :password %><em>(半角英数6文字以上)</em><br />
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
           <br>
