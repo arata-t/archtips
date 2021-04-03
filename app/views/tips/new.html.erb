@@ -14,7 +14,7 @@
       <div class="tip-category">
         <p>カテゴリー</p>
         <div class="tip-category-content">
-          <%= form.text_field :category, placeholder:"" %>
+          <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:""}) %>
         </div>
       </div>
       <div class="tip-images">
@@ -35,6 +35,7 @@
         <p class="tip-description-text">説明</p>
         <%= form.text_field :description, placeholder:"", class: 'text-form' %>
       </div>
+      <%= form.submit "投稿する" %>
     <% end %>
   </div>
 </div>

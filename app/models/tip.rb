@@ -1,8 +1,10 @@
 class Tip < ApplicationRecord
-  validates :title,       presence: true
-  validates :category_id, presence: true
-  validates :description, presence: true
-
   belongs_to :user
-end
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+
+  validates :title, :description,       presence: true
+  validates :category_id, numericality: { other_than: 1 }
+
+end

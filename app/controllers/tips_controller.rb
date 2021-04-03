@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
   def index
-    @tips = Tip.all
+    @tips = Tip.order("created_at DESC")
   end
 
   def new
@@ -9,6 +9,11 @@ class TipsController < ApplicationController
 
   def create
     @tip = Tip.create(tip_params)
+    if @tip.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
   
 
