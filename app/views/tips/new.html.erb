@@ -5,6 +5,7 @@
       <p>新規投稿</p>
     </div>
     <%= form_with(model: @tip, local: true) do |form| %>
+      <%= render 'layouts/error_messages', model: form.object, class:"" %>
       <div class="tip-title">
         <p>タイトル</p>
         <div class="tip-title-content">

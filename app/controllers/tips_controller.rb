@@ -19,6 +19,6 @@ class TipsController < ApplicationController
 
   private
   def tip_params
-    params.require(:tip).permit(:title, :category_id, :description)
+    params.require(:tip).permit(:title, :category_id, :description).merge(user_id: current_user.id)
   end
 end
