@@ -4,35 +4,37 @@
     <div class = "new-tip-string">
       <p>新規投稿</p>
     </div>
-    <div class="tip-title">
-      <p>title</p>
-      <div class="tip-title-content">
-        <input type="text">
-      </div>
-    </div>
-    <div class="tip-category">
-      <p>category</p>
-      <div class="tip-category-content">
-        <input type="text">
-      </div>
-    </div>
-    <div class="tip-images">
-      <div class="tip-image-main">
-        <p class="tip-image-main-text">text</p>
-        <img src="views/logo_arch_tips.png alt="image" class="tip-image-main-img">
-      </div>
-      <div class="tip-image-sub">
-        <p class="tip-image-sub-text">sub-text</p>
-        <div class="tip-image-sub-images">
-          <img src="views/logo_arch_tips.png alt="image" class="tip-image-sub-img" >
-          <img src="views/logo_arch_tips.png alt="image" class="tip-image-sub-img" >
-          <img src="views/logo_arch_tips.png alt="image" class="tip-image-sub-img" >
+    <%= form_with(model: @tip, local: true) do |form| %>
+      <div class="tip-title">
+        <p>タイトル</p>
+        <div class="tip-title-content">
+          <%= form.text_field :title, placeholder: "" %>
         </div>
       </div>
-    </div>
-    <div class="tip-description">
-      <p class="tip-description-text">description</p>
-      <textarea name="message" placeholder="テキスト" class="text-form"></textarea>
-    </div>
+      <div class="tip-category">
+        <p>カテゴリー</p>
+        <div class="tip-category-content">
+          <%= form.text_field :category, placeholder:"" %>
+        </div>
+      </div>
+      <div class="tip-images">
+        <div class="tip-image-main">
+          <p class="tip-image-main-text">画像(メイン)</p>
+          <%= form.file_field :image, class: 'tip-image-main-img' %>
+        </div>
+        <div class="tip-image-sub">
+          <p class="tip-image-sub-text">画像（サブ）</p>
+          <div class="tip-image-sub-images">
+            <%= form.file_field :image, class: 'tip-image-sub-img' %>
+            <%= form.file_field :image, class: 'tip-image-sub-img' %>
+            <%= form.file_field :image, class: 'tip-image-sub-img' %>
+          </div>
+        </div>
+      </div>
+      <div class="tip-description">
+        <p class="tip-description-text">説明</p>
+        <%= form.text_field :description, placeholder:"", class: 'text-form' %>
+      </div>
+    <% end %>
   </div>
 </div>
