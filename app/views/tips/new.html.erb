@@ -21,7 +21,9 @@
       <div class="tip-images">
         <div class="tip-image-main">
           <p class="tip-image-main-text">画像(メイン)</p>
-          <%= form.file_field :image, class: 'tip-image-main-img' %>
+          <div id="image-list">
+            <%= form.file_field :image, class: 'tip-image-main-img' %>
+          </div>
         </div>
         <div class="tip-image-sub">
           <p class="tip-image-sub-text">画像（サブ）</p>
