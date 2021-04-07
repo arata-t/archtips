@@ -143,11 +143,19 @@ display: none;
         border: 1px solid;
         display: flex;
         align-items: center;
+        justify-content: center;
       }
 
       .uped-image-main{
-        max-width:300px;
-        max-height: 300px;
+        max-width:250px;
+        max-height: 250px;
         margin:auto;
+      }
+
+      .no-image-main{
+        width:150px;
+        height: 150px;
+        margin:auto;
+        opacity: 0.5;
       }
 

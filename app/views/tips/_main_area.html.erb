@@ -20,7 +20,11 @@
     </div>
     <div class="tiped-image-field">
       <div class="main-image", id="main-image">
-        <%= image_tag f.image, class: 'uped-image-main' if f.image.attached? %>
+        <% if f.image.present? %>
+          <%= image_tag f.image, class: 'uped-image-main' if f.image.attached? %>
+        <% else %>
+          <%= link_to image_tag("noimage.jpg", class:"no-image-main") %>
+        <% end %>
       </div>
     </div>
   </div>
