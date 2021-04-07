@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "投稿する", type: :system do
+RSpec.describe '投稿する', type: :system do
   before do
     @tip =  FactoryBot.create(:tip)
     @user = FactoryBot.create(:user)
@@ -18,13 +18,13 @@ RSpec.describe "投稿する", type: :system do
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id][:name], from: 'tip_category_id'
       fill_in 'tip_description', with: @tip.description
-      expect{
+      expect  do
         find('input[type="submit"]').click
-      }.to change {Tip.count }.by(1)
+      end.to change { Tip.count }.by(1)
       expect(current_path).to eq(root_path)
-      expect(page).to have_content (@tip.title)
-      expect(page).to have_content (Category.data[@tip.category_id][:name])
-      expect(page).to have_content (@tip.description)
+      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(Category.data[@tip.category_id][:name])
+      expect(page).to have_content(@tip.description)
     end
 
     it ' 画像を含めた投稿が成功すること ' do
@@ -38,13 +38,13 @@ RSpec.describe "投稿する", type: :system do
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
-      attach_file( 'tip-image-main-img',image_path, make_visible: true )
+      attach_file('tip-image-main-img', image_path, make_visible: true)
       fill_in 'tip_description', with: @tip.description
-      expect{
+      expect  do
         find('input[type="submit"]').click
-      }.to change {Tip.count }.by(1)
+      end.to change { Tip.count }.by(1)
       expect(current_path).to eq root_path
-      expect(page).to have_selector ('img')
+      expect(page).to have_selector('img')
     end
   end
 
@@ -57,9 +57,9 @@ RSpec.describe "投稿する", type: :system do
       expect(current_path).to eq(root_path)
       expect(page).to have_content('新規投稿')
       visit new_tip_path
-      expect {
+      expect do
         find('input[type="submit"]').click
-      }.not_to change { Tip.count }
+      end.not_to change { Tip.count }
     end
   end
 end

@@ -1,11 +1,9 @@
 require 'rails_helper'
 describe TipsController, type: :request do
-
   before do
     @tip = FactoryBot.create(:tip)
     @user = FactoryBot.create(:user)
   end
-
 
   describe 'Get#index' do
     it 'action#indexにアクセスると正常にレスポンスが返ってくる' do
