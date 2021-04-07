@@ -9,36 +9,20 @@
     <input  value="検索" class="search-button">
   </div>
 </div>
-<div class="tips">
-  <div class="tips-description">
-    <h3 class="tip-title">タイトル</h3>
-    <p class="tip-title-contents">日付</p>
-    <p class="tip-title-contents">カテゴリー</p>
-    <p class="tip-title-contents">投稿者</p>
+<% @tips.each do |f| %>
+  <div class="tiped">
+    <div class="tiped-description">
+      <h3 class="tiped-title"><%= f.title %></h3>
+      <p class="tiped-title-contents">投稿時間 :  <%= l f.created_at%></p>
+      <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id][:name] %></p>
+      <p class="tiped-title-contents">投稿者 :  <%= f.user.nickname%></p>
+      <p class="tiped-title-contents">説明 :  <%= f.description%></p>
+    </div>
+    <div class="tiped-image-field">
+      <div class="main-image", id="main-image">
+        <%= image_tag f.image, class: 'uped-image-main' if f.image.attached? %>
+      </div>
+    </div>
   </div>
-  <div class="tips-image-field">
-    <img src="images/logo_arch_tips.png" alt="image" class=up-image>
-  </div>
-</div>
-<div class="tips">
-  <div class="tips-description">
-    <h3 class="tip-title">タイトル</h3>
-    <p class="tip-title-contents">日付</p>
-    <p class="tip-title-contents">カテゴリー</p>
-    <p class="tip-title-contents">投稿者</p>
-  </div>
-  <div class="tips-image-field">
-    <img src="images/logo_arch_tips.png" alt="image" class=up-image>
-  </div>
-</div>
-<div class="tips">
-  <div class="tips-description">
-    <h3 class="tip-title">タイトル</h3>
-    <p class="tip-title-contents">日付</p>
-    <p class="tip-title-contents">カテゴリー</p>
-    <p class="tip-title-contents">投稿者</p>
-  </div>
-  <div class="tips-image-field">
-    <img src="images/logo_arch_tips.png" alt="image" class=up-image>
-  </div>
-</div>
+<% end %>
+

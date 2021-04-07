@@ -1,0 +1,78 @@
+.error-message{
+  list-style: none;
+  padding-left: 20px;
+  color: red;
+}
+
+.main-tips-new{
+  display: block;
+  align-items: center;
+}
+
+.new-tip-string{
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: rgb(230, 230, 230);
+  font-size: 21px;
+}
+
+.tip-title{
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.tip-category{
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.category-content{
+  padding: 4.5px;
+}
+
+.tip-images{
+  
+  margin-bottom: 10px;
+}
+
+.tip-image-main{
+  padding: 20px;
+}
+
+.tip-image-main-text,.tip-image-sub-text,.tip-description-text{
+  margin-bottom: 5px;
+}
+
+.tip-image-main-img{
+  width: 300px;
+}
+
+
+.tip-image-sub{
+  margin: 20px;
+}
+
+.tip-image-sub-images{
+  display: flex;
+  justify-content: space-between;
+}
+
+.tip-image-sub-img{
+  width: 250px;
+  height: 250px;
+}
+
+.tip-description{
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.text-form{
+  width: 100%;
+  height: 300px;
+}
+
+.input-submit {
+  margin: 0 auto 20px 20px;
+  padding: 5px 0;
+}
