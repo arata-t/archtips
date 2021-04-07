@@ -134,12 +134,20 @@ display: none;
           margin-bottom: 15px;
         }
       .tiped-image-field{
-        
         width: 600px;
       }
-       .uped-image{
-         width:500px;
-         height: 400px;
-         border: 1px solid;
-       }
+
+      .main-image{
+        width:320px;
+        height: 320px;
+        border: 1px solid;
+        display: flex;
+        align-items: center;
+      }
+
+      .uped-image-main{
+        max-width:300px;
+        max-height: 300px;
+        margin:auto;
+      }
 

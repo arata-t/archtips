@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
   def index
-    @tips = Tip.order("created_at DESC")
+    @tips = Tip.order('created_at DESC')
   end
 
   def new
@@ -17,6 +17,7 @@ class TipsController < ApplicationController
   end
 
   private
+
   def tip_params
     params.require(:tip).permit(:title, :category_id, :description, :image).merge(user_id: current_user.id)
   end
