@@ -5,7 +5,7 @@
       <p>新規投稿</p>
     </div>
     <%= form_with(model: @tip, local: true) do |form| %>
-      <%= render 'layouts/error_messages', model: form.object, class:"" %>
+      <%= render 'layouts/error_messages', model: form.object %>
       <div class="tip-title">
         <p>タイトル</p>
         <div class="tip-title-content">
@@ -15,7 +15,7 @@
       <div class="tip-category">
         <p>カテゴリー</p>
         <div class="tip-category-content">
-          <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:""}) %>
+          <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-content"}) %>
         </div>
       </div>
       <div class="tip-images">
