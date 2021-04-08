@@ -1,22 +1,26 @@
 require 'rails_helper'
-
-RSpec.describe 'Tips', type: :request do
+describe TipsController, type: :request do
   before do
     @tip = FactoryBot.create(:tip)
     @user = FactoryBot.create(:user)
   end
 
-  describe 'Get#new' do
-    it 'action#newにリクエストするとレスポンスにタイトル入力フォームがかえってくる' do
+  describe 'Get#index' do
+    it 'action#indexにアクセスると正常にレスポンスが返ってくる' do
+      get root_path
+      expect(response.status).to eq 200
     end
-
-    it 'action#newにリクエストするとレスポンスにカテゴリー選択フォームがかえってくる' do
+    it 'action#indexにリクエストするとレスポンスに投稿したタイトルが表示されている。' do
+      get root_path
+      expect(response.body).to include @tip.title
     end
-
-    it 'action#newにリクエストするとレスポンスに画像選択フォームがかえってくる' do
+    it 'action#indexにリクエストするとレスポンスに投稿したカテゴリーが表示されている' do
+      get root_path
+      expect(response.body).to include Category.data[@tip.category_id][:name]
     end
-
-    it 'action#newにリクエストするとレスポンスに説明入力フォームがかえってくる' do
+    it 'action#indexにリクエストするとレスポンスに投稿した説明が表示されている。' do
+      get root_path
+      expect(response.body).to include @tip.description
     end
   end
 end

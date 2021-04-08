@@ -22,15 +22,15 @@
         <div class="tip-image-main">
           <p class="tip-image-main-text">画像(メイン)</p>
           <div id="image-list">
-            <%= form.file_field :image, class: 'tip-image-main-img' %>
+            <%= form.file_field :image, class: 'tip-image-main-img', name: 'tip-image-main-img' %>
           </div>
         </div>
         <div class="tip-image-sub">
           <p class="tip-image-sub-text">画像（サブ）</p>
           <div class="tip-image-sub-images">
-            <%= form.file_field :image, class: 'tip-image-sub-img' %>
-            <%= form.file_field :image, class: 'tip-image-sub-img' %>
-            <%= form.file_field :image, class: 'tip-image-sub-img' %>
+            <%= form.file_field :image, class: 'tip-image-sub-img', name: 'tip-image-sub-img1' %>
+            <%= form.file_field :image, class: 'tip-image-sub-img', name: 'tip-image-sub-img2' %>
+            <%= form.file_field :image, class: 'tip-image-sub-img', name: 'tip-image-sub-img3' %>
           </div>
         </div>
       </div>
