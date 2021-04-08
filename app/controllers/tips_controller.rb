@@ -16,6 +16,10 @@ class TipsController < ApplicationController
     end
   end
 
+  def show
+    @tip = Tip.find(params[:id])
+  end
+
   private
 
   def tip_params
