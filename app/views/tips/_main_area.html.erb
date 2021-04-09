@@ -11,8 +11,10 @@
 </div>
 <% @tips.each do |f| %>
   <div class="tiped">
-    <div class="tiped-description">
-      <h3 class="tiped-title"><%= f.title %></h3>
+    <div class="tiped-contents">
+      <div class="tiped-title">
+        <%= link_to f.title, tip_path(f.id, method: :get) %>
+      </div>
       <p class="tiped-title-contents">投稿時間 :  <%= l f.created_at%></p>
       <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id][:name] %></p>
       <p class="tiped-title-contents">投稿者 :  <%= f.user.nickname%></p>
@@ -21,9 +23,9 @@
     <div class="tiped-image-field">
       <div class="main-image", id="main-image">
         <% if f.image.present? %>
-          <%= image_tag f.image, class: 'uped-image-main' %>
+          <%= link_to image_tag(f.image, class: 'uped-image-main'), tip_path(f.id, method: :get) %>
         <% else %>
-          <%= link_to image_tag("noimage.jpg", class:"no-image-main") %>
+          <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
         <% end %>
       </div>
     </div>
