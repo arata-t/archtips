@@ -4,8 +4,22 @@
     <div class="tip-title">
       <p class="tip-title-show">タイトル</p>
     </div>
-    <div class="tip-image">
+    <div class="slider">
       <div class="image-show">
+        <%if @tip.image.present?%>
+        <%= image_tag @tip.image, class: 'image-show-content' %>
+        <% else %>
+        <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
+        <% end %>
+      </div>
+            <div class="image-show">
+        <%if @tip.image.present?%>
+        <%= image_tag @tip.image, class: 'image-show-content' %>
+        <% else %>
+        <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
+        <% end %>
+      </div>
+            <div class="image-show">
         <%if @tip.image.present?%>
         <%= image_tag @tip.image, class: 'image-show-content' %>
         <% else %>

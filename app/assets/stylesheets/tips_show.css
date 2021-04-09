@@ -10,6 +10,10 @@
   font-weight: normal;
 }
 
+.slider{
+  box-shadow: none;
+}
+
 .image-show{
   margin: 20px;
   display: flex;
@@ -35,7 +39,6 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 }
-
 
 .btn-edit{
   width: 200px;
