@@ -13,17 +13,7 @@
   padding: 20px;
   margin-bottom: 10px;
   background-color: rgb(230, 230, 230);
-  font-size: 21px;
-}
-
-.tip-title{
-  padding: 20px;
-  margin-bottom: 10px;
-}
-
-.tip-category{
-  padding: 20px;
-  margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .category-content{
@@ -31,7 +21,6 @@
 }
 
 .tip-images{
-  
   margin-bottom: 10px;
 }
 
@@ -40,7 +29,8 @@
 }
 
 .tip-image-main-text,.tip-image-sub-text,.tip-description-text{
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 21px;
 }
 
 .tip-image-main-img{
@@ -62,11 +52,6 @@
   height: 250px;
 }
 
-.tip-description{
-  padding: 20px;
-  margin-bottom: 10px;
-}
-
 .text-form{
   width: 100%;
   height: 300px;
@@ -75,4 +60,5 @@
 .input-submit {
   margin: 0 auto 20px 20px;
   padding: 5px 0;
+  font-size: 15px;
 }

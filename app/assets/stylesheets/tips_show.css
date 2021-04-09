@@ -1,0 +1,47 @@
+.main-tips-show{
+  margin: 20px;
+  margin-bottom: 20px;
+  display: block;
+  justify-content: center;
+}
+
+.tip-title-show{
+  font-size: 21px;
+  font-weight: normal;
+}
+
+.image-show{
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-show-content{
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.image-show-content-none{
+  width: 300px;
+  height: 300px;
+  opacity: 0.5;
+}
+
+.edit-delete-area{
+height: 100px;
+margin: 20px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+
+
+.btn-edit{
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 5px 12px;
+}
+

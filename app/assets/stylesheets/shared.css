@@ -12,3 +12,12 @@
   border: 3px solid #ddd;
   border-radius: 10px;
 }
+
+.tip-title, 
+.tip-category, 
+.tip-description,
+.tip-contributer{
+  padding: 20px;
+  margin-bottom: 10px;
+  font-size: 21px;
+}
