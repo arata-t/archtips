@@ -8,12 +8,16 @@ class TipsController < ApplicationController
   end
 
   def create
-    @tip = Tip.create(tip_params)
+    @tip = Tip.new(tip_params)
     if @tip.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def show
+    @tip = Tip.find(params[:id])
   end
 
   private
