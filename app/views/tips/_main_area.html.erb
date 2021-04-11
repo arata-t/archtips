@@ -23,7 +23,7 @@
     <div class="tiped-image-field">
       <div class="main-image", id="main-image">
         <% if f.image.present? %>
-          <%= link_to image_tag(f.image, class: 'uped-image-main'), tip_path(f.id, method: :get) %>
+          <%= link_to image_tag(f.image, class: 'uped-image-main', id:'uped-image-main'), tip_path(f.id, method: :get) %>
         <% else %>
           <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
         <% end %>
