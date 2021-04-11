@@ -4,41 +4,6 @@
     <div class = "new-tip-string">
       <p>新規投稿</p>
     </div>
-    <%= form_with(model: @tip, local: true) do |form| %>
-      <%= render 'layouts/error_messages', model: form.object %>
-      <div class="tip-title">
-        <p>タイトル</p>
-        <div class="tip-title-content">
-          <%= form.text_field :title, placeholder: "" %>
-        </div>
-      </div>
-      <div class="tip-category">
-        <p>カテゴリー</p>
-        <div class="tip-category-content">
-          <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-content"}) %>
-        </div>
-      </div>
-      <div class="tip-images">
-        <div class="tip-image-main">
-          <p class="tip-image-main-text">画像(メイン)</p>
-          <div id="image-list">
-            <%= form.file_field :image, class: 'tip-image-main-img', id: 'tip-image-main-img' %>
-          </div>
-        </div>
-        <div class="tip-image-sub">
-          <p class="tip-image-sub-text">画像（サブ）</p>
-          <div class="tip-image-sub-images">
-            <%= form.file_field :image, class: 'tip-image-sub-img', id: 'tip-image-sub-img1' %>
-            <%= form.file_field :image, class: 'tip-image-sub-img', id: 'tip-image-sub-img2' %>
-            <%= form.file_field :image, class: 'tip-image-sub-img', id: 'tip-image-sub-img3' %>
-          </div>
-        </div>
-      </div>
-      <div class="tip-description">
-        <p class="tip-description-text">説明</p>
-        <%= form.text_field :description, placeholder:"", class: 'text-form' %>
-      </div>
-      <%= form.submit "投稿する", class: 'input-submit' %>
-    <% end %>
+      <%= render "new_edit" %>
   </div>
 </div>
