@@ -20,6 +20,10 @@ class TipsController < ApplicationController
     @tip = Tip.find(params[:id])
   end
 
+  def edit
+    @tip = Tip.find(params[:id])
+  end
+
   private
 
   def tip_params
