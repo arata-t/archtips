@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
   def index
-    @tips = Tip.order('created_at DESC')
+    @tips = Tip.order(updated_at: :DESC)
   end
 
   def new
@@ -22,6 +22,15 @@ class TipsController < ApplicationController
 
   def edit
     @tip = Tip.find(params[:id])
+  end
+
+  def update
+    @tip = Tip.find(params[:id])
+    if @tip.update(tip_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
