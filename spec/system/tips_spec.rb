@@ -38,7 +38,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
-      attach_file('tip-image-main-img', image_path, make_visible: true)
+      attach_file 'tip-image-main-img', image_path, make_visible: true
       fill_in 'tip_description', with: @tip.description
       expect  do
         find('input[type="submit"]').click
