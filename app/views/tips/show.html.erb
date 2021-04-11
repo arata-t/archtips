@@ -44,12 +44,14 @@
       <%= @tip.description %>
     </div>
   </div>
-  <div class="edit-delete-area">
-    <div class="show-edit">
-      <input type="submit" value="編集" class="btn-edit">
+  <% if user_signed_in? && current_user.id == @tip.user.id %>
+    <div class="edit-delete-area">
+      <div class="show-edit">
+        <input type="submit" value="編集" class="btn-edit">
+      </div>
+      <div class="show-delete">
+        <input type="submit" value="削除" class="btn-edit">
+      </div>
     </div>
-    <div class="show-delete">
-      <input type="submit" value="削除" class="btn-edit">
-    </div>
-  </div>
+  <% end %>
 </div>
