@@ -95,6 +95,7 @@ display: none;
       }
         .new-tip-title p{
           font-size: 21px;
+          min-width: 200px;
         }
       .search-area{
         display: flex;
@@ -123,7 +124,8 @@ display: none;
     }
       .tiped-contents{
         padding: 10px;
-        min-width: 300px;
+        width: 400px;
+        min-width: 200px;
       }
         .tiped-title{
           font-size: 24px;
