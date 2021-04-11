@@ -47,7 +47,9 @@
   <% if user_signed_in? && current_user.id == @tip.user.id %>
     <div class="edit-delete-area">
       <div class="show-edit">
-        <%= link_to '編集', edit_tip_path(@tip.id), class:"btn-edit" %>
+        <div class="btn-edit">
+          <%= link_to '編集', edit_tip_path(@tip.id)%>
+        </div>
       </div>
       <div class="show-delete">
         <input type="submit" value="削除" class="btn-edit">
