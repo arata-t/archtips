@@ -22,7 +22,6 @@ RSpec.describe '投稿する', type: :system do
   end
 
   context '投稿に成功した時' do
-
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       visit new_user_session_path
       fill_in 'user_email', with: @user.email
@@ -94,5 +93,4 @@ RSpec.describe '投稿する', type: :system do
       expect(page).to have_selector('img')
     end
   end
-
 end
