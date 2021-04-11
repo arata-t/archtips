@@ -1,4 +1,7 @@
 class TipsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_tip, only: [:show, :edit, :update]
+  before_action :user_redirect, only: [:edit, :update]
   def index
     @tips = Tip.order(updated_at: :DESC)
   end
@@ -17,15 +20,16 @@ class TipsController < ApplicationController
   end
 
   def show
-    @tip = Tip.find(params[:id])
+    
   end
 
   def edit
-    @tip = Tip.find(params[:id])
+    
+
   end
 
   def update
-    @tip = Tip.find(params[:id])
+    
     if @tip.update(tip_params)
       redirect_to root_path
     else
@@ -37,5 +41,13 @@ class TipsController < ApplicationController
 
   def tip_params
     params.require(:tip).permit(:title, :category_id, :description, :image).merge(user_id: current_user.id)
+  end
+
+  def set_tip
+    @tip = Tip.find(params[:id])
+  end
+
+  def user_redirect
+    redirect_to action: :index unless current_user.id == @tip.user.id
   end
 end
