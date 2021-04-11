@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="tip-category">
-      <p>カテゴリー : <%= Category.data[@tip.category_id][:name] %></p>
+      <p>カテゴリー : <%= Category.data[@tip.category_id - 1][:name] %></p>
     </div>
     <div class="tip-contributer">
       <p>投稿者 : <%= @tip.user.nickname %> </p>
