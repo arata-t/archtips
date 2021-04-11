@@ -1,13 +1,20 @@
 .main-tips-show{
-  margin: 20px;
   margin-bottom: 20px;
   display: block;
   justify-content: center;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .tip-title-show{
   font-size: 21px;
   font-weight: normal;
+}
+
+p.tip-title-show {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 30px;
 }
 
 .slider{
@@ -30,21 +37,29 @@
   width: 300px;
   height: 300px;
   opacity: 0.5;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-delete-area{
 height: 100px;
-margin: 20px;
-display: flex;
-justify-content: space-around;
+margin: 20px 20px 80px 20px;
+display: block;
 align-items: center;
+justify-content: center;
+}
+
+.show-edit, .show-delete{
+  width: 460px;
+  margin: 30px auto;
 }
 
 .btn-edit{
-  width: 200px;
+  width: 500px;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 18px;
-  padding: 5px 12px;
+  padding: 10px 12px;
 }
 

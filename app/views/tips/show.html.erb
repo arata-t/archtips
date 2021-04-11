@@ -2,7 +2,7 @@
   <%= render "shared/header" %>
   <div class="main-tips-show">
     <div class="tip-title">
-      <p class="tip-title-show">タイトル</p>
+      <p class="tip-title-show"><%= @tip.title %></p>
     </div>
     <div class="slider">
       <div class="image-show">
@@ -12,21 +12,27 @@
         <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
         <% end %>
       </div>
-            <div class="image-show">
+<% 
+=begin
+%>
+      <div class="image-show">
         <%if @tip.image.present?%>
         <%= image_tag @tip.image, class: 'image-show-content' %>
         <% else %>
         <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
         <% end %>
       </div>
-            <div class="image-show">
+      <div class="image-show">
         <%if @tip.image.present?%>
         <%= image_tag @tip.image, class: 'image-show-content' %>
         <% else %>
         <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
         <% end %>
       </div>
-    </div>
+<%
+=end
+%>
+      </div>
     <div class="tip-category">
       <p>カテゴリー : <%= Category.data[@tip.category_id - 1][:name] %></p>
     </div>
@@ -39,10 +45,10 @@
     </div>
   </div>
   <div class="edit-delete-area">
-    <div >
+    <div class="show-edit">
       <input type="submit" value="編集" class="btn-edit">
     </div>
-    <div>
+    <div class="show-delete">
       <input type="submit" value="削除" class="btn-edit">
     </div>
   </div>
