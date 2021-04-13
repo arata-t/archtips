@@ -20,16 +20,12 @@ class TipsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
-
   end
 
   def update
-    
     if @tip.update(tip_params)
       redirect_to root_path
     else

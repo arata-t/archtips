@@ -2,7 +2,7 @@ require 'rails_helper'
 describe TipsController, type: :request do
   before do
     @user = FactoryBot.create(:user)
-    @user[:id] = @user.id + 1 
+    @user[:id] = @user.id + 1
     @tip = FactoryBot.create(:tip)
   end
 
@@ -65,16 +65,18 @@ describe TipsController, type: :request do
       get edit_tip_path(@tip)
       expect(response.body).to include @tip.description
     end
-    it '許可されていないユーザーがアクセスするとリダイレクトされる' do
+    it '許可されていないユーザーがアクセスするとホーム画面にリダイレクトされる' do
       other_user = FactoryBot.create(:user)
       sign_in other_user
       get edit_tip_path(@tip)
       expect(response.status).to eq 302
+      expect(response).to redirect_to root_path
     end
 
-    it 'サインアウトした状態でアクセスするとリダイレクトされる' do
+    it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトされる' do
       get edit_tip_path(@tip)
       expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end
