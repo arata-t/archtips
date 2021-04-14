@@ -25,6 +25,19 @@ describe TipsController, type: :request do
     end
   end
 
+  describe 'Get#new' do
+    it 'ログインした状態でアクセスすると正常にレスポンスを返す' do
+      sign_in @user
+      get new_tip_path
+      expect(response.status).to eq 200
+    end
+    it 'ログインしていないユーザーがアクセスするとログイン画面にリダイレクトする' do
+      get new_tip_path
+      expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
   describe 'Get#show' do
     it 'action#showにアクセスすると正常にレスポンスを返す' do
       get tip_path(@tip)
