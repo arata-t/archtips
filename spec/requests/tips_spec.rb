@@ -72,9 +72,23 @@ describe TipsController, type: :request do
       expect(response.status).to eq 302
       expect(response).to redirect_to root_path
     end
-
     it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトされる' do
       get edit_tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
+  describe 'Get#delete' do
+    it '許可されていないユーザーがアクセスするとホーム画面にリダイレクトされる' do
+      other_user = FactoryBot.create(:user)
+      sign_in other_user
+      delete tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to root_path
+    end
+    it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトする。' do
+      delete tip_path(@tip)
       expect(response.status).to eq 302
       expect(response).to redirect_to new_user_session_path
     end
