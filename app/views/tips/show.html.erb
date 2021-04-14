@@ -52,7 +52,9 @@
         </div>
       </div>
       <div class="show-delete">
-        <input type="submit" value="削除" class="btn-edit">
+        <div class="btn-delete">
+          <%= link_to '削除', tip_path(@tip.id), method: :delete %>
+        </div>
       </div>
     </div>
   <% end %>

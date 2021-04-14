@@ -55,7 +55,7 @@ justify-content: center;
   margin: 30px auto;
 }
 
-.btn-edit{
+.btn-edit, .btn-delete{
   width: 500px;
   border: 1px solid #ddd;
   border-radius: 3px;
