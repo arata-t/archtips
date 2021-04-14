@@ -60,6 +60,8 @@ justify-content: center;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 18px;
-  padding: 10px 12px;
+  padding: 6px 12px;
+  text-align: center;
+  background-color: #efefef;
 }
 
