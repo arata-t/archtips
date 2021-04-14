@@ -86,11 +86,6 @@ RSpec.describe '投稿する', type: :system do
       expect  do
         find('input[type="submit"]').click
       end.to change { Tip.count }.by(1)
-      expect(current_path).to eq root_path
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_selector('img')
       # 詳細
       visit tip_path(@tip)
       expect(page).to have_content(@tip.title)
@@ -118,14 +113,14 @@ RSpec.describe '投稿する', type: :system do
       # 詳細
       click_on @tip.title, match: :first
       # 編集
-      other_tip = FactoryBot.create(:tip)
       click_on '編集'
       @tip[:id] = @tip.id + 1
       expect(current_path).to eq edit_tip_path(@tip)
+      other_tip = FactoryBot.create(:tip)
       fill_in 'tip_title', with: other_tip.title
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
-      image_path = Rails.root.join('public/images/test_image.png')
-      attach_file 'tip-image-main-img', image_path, make_visible: true
+      after_image_path = Rails.root.join('public/images/after_image.png')
+      attach_file 'tip-image-main-img', after_image_path, make_visible: true
       fill_in 'tip_description', with: other_tip.description
       expect  do
         find('input[type="submit"]').click
