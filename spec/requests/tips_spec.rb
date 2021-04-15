@@ -25,6 +25,19 @@ describe TipsController, type: :request do
     end
   end
 
+  describe 'Get#new' do
+    it 'ログインした状態でアクセスすると正常にレスポンスを返す' do
+      sign_in @user
+      get new_tip_path
+      expect(response.status).to eq 200
+    end
+    it 'ログインしていないユーザーがアクセスするとログイン画面にリダイレクトする' do
+      get new_tip_path
+      expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
   describe 'Get#show' do
     it 'action#showにアクセスすると正常にレスポンスを返す' do
       get tip_path(@tip)
@@ -72,9 +85,23 @@ describe TipsController, type: :request do
       expect(response.status).to eq 302
       expect(response).to redirect_to root_path
     end
-
     it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトされる' do
       get edit_tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
+  describe 'Get#delete' do
+    it '許可されていないユーザーがアクセスするとホーム画面にリダイレクトされる' do
+      other_user = FactoryBot.create(:user)
+      sign_in other_user
+      delete tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to root_path
+    end
+    it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトする。' do
+      delete tip_path(@tip)
       expect(response.status).to eq 302
       expect(response).to redirect_to new_user_session_path
     end
