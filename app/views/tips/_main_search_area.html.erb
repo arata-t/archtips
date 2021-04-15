@@ -1,22 +1,26 @@
-<% @tips.each do |f| %>
-  <div class="tiped">
-    <div class="tiped-contents">
-      <div class="tiped-title">
-        <%= link_to f.title, tip_path(f.id, method: :get) %>
+<% if @tips.present? %>
+  <%= @tips.each do |f| %>
+    <div class="tiped">
+      <div class="tiped-contents">
+        <div class="tiped-title">
+          <%= link_to f.title, tip_path(f.id, method: :get) %>
+        </div>
+        <p class="tiped-title-contents">投稿時間 :  <%= l f.updated_at%></p>
+        <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id - 1][:name] %></p>
+        <p class="tiped-title-contents">投稿者 :  <%= f.user.nickname%></p>
+        <p class="tiped-title-contents">説明 : <br> <%= f.description%></p>
       </div>
-      <p class="tiped-title-contents">投稿時間 :  <%= l f.updated_at%></p>
-      <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id - 1][:name] %></p>
-      <p class="tiped-title-contents">投稿者 :  <%= f.user.nickname%></p>
-      <p class="tiped-title-contents">説明 : <br> <%= f.description%></p>
-    </div>
-    <div class="tiped-image-field">
-      <div class="main-image", id="main-image">
-        <% if f.image.present? %>
-          <%= link_to image_tag(f.image, class: 'uped-image-main', id:'uped-image-main'), tip_path(f.id, method: :get) %>
-        <% else %>
-          <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
-        <% end %>
+      <div class="tiped-image-field">
+        <div class="main-image", id="main-image">
+          <% if f.image.present? %>
+            <%= link_to image_tag(f.image, class: 'uped-image-main', id:'uped-image-main'), tip_path(f.id, method: :get) %>
+          <% else %>
+            <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <p class="search-nil">検索結果はありません</p>
 <% end %>

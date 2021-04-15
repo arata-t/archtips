@@ -161,3 +161,8 @@ display: none;
         opacity: 0.5;
       }
 
+      .search-nil{
+        margin: 20px;
+        font-size: 18px;
+      }
+
