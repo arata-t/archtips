@@ -3,14 +3,10 @@
     <p>最新の投稿</p>
   </div>
   <div class="search-area">
-    <div>
-      <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "キーワードを入力", class: "search-input" %>
-        <%= form.submit "検索", class: "search-btn" %>
+      <%= form_with(url: search_tips_path, local: true, method: :get) do |form| %>
+        <%= form.text_field :keyword, placeholder: "キーワードを入力", class: "search-form" %>
+        <%= form.submit "検索", class: "search-button" %>
       <% end %>
-      <input class="search-form"placeholder= " キーワードを入力">
-    </div>
-    <input  value="検索" class="search-button">
   </div>
 </div>
 <% @tips.each do |f| %>
