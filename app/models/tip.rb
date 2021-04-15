@@ -12,7 +12,7 @@ class Tip < ApplicationRecord
     if search != ''
       Tip.where('description LIKE(?)', "%#{search}%")
     else
-      Tweet.all
+      Tip.order(updated_at: :DESC)
     end
   end
 end
