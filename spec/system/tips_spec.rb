@@ -148,7 +148,7 @@ RSpec.describe '投稿する', type: :system do
       end.to change { Tip.count }.by(1)
       # 詳細
       click_on other_tip.title, match: :first
-      #削除
+      # 削除
       click_on '削除'
       expect(current_path).to eq root_path
       # expect(page).not_to have_content(@tip.title)
