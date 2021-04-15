@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
   before_action :user_redirect, only: [:edit, :update, :destroy]
   def index
@@ -39,6 +39,10 @@ class TipsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def search
+    @tips = Tip.search(params[:keyword])
   end
 
   private
