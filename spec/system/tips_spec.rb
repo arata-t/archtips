@@ -171,7 +171,7 @@ RSpec.describe '投稿する', type: :system do
       expect  do
         find('input[type="submit"]').click
       end.to change { Tip.count }.by(1)
-      #検索
+      # 検索
       fill_in 'keyword', with: other_tip.description
       click_on('検索')
       expect(page).to have_content(other_tip.title)
