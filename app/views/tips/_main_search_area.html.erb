@@ -7,7 +7,7 @@
         </div>
         <p class="tiped-title-contents">投稿時間 :  <%= l f.updated_at%></p>
         <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id - 1][:name] %></p>
-        <p class="tiped-title-contents">投稿者 :  <%= f.user.nickname%></p>
+        <p class="tiped-title-contents">投稿者 :  <%= link_to f.user.nickname, "/users/#{f.user.id}" %> </p>
         <p class="tiped-title-contents">説明 : <br> <%= f.description%></p>
       </div>
       <div class="tiped-image-field">
