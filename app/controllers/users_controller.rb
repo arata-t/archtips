@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user.nickname
-    @tip = current_user.tips
+    @user = User.find(params[:id])
+    @tips = User.find(params[:id]).tips.order(updated_at: :DESC)
   end
 end
