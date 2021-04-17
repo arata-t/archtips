@@ -92,6 +92,7 @@ display: none;
     }
       .new-tip-title{
         padding: 20px;
+        margin-left: 10px;
       }
         .new-tip-title p{
           font-size: 21px;
@@ -137,6 +138,8 @@ display: none;
         }
       .tiped-image-field{
         width: 600px;
+        display: flex;
+        justify-content: center;
       }
 
       .main-image{
