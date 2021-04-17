@@ -28,7 +28,7 @@ describe TipsController, type: :request do
       get root_path
       expect(response.body).to include 'マイページ'
     end
-    it 'ログインしてない状態でaction#indexにアクセスするとレスポンスにマイページが表示される' do
+    it 'ログインしてない状態でaction#indexにアクセスするとレスポンスにマイページが表示されない' do
       get root_path
       expect(response.body).not_to include 'マイページ'
     end
