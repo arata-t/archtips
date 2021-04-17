@@ -2,11 +2,13 @@
   <%= link_to "新規投稿", new_tip_path%>
 </div>
 <div class="new-question">
-<a>質問する</a>
+  <a>質問する</a>
 </div>
-<div class="my-page">
-<a href="">マイページ</a>
-</div>
+<% if user_signed_in? %>
+  <div class="my-page">
+    <%= link_to "マイページ", "/users/#{current_user.id}" %>
+  </div>
+<% end %>
 <div class="search">
-<a href="">詳細検索</a>
+  <a href="">詳細検索</a>
 </div>
