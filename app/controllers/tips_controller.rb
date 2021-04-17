@@ -20,6 +20,8 @@ class TipsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @tip.comments.includes(:user)
   end
 
   def edit
