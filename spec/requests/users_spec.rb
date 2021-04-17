@@ -5,20 +5,20 @@ RSpec.describe 'Users', type: :request do
     @user = FactoryBot.create(:user)
     @tip = FactoryBot.create(:tip)
   end
-  
+
   describe 'GET /users' do
-    #ログイン
+    # ログイン
     it 'users/sign_inにリクエストすると正常にレスポンスが返ってくる' do
       get new_user_session_path
       expect(response.status).to eq 200
     end
-    #新規登録
+    # 新規登録
     it 'users/sign_upにリクエストすると正常にレスポンスが返ってくる' do
       get new_user_registration_path
       expect(response.status).to eq 200
     end
-    #マイページ
-    it'マイページにアクセスると正常にレスポンスを返す' do
+    # マイページ
+    it 'マイページにアクセスると正常にレスポンスを返す' do
       get user_path(@user.id)
       expect(response.status).to eq 200
     end
@@ -32,7 +32,7 @@ RSpec.describe 'Users', type: :request do
     end
     it 'マイページにアクセスすると投稿数が表示される' do
       get user_path(@user.id)
-      expect(response.body).to include (@user.tips.length).to_s
+      expect(response.body).to include @user.tips.length.to_s
     end
   end
 end
