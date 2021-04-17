@@ -6,7 +6,47 @@ RSpec.describe 'Users', type: :system do
     @user[:id] = @user.id + 1
     @tip = FactoryBot.create(:tip)
   end
-  
+  context '新規登録をする' do
+    it '新規登録を成功させること' do
+      other_user = FactoryBot.build(:user)
+      visit new_user_registration_path
+      fill_in 'user_nickname', with: other_user.nickname
+      fill_in 'user_email', with: other_user.email
+      fill_in 'user_password', with: other_user.password
+      fill_in 'user_password_confirmation', with: other_user.password
+      fill_in 'user_last_name', with: other_user.last_name
+      fill_in 'user_first_name', with: other_user.first_name
+      fill_in 'user_introduction', with: other_user.introduction
+      find('input[type="submit"]').click
+      expect(current_path).to eq root_path
+      expect(page).to have_content 'マイページ'
+      expect(page).to have_content 'ログアウト'
+      expect(page).to have_content other_user.nickname
+    end
+    it '送る値が空のため新規投稿に失敗すること' do
+      visit new_user_registration_path
+      find('input[type="submit"]').click
+      expect do
+        find('input[type="submit"]').click
+      end.not_to change { User.count }
+    end
+  end
+  context 'ログインする' do
+    it 'ログインを成功させること' do
+      visit new_user_session_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      find('input[type="submit"]').click
+      expect(current_path).to eq(root_path)
+    end
+    it '値が空のためログインに失敗すること' do
+      visit new_user_session_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      find('input[type="submit"]').click
+      expect(current_path).to eq(root_path)
+    end
+  end
   context 'マイページにアクセスする' do
     it '投稿後にマイページアクセスすると投稿した内容が表示される。' do
       # ログイン
