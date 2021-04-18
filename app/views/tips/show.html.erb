@@ -44,16 +44,39 @@
       <%= @tip.description %>
     </div>
   </div>
+  <div class="comment-area">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@tip, @comment], local: true) do |form| %>
+        <div class="comment-form">
+          <%= form.text_area :comment, placeholder: "投稿に対するコメントがあればこちらにお願いします。", rows: "2" %>
+        </div>
+        <div class="comment-button-area">
+          <%= form.submit "コメントする", class:"comment-button" %>
+        </div>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+  </div>
+  <div class="comments-area">
+    <h4><コメント一覧></h4>
+    <% @comments.each do |comment| %>
+      <div class="comments-list">
+        <div><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>　：　</div>
+        <div><%=comment.comment%></div>
+      </div>
+    <% end %>
+  </div>
   <% if user_signed_in? && current_user.id == @tip.user.id %>
     <div class="edit-delete-area">
       <div class="show-edit">
         <div class="btn-edit">
-          <%= link_to '編集', edit_tip_path(@tip.id)%>
+          <%= link_to '投稿の編集', edit_tip_path(@tip.id), class: "btn-edit-str" %>
         </div>
       </div>
       <div class="show-delete">
         <div class="btn-delete">
-          <%= link_to '削除', tip_path(@tip.id), method: :delete %>
+          <%= link_to '投稿の削除', tip_path(@tip.id), method: :delete, class: "btn-delete-str" %>
         </div>
       </div>
     </div>
