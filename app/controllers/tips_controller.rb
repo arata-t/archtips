@@ -21,7 +21,7 @@ class TipsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @tip.comments.includes(:user)
+    @comments = @tip.comments.includes(:user).sort_by{|columun|columun.updated_at}.reverse
   end
 
   def edit
