@@ -42,12 +42,73 @@ p.tip-title-show {
   align-items: center;
 }
 
+/* -----------comment-------------- */
+
+.comment-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 40px;
+  padding-bottom: 30px;
+  border-bottom: 1.5px solid #ddd;
+}
+
+.comment-form{
+  width:500px;
+  height: 80px;
+}
+
+.comment-form textarea{
+  width:100%;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment-button-area{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.comment-button{
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 4px 0;
+  margin: 0 auto;
+  background-color: #efefef;
+}
+
+.comments-area{
+  padding: 30px 0;
+  width: 700px;
+  margin: 0 auto;
+  max-height: 300px;
+  overflow: auto;
+  font-size: 18px;
+}
+
+.comments-area h4{
+  text-align: center;
+}
+
+.comments-list{
+  margin: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+/* -------------edit/delete---------------- */
+
 .edit-delete-area{
 height: 100px;
-margin: 20px 20px 80px 20px;
+margin: 20px 40px 60px 40px;
 display: block;
 align-items: center;
 justify-content: center;
+border-top: 1.5px solid #ddd;;
 }
 
 .show-edit, .show-delete{
@@ -56,12 +117,16 @@ justify-content: center;
 }
 
 .btn-edit, .btn-delete{
-  width: 500px;
+  text-align: center;
+}
+
+.btn-edit-str, .btn-delete-str{
   border: 1px solid #ddd;
   border-radius: 3px;
-  font-size: 18px;
-  padding: 6px 12px;
+  font-size: 14px;
+  padding: 8px 100px;
   text-align: center;
   background-color: #efefef;
+  margin: 30px auto;
 }
 
