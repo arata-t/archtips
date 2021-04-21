@@ -13,7 +13,7 @@
       <div class="tiped-image-field">
         <div class="main-image", id="main-image">
           <% if f.image.present? && f.image.content_type == 'application/pdf' %>
-            <object data="<%=url_for(f.image)%>" type="application/pdf" class='uped-image-main' ></object>
+            <object data="<%=url_for(f.image)%>" type="application/pdf"  max-width=250px" height="250px" ></object>
             <%# ダミーイメージopacity:0; をpdfイメージの上に配置し、リンクを生成する %>
             <%= link_to image_tag("noimage.jpg", id:'uped-image-main', class: 'uped-image-hide'), tip_path(f.id, method: :get) %>
           <% elsif f.image.present? %>

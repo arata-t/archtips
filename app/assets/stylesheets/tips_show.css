@@ -28,6 +28,12 @@ p.tip-title-show {
   align-items: center;
 }
 
+.pdf-layout {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
 .image-show-content{
   max-width: 700px;
   max-height: 500px;

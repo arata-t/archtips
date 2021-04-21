@@ -4,12 +4,19 @@
     <div class="tip-title">
       <p class="tip-title-show"><%= @tip.title %></p>
     </div>
-    <div class="slider">
+    <div class="#">
       <div class="image-show">
         <%if @tip.image.present?%>
-        <%= image_tag @tip.image, class: 'image-show-content' %>
+          <%if @tip.image.content_type == 'application/pdf' %>
+            <div>
+              <object data="<%=url_for(@tip.image)%>" type="application/pdf" max-width="100%" height="500px" class='image-show-content' ></object>
+              <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image)) %>">リンク</a></div>
+            </div>
+          <% else %>
+            <%= image_tag @tip.image, class: 'image-show-content' %>
+          <% end %>
         <% else %>
-        <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
+          <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
         <% end %>
       </div>
 <% 
