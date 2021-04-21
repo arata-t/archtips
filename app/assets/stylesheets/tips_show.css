@@ -29,9 +29,10 @@ p.tip-title-show {
 }
 
 .pdf-layout {
-  margin: 10px auto;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
+
 }
 
 .image-show-content{

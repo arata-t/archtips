@@ -10,7 +10,7 @@
           <%if @tip.image.content_type == 'application/pdf' %>
             <div>
               <object data="<%=url_for(@tip.image)%>" type="application/pdf" max-width="100%" height="500px" class='image-show-content' ></object>
-              <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image)) %>">リンク</a></div>
+              <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image)) %>">リンクへ移動</a></div>
             </div>
           <% else %>
             <%= image_tag @tip.image, class: 'image-show-content' %>
