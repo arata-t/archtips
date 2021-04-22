@@ -152,12 +152,6 @@ display: none;
         position: relative;
       }
 
-      .pdf-object{
-        width: 250px;
-        height: 250px;
-        border: 1px solid;
-      }
-
       .uped-image-main{
         max-width:250px;
         max-height: 250px;
