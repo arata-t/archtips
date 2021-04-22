@@ -28,9 +28,17 @@ p.tip-title-show {
   align-items: center;
 }
 
+.pdf-layout {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+}
+
 .image-show-content{
   max-width: 700px;
   max-height: 500px;
+  border: 1px solid;
 }
 
 .image-show-content-none{
