@@ -53,7 +53,7 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
-      visit new_tip_path
+      click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
