@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
   before do
-    @user = FactoryBot.create(:user)
-    @user[:id] = @user.id + 1
     @tip = FactoryBot.create(:tip)
   end
   context '新規登録をする' do
@@ -34,15 +32,15 @@ RSpec.describe 'Users', type: :system do
   context 'ログインする' do
     it 'ログインを成功させること' do
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       expect(current_path).to eq(root_path)
     end
     it '値が空のためログインに失敗すること' do
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       expect(current_path).to eq(root_path)
     end
@@ -51,8 +49,8 @@ RSpec.describe 'Users', type: :system do
     it '投稿後にマイページアクセスすると投稿した内容が表示される。' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
       visit new_tip_path
@@ -66,9 +64,9 @@ RSpec.describe 'Users', type: :system do
       end.to change { Tip.count }.by(1)
       # マイページ
       click_on('マイページ')
-      expect(page).to have_content(@user.nickname)
+      expect(page).to have_content(@tip.user.nickname)
       expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@user.tips.length)
+      expect(page).to have_content(@tip.user.tips.length)
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
       expect(page).to have_content(@tip.description)
@@ -76,12 +74,12 @@ RSpec.describe 'Users', type: :system do
     end
     it 'トップページの投稿者を選択すると投稿者のマイページに移動し、投稿者のニックネーム、自己紹介、投稿数、投稿一覧が表示される。' do
       visit root_path
-      click_on @user.nickname, match: :first
+      click_on @tip.user.nickname, match: :first
       # マイページ
-      expect(current_path).to eq user_path(@user.id)
-      expect(page).to have_content(@user.nickname)
+      expect(current_path).to eq user_path(@tip.user.id)
+      expect(page).to have_content(@tip.user.nickname)
       expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@user.tips.length)
+      expect(page).to have_content(@tip.user.tips.length)
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
       expect(page).to have_content(@tip.description)
@@ -89,12 +87,12 @@ RSpec.describe 'Users', type: :system do
     end
     it '詳細ページの投稿者を選択すると投稿者のマイページに移動し、投稿者のニックネーム、自己紹介、投稿数、投稿一覧が表示される。' do
       visit tip_path(@tip.id)
-      click_on @user.nickname
+      click_on @tip.user.nickname
       # マイページ
-      expect(current_path).to eq user_path(@user.id)
-      expect(page).to have_content(@user.nickname)
+      expect(current_path).to eq user_path(@tip.user.id)
+      expect(page).to have_content(@tip.user.nickname)
       expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@user.tips.length)
+      expect(page).to have_content(@tip.user.tips.length)
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
       expect(page).to have_content(@tip.description)
