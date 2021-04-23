@@ -15,7 +15,7 @@ RSpec.describe '投稿する', type: :system do
       expect(current_path).to eq(root_path)
       # 新規投稿
       expect(page).to have_content('新規投稿')
-      visit new_tip_path
+      click_on '新規投稿'
       expect do
         find('input[type="submit"]').click
       end.not_to change { Tip.count }
@@ -32,7 +32,7 @@ RSpec.describe '投稿する', type: :system do
       expect(current_path).to eq(root_path)
       expect(page).to have_content('新規投稿')
       # 新規投稿
-      visit new_tip_path
+      click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
       fill_in 'tip_description', with: @tip.description
@@ -51,7 +51,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 新規投稿
-      visit new_tip_path
+      click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
@@ -73,7 +73,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 新規投稿
-      visit new_tip_path
+      click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
@@ -83,7 +83,7 @@ RSpec.describe '投稿する', type: :system do
         find('input[type="submit"]').click
       end.to change { Tip.count }.by(1)
       # 詳細
-      visit tip_path(@tip)
+      click_on @tip.title, match: :first
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
       expect(page).to have_content(@tip.description)
@@ -97,7 +97,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
-      visit new_tip_path
+      click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
       select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
@@ -135,7 +135,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
-      visit new_tip_path
+      click_on '新規投稿'
       other_tip = FactoryBot.build(:tip)
       fill_in 'tip_title', with: other_tip.title
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
@@ -160,7 +160,7 @@ RSpec.describe '投稿する', type: :system do
       fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
-      visit new_tip_path
+      click_on '新規投稿'
       other_tip = FactoryBot.build(:tip)
       fill_in 'tip_title', with: other_tip.title
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
