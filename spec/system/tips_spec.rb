@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe '投稿する', type: :system do
   before do
-    @user = FactoryBot.create(:user)
-    @user[:id] = @user.id + 1
     @tip = FactoryBot.create(:tip)
   end
 
@@ -11,8 +9,8 @@ RSpec.describe '投稿する', type: :system do
     it '送る値が空の為、メッセージの送信に失敗すること' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       expect(current_path).to eq(root_path)
       # 新規投稿
@@ -23,12 +21,13 @@ RSpec.describe '投稿する', type: :system do
       end.not_to change { Tip.count }
     end
   end
+  
   context '投稿に成功した時' do
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       expect(current_path).to eq(root_path)
       expect(page).to have_content('新規投稿')
@@ -48,8 +47,8 @@ RSpec.describe '投稿する', type: :system do
     it ' 画像を含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 新規投稿
       visit new_tip_path
@@ -70,8 +69,8 @@ RSpec.describe '投稿する', type: :system do
     it '画像を含めた投稿が成功したら、投稿したタイトル。カテゴリー・説明・画像が詳細ページに表示されること' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 新規投稿
       visit new_tip_path
@@ -94,8 +93,8 @@ RSpec.describe '投稿する', type: :system do
     it '画像を含めた投稿が成功したら投稿が編集できる' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
       visit new_tip_path
@@ -132,8 +131,8 @@ RSpec.describe '投稿する', type: :system do
     it '投稿をを正しく削除できる' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
       visit new_tip_path
@@ -157,8 +156,8 @@ RSpec.describe '投稿する', type: :system do
     it '正しく検索を行うと投稿した内容がトップページに検索結果が表示される' do
       # ログイン
       visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
+      fill_in 'user_email', with: @tip.user.email
+      fill_in 'user_password', with: @tip.user.password
       find('input[type="submit"]').click
       # 投稿
       visit new_tip_path
