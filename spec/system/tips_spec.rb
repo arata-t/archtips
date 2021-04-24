@@ -21,7 +21,7 @@ RSpec.describe '投稿する', type: :system do
   context '投稿に成功した時' do
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 新規投稿
       click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title
@@ -37,13 +37,13 @@ RSpec.describe '投稿する', type: :system do
     end
     it ' 画像を含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 新規投稿
       post(@tip)
     end
     it '画像を含めた投稿が成功したら、投稿したタイトル。カテゴリー・説明・画像が詳細ページに表示されること' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 新規投稿
       post(@tip)
       # 詳細
@@ -56,7 +56,7 @@ RSpec.describe '投稿する', type: :system do
 
     it '画像を含めた投稿が成功したら投稿が編集できる' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 投稿
       post(@tip)
       # 詳細
@@ -83,7 +83,7 @@ RSpec.describe '投稿する', type: :system do
 
     it '投稿をを正しく削除できる' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
@@ -97,7 +97,7 @@ RSpec.describe '投稿する', type: :system do
 
     it '正しく検索を行うと投稿した内容がトップページに検索結果が表示される' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
@@ -105,7 +105,7 @@ RSpec.describe '投稿する', type: :system do
 
     it '検索結果がない場合は投稿はありませんと表示される' do
       # ログイン
-      sign_in@tip.user
+      sign_in(@tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
