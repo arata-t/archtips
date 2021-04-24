@@ -8,11 +8,7 @@ RSpec.describe 'Comments', type: :system do
 
   it 'コメントが投稿できること' do
     # ログイン
-    visit new_user_session_path
-    fill_in 'user_email', with: @tip.user.email
-    fill_in 'user_password', with: @tip.user.password
-    find('input[type="submit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@tip.user)
     # 詳細
     click_on @tip.title
     # コメント
@@ -26,11 +22,7 @@ RSpec.describe 'Comments', type: :system do
   end
   it 'コメントが投稿できたらマイページのコメント数が変更していること' do
     # ログイン
-    visit new_user_session_path
-    fill_in 'user_email', with: @tip.user.email
-    fill_in 'user_password', with: @tip.user.password
-    find('input[type="submit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@tip.user)
     # 詳細
     click_on @tip.title
     # コメント
