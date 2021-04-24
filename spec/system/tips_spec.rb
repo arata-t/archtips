@@ -9,7 +9,6 @@ RSpec.describe '投稿する', type: :system do
     it '送る値が空の為、メッセージの送信に失敗すること' do
       # ログイン
       sign_in(@tip.user)
-      expect(current_path).to eq(root_path)
       # 新規投稿
       expect(page).to have_content('新規投稿')
       click_on '新規投稿'
@@ -23,8 +22,6 @@ RSpec.describe '投稿する', type: :system do
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       # ログイン
       sign_in@tip.user
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content('新規投稿')
       # 新規投稿
       click_on '新規投稿'
       fill_in 'tip_title', with: @tip.title

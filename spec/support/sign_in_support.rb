@@ -5,5 +5,6 @@ module SignInSupport
     fill_in 'user_password', with: @tip.user.password
     find('input[type="submit"]').click
     expect(current_path).to eq(root_path)
+    expect(page).to have_content('新規投稿')
   end
 end
