@@ -29,6 +29,7 @@ RSpec.describe 'Users', type: :system do
       end.not_to change { User.count }
     end
   end
+  
   context 'ログインする' do
     it 'ログインを成功させること' do
       sign_in(@tip.user)
@@ -49,39 +50,19 @@ RSpec.describe 'Users', type: :system do
       post(@tip)
       # マイページ
       click_on('マイページ')
-      expect(page).to have_content(@tip.user.nickname)
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@tip.user.tips.length)
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_selector('img')
+      mypage(@tip)
     end
     it 'トップページの投稿者を選択すると投稿者のマイページに移動し、投稿者のニックネーム、自己紹介、投稿数、投稿一覧が表示される。' do
       visit root_path
-      click_on @tip.user.nickname, match: :first
       # マイページ
-      expect(current_path).to eq user_path(@tip.user.id)
-      expect(page).to have_content(@tip.user.nickname)
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@tip.user.tips.length)
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_selector('img')
+      click_on @tip.user.nickname, match: :first
+      mypage(@tip)
     end
     it '詳細ページの投稿者を選択すると投稿者のマイページに移動し、投稿者のニックネーム、自己紹介、投稿数、投稿一覧が表示される。' do
       visit tip_path(@tip.id)
-      click_on @tip.user.nickname
       # マイページ
-      expect(current_path).to eq user_path(@tip.user.id)
-      expect(page).to have_content(@tip.user.nickname)
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_content(@tip.user.tips.length)
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
-      expect(page).to have_selector('img')
+      click_on @tip.user.nickname
+      mypage(@tip)
     end
   end
 end
