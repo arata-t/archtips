@@ -17,7 +17,7 @@ RSpec.describe '投稿する', type: :system do
       end.not_to change { Tip.count }
     end
   end
-  
+
   context '投稿に成功した時' do
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       # ログイン

@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :system do
       end.not_to change { User.count }
     end
   end
-  
+
   context 'ログインする' do
     it 'ログインを成功させること' do
       sign_in(@tip.user)

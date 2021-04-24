@@ -1,5 +1,5 @@
 module MypageSupport
-  def mypage(user)
+  def mypage(_user)
     expect(current_path).to eq user_path(@tip.user.id)
     expect(page).to have_content(@tip.user.nickname)
     expect(page).to have_content(@tip.description)

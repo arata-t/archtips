@@ -1,5 +1,5 @@
 module CommentSupport
-  def comment(comment)
+  def comment(_comment)
     fill_in 'comment_comment', with: @comment.comment
     expect  do
       find('input[name="commit"]').click

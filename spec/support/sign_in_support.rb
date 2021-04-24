@@ -1,5 +1,5 @@
 module SignInSupport
-  def sign_in(user)
+  def sign_in(_user)
     visit new_user_session_path
     fill_in 'user_email', with: @tip.user.email
     fill_in 'user_password', with: @tip.user.password
