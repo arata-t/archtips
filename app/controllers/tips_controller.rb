@@ -54,7 +54,10 @@ class TipsController < ApplicationController
   end
 
   def set_tip
+    require 'rmagick'
     @tip = Tip.find(params[:id])
+    image = @tip.image.variant(format: :jpeg)
+    @tip_image = image[0].write( @tip.image.filename+ ".jpg")
   end
 
   def user_redirect
