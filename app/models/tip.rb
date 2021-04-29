@@ -2,6 +2,8 @@ class Tip < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_one_attached :image
+  has_many :tip_tag_relations
+  has_many :tags, through: :tip_tag_relations
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
