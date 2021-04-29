@@ -1,0 +1,2 @@
+class TipTagRelation < ApplicationRecord
+end

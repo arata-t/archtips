@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_121435) do
+ActiveRecord::Schema.define(version: 2021_04_29_095830) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,21 @@ ActiveRecord::Schema.define(version: 2021_04_17_121435) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tip_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tip_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_tip_tag_relations_on_tag_id"
+    t.index ["tip_id"], name: "index_tip_tag_relations_on_tip_id"
+  end
+
   create_table "tips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.integer "category_id", null: false
@@ -68,5 +83,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_121435) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tip_tag_relations", "tags"
+  add_foreign_key "tip_tag_relations", "tips"
   add_foreign_key "tips", "users"
 end
