@@ -7,11 +7,11 @@ class TipsController < ApplicationController
   end
 
   def new
-    @tip = Tip.new
+    @tip = TipTag.new
   end
 
   def create
-    @tip = Tip.new(tip_params)
+    @tip = TipTag.new(tip_params)
     if @tip.save
       redirect_to root_path
     else
@@ -50,7 +50,7 @@ class TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:title, :category_id, :description, :image).merge(user_id: current_user.id)
+    params.require(:tip_tag).permit(:title, :category_id, :description, :image, :name).merge(user_id: current_user.id)
   end
 
   def set_tip
