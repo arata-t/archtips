@@ -12,6 +12,10 @@
           <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-content"}) %>
         </div>
       </div>
+      <div class="tag-content", id='tag-content'>
+        <p><%= form.label :name, "タグ" %></p>
+        <%= form.text_field :name, class:"input-tag" %>
+      </div>
       <div class="tip-images">
         <div class="tip-image-main">
           <p class="tip-image-main-text">画像(メイン)</p>
