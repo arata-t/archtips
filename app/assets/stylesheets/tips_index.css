@@ -54,9 +54,11 @@ display: none;
   }
     .user-button,.new-user-button{
       margin: 20px;
+      white-space: nowrap
     }
     .login-button,.logout-button{
       margin:20px;
+      white-space: nowrap
     }
 
 /* -------------main-------------- */
@@ -102,7 +104,10 @@ display: none;
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        width: 300px;
+        width: 400px;
+      }
+      .search-area-form{
+        width:300px;
       }
         .search-form{
           border: 1px solid gray;
