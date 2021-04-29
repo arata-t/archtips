@@ -12,7 +12,8 @@ class TipTag
 
   def save
     tip = Tip.create(title: title, category_id: category_id, description: description)
-    tag = Tag.create(name: name)
+    tag = Tag.where(name: name).first_or_initialize
+    tag.save
 
     TipTagRelation.create(tip_id: tip.id, tag_id: tag.id)
   end
