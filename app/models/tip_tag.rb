@@ -1,7 +1,7 @@
 class TipTag
 
   include ActiveModel::Model
-  attr_accessor :title, :category_id, :description, :user_id, :name
+  attr_accessor :title, :category_id, :description, :user_id, :image, :name
 
   with_options presence: true do
     validates :title
@@ -11,7 +11,8 @@ class TipTag
   end
 
   def save
-    tip = Tip.create(title: title, category_id: category_id, description: description)
+    binding.pry
+    tip = Tip.create(title: title, category_id: category_id, description: description, image: image, user_id: user_id )
     tag = Tag.where(name: name).first_or_initialize
     tag.save
 

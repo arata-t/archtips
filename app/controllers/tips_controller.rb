@@ -12,7 +12,8 @@ class TipsController < ApplicationController
 
   def create
     @tip = TipTag.new(tip_params)
-    if @tip.save
+    if @tip.valid?
+      @tip.save
       redirect_to root_path
     else
       render :new

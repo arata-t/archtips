@@ -1,4 +1,4 @@
-    <%= form_with(model: @tip, local: true) do |form| %>
+    <%= form_with(model: @tip,url: tips_path, local: true) do |form| %>
       <%= render 'layouts/error_messages', model: form.object %>
       <div class="tip-title">
         <p>タイトル</p>
