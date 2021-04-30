@@ -48,6 +48,12 @@ class TipsController < ApplicationController
     @tips = Tip.search(params[:keyword])
   end
 
+  def tagsearch
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
+  end
+
   private
 
   def tip_params
