@@ -26,11 +26,15 @@ class TipsController < ApplicationController
   end
 
   def edit
+    @form = TipTag.new(tip: @tip)
   end
 
   def update
-    if @tip.update(tip_params)
-      redirect_to root_path
+    @form = TipTag.new(tip_params, tip: @tip)
+    tag_list = params[:tip][:name].split(",")
+    if @form.valid?
+      @form.save(tag_list)
+      return redirect_to root_path
     else
       render :edit
     end
@@ -57,7 +61,7 @@ class TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip_tag).permit(:title, :category_id, :description, :image, :name).merge(user_id: current_user.id)
+    params.require(:tip).permit(:title, :category_id, :description, :image, :name, :id, :_method, :authenticity_token, :commit, :tip).merge(user_id: current_user.id)
   end
 
   def set_tip
