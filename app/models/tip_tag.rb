@@ -11,11 +11,9 @@ class TipTag
   end
 
   def save
-    binding.pry
     tip = Tip.create(title: title, category_id: category_id, description: description, image: image, user_id: user_id )
     tag = Tag.where(name: name).first_or_initialize
     tag.save
-
     TipTagRelation.create(tip_id: tip.id, tag_id: tag.id)
   end
 end
