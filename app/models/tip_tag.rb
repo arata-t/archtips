@@ -5,7 +5,7 @@ class TipTag
 
   validates :category_id, numericality: { other_than: 1 }
   with_options presence: true do
-    validates :name, :title, :description,   presence: true
+    validates :title, :description,   presence: true
   end
 
   delegate :persisted?, to: :tip
