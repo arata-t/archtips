@@ -11,6 +11,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
             const blobImage = document.createElement('img');
             blobImage.setAttribute('src', blob);
             blobImage.setAttribute('class', 'blobimg')
+            blobImage.setAttribute('id', 'blobimg')
             // 生成したHTMLの要素をブラウザに表示させる
             imageElement.appendChild(blobImage);
             ImageList.appendChild(imageElement);
@@ -19,7 +20,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
     document.getElementById('tip-image-main-img').addEventListener('change', function(e){
       // 画像が表示されている場合のみ、すでに存在している画像を削除する
 
-      const imageContent = document.querySelector('blobimg');
+      const imageContent = document.querySelector('#blobimg');
       if (imageContent){
         imageContent.remove();
       }
