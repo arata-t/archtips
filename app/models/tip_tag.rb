@@ -3,8 +3,9 @@ class TipTag
   include ActiveModel::Model
   attr_accessor :title, :category_id, :description, :user_id, :image, :name, :id, :_method, :authenticity_token, :commit, :tip
 
+  validates :category_id, numericality: { other_than: 1 }
   with_options presence: true do
-    validates :name, presence: true
+    validates :name, :title, :description,   presence: true
   end
 
   delegate :persisted?, to: :tip
@@ -14,7 +15,7 @@ class TipTag
     attributes ||= default_attributes
     super(attributes)
   end
-  
+
   def save(tag_list)
 
     ActiveRecord::Base.transaction do
