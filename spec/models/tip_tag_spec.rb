@@ -21,7 +21,6 @@ RSpec.describe TipTag, type: :model do
         @tag.name = ''
         expect(@tip).to be_valid
       end
-
     end
 
     context '投稿できない' do

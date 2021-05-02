@@ -1,11 +1,10 @@
 class TipTag
-
   include ActiveModel::Model
   attr_accessor :title, :category_id, :description, :user_id, :image, :name, :id, :_method, :authenticity_token, :commit, :tip
 
   validates :category_id, numericality: { other_than: 1 }
   with_options presence: true do
-    validates :title, :description,   presence: true
+    validates :title, :description, presence: true
   end
 
   delegate :persisted?, to: :tip
@@ -17,9 +16,8 @@ class TipTag
   end
 
   def save(tag_list)
-
     ActiveRecord::Base.transaction do
-      @tip.update(title: title, category_id: category_id, description: description, image: image, user_id: user_id )
+      @tip.update(title: title, category_id: category_id, description: description, image: image, user_id: user_id)
       @tip.tip_tag_relations.each do |tag|
         tag.delete
       end
@@ -43,12 +41,11 @@ class TipTag
 
   def default_attributes
     {
-      title:       tip.title,
+      title: tip.title,
       category_id: tip.category_id,
       description: tip.description,
-      image:       tip.image,
-      name:        tip.tags.pluck(:name).join(','),
+      image: tip.image,
+      name: tip.tags.pluck(:name).join(',')
     }
   end
-
 end
