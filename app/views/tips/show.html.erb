@@ -38,14 +38,17 @@
 =end
 %>
       </div>
-    <div class="tip-category">
-      <p>カテゴリー : <%= Category.data[@tip.category_id - 1][:name] %></p>
-    </div>
-    <div class="tip-contributer">
-      <p>投稿者 : <%= link_to @tip.user.nickname, "/users/#{@tip.user.id}" %> </p>
-    </div>
-    <div class="tip-description">
-      <p>説明 :  </p>
+      <div class="tip-tag">
+        <p>タグ : <% @tip.tags.each do |tag| %>  <%=tag.name%> <% end %></p>
+      </div>
+      <div class="tip-category">
+        <p>カテゴリー : <%= Category.data[@tip.category_id - 1][:name] %></p>
+      </div>
+      <div class="tip-contributer">
+        <p>投稿者 : <%= link_to @tip.user.nickname, "/users/#{@tip.user.id}" %> </p>
+      </div>
+      <div class="tip-description">
+        <p>説明 :  </p>
       <%= @tip.description %>
     </div>
   </div>

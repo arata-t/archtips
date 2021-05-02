@@ -7,12 +7,14 @@ class TipsController < ApplicationController
   end
 
   def new
-    @tip = Tip.new
+    @tip = TipTag.new
   end
 
   def create
-    @tip = Tip.new(tip_params)
-    if @tip.save
+    @tip = TipTag.new(tip_params)
+    tag_list = params[:tip][:name].split(',')
+    if @tip.valid?
+      @tip.save(tag_list)
       redirect_to root_path
     else
       render :new
@@ -25,10 +27,14 @@ class TipsController < ApplicationController
   end
 
   def edit
+    @form = TipTag.new(tip: @tip)
   end
 
   def update
-    if @tip.update(tip_params)
+    @form = TipTag.new(tip_params, tip: @tip)
+    tag_list = params[:tip][:name].split(',')
+    if @form.valid?
+      @form.save(tag_list)
       redirect_to root_path
     else
       render :edit
@@ -47,10 +53,18 @@ class TipsController < ApplicationController
     @tips = Tip.search(params[:keyword])
   end
 
+  def tagsearch
+    return nil if params[:keyword] == ''
+
+    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
+  end
+
   private
 
   def tip_params
-    params.require(:tip).permit(:title, :category_id, :description, :image).merge(user_id: current_user.id)
+    params.require(:tip).permit(:title, :category_id, :description, :image, :name, :id, :_method, :authenticity_token, :commit,
+                                :tip).merge(user_id: current_user.id)
   end
 
   def set_tip

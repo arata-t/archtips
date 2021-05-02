@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :tips do
     collection do
       get 'search'
+      get 'tagsearch'
     end
     resources :comments, only: :create
   end
