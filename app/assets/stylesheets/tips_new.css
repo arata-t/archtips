@@ -65,7 +65,7 @@
 
 .child{
   width: 200px;
-  border-bottom:#666 1px solid;
+  border-bottom: 1.5px solid gray;
   margin: 10px 0;
   padding-left: 11px;
 }
