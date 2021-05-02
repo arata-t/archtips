@@ -7,6 +7,8 @@ class TipTag
     validates :name, presence: true
   end
 
+  delegate :persisted?, to: :tip
+
   def initialize(attributes = nil, tip: Tip.new)
     @tip = tip
     attributes ||= default_attributes
@@ -17,7 +19,6 @@ class TipTag
 
     ActiveRecord::Base.transaction do
       @tip.update(title: title, category_id: category_id, description: description, image: image, user_id: user_id )
-binding.pry
       @tip.tip_tag_relations.each do |tag|
         tag.delete
       end
@@ -25,7 +26,6 @@ binding.pry
       tag_list.each do |tag_name|
         tag = Tag.where(name: tag_name).first_or_initialize
         tag.save
-
         tip_tag = TipTagRelation.where(tip_id: @tip.id, tag_id: tag.id).first_or_initialize
         tip_tag.update(tip_id: @tip.id, tag_id: tag.id)
       end
@@ -40,10 +40,11 @@ binding.pry
 
   def default_attributes
     {
-      title: tip.title,
+      title:       tip.title,
       category_id: tip.category_id,
       description: tip.description,
-      image: tip.image,
+      image:       tip.image,
+      name:        tip.tags.pluck(:name).join(','),
     }
   end
 

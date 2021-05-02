@@ -27,6 +27,7 @@ class TipsController < ApplicationController
 
   def edit
     @form = TipTag.new(tip: @tip)
+    binding.pry
   end
 
   def update
