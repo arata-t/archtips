@@ -14,7 +14,7 @@ class TipTag
     attributes ||= default_attributes
     super(attributes)
   end
-
+  
   def save(tag_list)
 
     ActiveRecord::Base.transaction do
@@ -35,6 +35,8 @@ class TipTag
   def to_model
     tip
   end
+
+  private
 
   attr_reader :tip
 

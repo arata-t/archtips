@@ -12,8 +12,9 @@ class TipsController < ApplicationController
 
   def create
     @tip = TipTag.new(tip_params)
+    tag_list = params[:tip][:name].split(",")
     if @tip.valid?
-      @tip.save
+      @tip.save(tag_list)
       redirect_to root_path
     else
       render :new
@@ -27,7 +28,6 @@ class TipsController < ApplicationController
 
   def edit
     @form = TipTag.new(tip: @tip)
-    binding.pry
   end
 
   def update
