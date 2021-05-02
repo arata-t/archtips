@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '新規登録をする' do
     it '新規登録を成功させること' do

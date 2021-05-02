@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe '投稿する', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '投稿に失敗した時' do
     it '送る値が空の為、メッセージの送信に失敗すること' do
@@ -37,6 +38,25 @@ RSpec.describe '投稿する', type: :system do
       # ログイン
       sign_in(@tip.user)
       # 新規投稿
+      click_on '新規投稿'
+      fill_in 'tip_title', with: @tip.title
+      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      image_path = Rails.root.join('public/images/test_image.png')
+      attach_file 'tip-image-main-img', image_path, make_visible: true
+      fill_in 'tip_description', with: @tip.description
+      expect  do
+        find('input[type="submit"]').click
+      end.to change { Tip.count }.by(1)
+      expect(current_path).to eq root_path
+      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+      expect(page).to have_content(@tip.description)
+      expect(page).to have_selector('img')
+    end
+    it ' 画像とタグを含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
+      # ログイン
+      sign_in(@tip.user)
+      # 新規投稿
       post(@tip)
     end
   end
@@ -45,6 +65,7 @@ end
 RSpec.describe '詳細', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '詳細ページに移動できる' do
     it '画像を含めた投稿が成功したら、投稿したタイトル。カテゴリー・説明・画像が詳細ページに表示されること' do
@@ -59,7 +80,10 @@ RSpec.describe '詳細', type: :system do
   end
   it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
     visit tip_path(@tip)
-    show(@tip)
+    expect(page).to have_content(@tip.title)
+    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+    expect(page).to have_content(@tip.description)
+    expect(page).to have_selector('img')
     expect(page).not_to have_selector 'form'
     expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
   end
@@ -68,6 +92,7 @@ end
 RSpec.describe '編集する', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '編集に成功した時' do
     it '画像を含めた投稿が成功したら投稿が編集できる' do
@@ -132,6 +157,7 @@ end
 RSpec.describe '削除する', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '削除に成功する' do
     it '投稿をを正しく削除できる' do
@@ -169,6 +195,7 @@ end
 RSpec.describe '検索する', type: :system do
   before do
     @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
   end
   context '検索に成功する' do
     it '正しく検索を行うと投稿した内容がトップページに検索結果が表示される' do
