@@ -7,7 +7,7 @@ describe TipsController, type: :request do
   end
 
   describe 'Get#index' do
-    it 'action#indexにアクセスると正常にレスポンスを返す' do
+    it 'action#indexにアクセスすると正常にレスポンスを返す' do
       get root_path
       expect(response.status).to eq 200
     end
@@ -101,15 +101,30 @@ describe TipsController, type: :request do
     end
   end
 
-  describe 'Get#delete' do
-    it '許可されていないユーザーがアクセスするとホーム画面にリダイレクトされる' do
+  describe 'Get#update' do
+    it '許可されていないユーザーがupdate_pathにアクセスするとホーム画面にリダイレクトされる' do
+      other_user = FactoryBot.create(:user)
+      sign_in other_user
+      patch tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to root_path
+    end
+    it 'サインアウトした状態でupdate_pathにアクセスするとログイン画面にリダイレクトする。' do
+      patch tip_path(@tip)
+      expect(response.status).to eq 302
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
+  describe 'Get#destroy' do
+    it '許可されていないユーザーがdestroy_pathにアクセスするとホーム画面にリダイレクトされる' do
       other_user = FactoryBot.create(:user)
       sign_in other_user
       delete tip_path(@tip)
       expect(response.status).to eq 302
       expect(response).to redirect_to root_path
     end
-    it 'サインアウトした状態でアクセスするとログイン画面にリダイレクトする。' do
+    it 'サインアウトした状態でdestroy_pathにアクセスするとログイン画面にリダイレクトする。' do
       delete tip_path(@tip)
       expect(response.status).to eq 302
       expect(response).to redirect_to new_user_session_path
