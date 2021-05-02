@@ -16,7 +16,8 @@
 .tip-title, 
 .tip-category, 
 .tip-description,
-.tip-contributer{
+.tip-contributer,
+.tip-tag{
   padding: 20px;
   margin-bottom: 10px;
   font-size: 21px;
