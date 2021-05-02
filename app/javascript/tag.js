@@ -1,8 +1,8 @@
 if (location.pathname.match("tips/new")){
   document.addEventListener("DOMContentLoaded", () => {
-    const inputElement = document.getElementById("tip_tag_name");
+    const inputElement = document.getElementById("tip_name");
     inputElement.addEventListener("keyup", () => {
-      const keyword = document.getElementById("tip_tag_name").value;
+      const keyword = document.getElementById("tip_name").value;
       const XHR = new XMLHttpRequest();
       XHR.open("GET", `tagsearch/?keyword=${keyword}`, true);
       XHR.responseType = "json";
