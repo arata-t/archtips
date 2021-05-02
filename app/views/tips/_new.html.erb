@@ -9,8 +9,8 @@
       <div class="tip-tag">
         <p>タグ</p>
         <div class="tag-content", id='tag-content'>
-          <%= form.text_field :name, class:"input-tag" %>
-          <div id="search-result"></div>
+          <%= form.text_field :name, class:"input-tag", autocomplete: 'off' %>
+          <div id="search-result" class="search-result"></div>
         </div>
       </div>
       <div class="tip-category">
