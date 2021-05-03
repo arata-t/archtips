@@ -68,18 +68,27 @@ display: none;
   /* border-bottom:1px solid ; */
 }
 /* ------------side-bar-------------- */
-  .side-bar {
-    background-color: white;
-    width: 300px;
-    padding-top: 10px;
-    border-right: 1.5px solid gray;
-    height: calc(100vh - 100px);
+.side-bar {
+  background-color: white;
+  width: 300px;
+  padding-top: 10px;
+  border-right: 1.5px solid gray;
+  height: calc(100vh - 100px);
+}
+  .new-tip,.new-question,.my-page,.search
+  {
+    padding: 12px 40px;
+    font-size: 21px;
   }
-    .new-tip,.new-question,.my-page,.search
-    {
-      padding: 15px 40px;
-      font-size: 21px;
-    }
+
+  .detail-search-area{
+    border-top: gray 1.5px solid;
+    padding-top:10px ;
+    margin: 0 40px 15px 40px;
+    width: 220px;
+    height: 420px;
+  }
+  
   /* ------------main-area----------------- */
   .main-area{
     width: calc(100vw - 300px);
