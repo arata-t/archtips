@@ -14,33 +14,38 @@
 </div>
 
 <div class="detail-search-area">
-  <div class="search-title-area">
-    <p>タイトル：</p>
+  <%= search_form_for @t, url: detail_search_tips_path do |f| %>
+    <div class="search-title-area">
+      <p>タイトル：</p>
+        <div>
+          <%= f.text_field :title_cont, placeholder:"タイトルを入力", class:"search-title" %>
+        </div>
+    </div>
+    <div class="search-tag-area">
+      <p>タグ：</p>
       <div>
-      <input type="text" class="search-title" placeholder="">
+        <%= f.text_field :_cont, class:"search-title" %>
       </div>
-  </div>
-  <div class="search-tag-area">
-    <p>タグ：</p>
-    <div>
-      <input type="text class="search-tag" placeholder=""></div>
-  </div>
-  <div class="search-category-area">
-    <p>カテゴリー：</p>
-    <div>
-      <input type="text" class="search-category">
     </div>
-  </div>
-  <div class="search-distributer-area">
-    <p>投稿者：</p>
-    <div>
-      <input type="text" class="search-distributer">
+    <div class="search-category-area">
+      <p>カテゴリー：</p>
+      <div>
+        <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {}, {class:"search-category"}) %>
+      </div>
     </div>
-  </div>
-  <div class="search-discription-area">
-    <p>キーワード：</p>
-    <div>
-      <input type="text" class="search-discription">
+    <div class="search-distributer-area">
+      <p>投稿者：</p>
+      <div>
+        <input type="text" class="search-distributer">
+      </div>
     </div>
-  </div>
+    <div class="search-discription-area">
+      <p>説明：</p>
+      <div>
+        <%= f.text_field :description_cont, placeholder:"キーワードを入力", class: "search-discription" %>
+      </div>
+    </div>
+    <br>
+    <%= f.submit '検索' %>
+  <% end %>
 </div>

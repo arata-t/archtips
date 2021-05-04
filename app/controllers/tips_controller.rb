@@ -2,6 +2,8 @@ class TipsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
   before_action :user_redirect, only: [:edit, :update, :destroy]
+  before_action :search_tip, only: [:index, :detail_search]
+
   def index
     @tips = Tip.order(updated_at: :DESC)
   end
@@ -53,9 +55,13 @@ class TipsController < ApplicationController
     @tips = Tip.search(params[:keyword])
   end
 
+  def detail_search
+    @results = @t.result.order(updated_at: :DESC)
+
+  end
+
   def tagsearch
     return nil if params[:keyword] == ''
-
     tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: tag }
   end
@@ -73,5 +79,9 @@ class TipsController < ApplicationController
 
   def user_redirect
     redirect_to action: :index unless current_user.id == @tip.user.id
+  end
+
+  def search_tip
+    @t = Tip.ransack(params[:q]) #タグ機能はない状態
   end
 end
