@@ -10,6 +10,7 @@ require("channels")
 require('../preview')
 require("../tag_new")
 require("../tag_edit")
+require("../detail_search")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
