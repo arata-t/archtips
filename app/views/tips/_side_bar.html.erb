@@ -30,13 +30,14 @@
     <div class="search-category-area">
       <p>カテゴリー：</p>
       <div>
-        <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {}, {class:"search-category"}) %>
+        <%= f.collection_select(:category_id_eq, @category, :id, :name, { include_blank: '--'}) %>
       </div>
     </div>
     <div class="search-distributer-area">
-      <p>投稿者：</p>
+      <p>ユーザー：</p>
       <div>
         <input type="text" class="search-distributer">
+        <%# <%= f.text_field :nickname_cont, placeholder:"ユーザー名を入力", class: "search-distributer" %> %>
       </div>
     </div>
     <div class="search-discription-area">
