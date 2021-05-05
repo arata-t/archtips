@@ -57,7 +57,7 @@ class TipsController < ApplicationController
   end
 
   def detail_search
-    @results = @t.result.includes(:user).order(updated_at: :DESC)
+    @results = @t.result.includes(:user, :tip_tag_relations).order(updated_at: :DESC)
     @category = Category.where.not(id: 1)
   end
 
@@ -84,6 +84,5 @@ class TipsController < ApplicationController
 
   def search_tip
     @t = Tip.ransack(params[:q]) #タグ機能はない状態
-    
   end
 end

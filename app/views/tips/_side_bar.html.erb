@@ -24,7 +24,7 @@
     <div class="search-tag-area">
       <p>タグ：</p>
       <div>
-        <%= f.text_field :_cont, class:"search-title" %>
+        <%= f.text_field :tip_tag_relations_tag_name_cont, class:"search-title" %>
       </div>
     </div>
     <div class="search-category-area">
@@ -36,8 +36,7 @@
     <div class="search-distributer-area">
       <p>ユーザー：</p>
       <div>
-        <input type="text" class="search-distributer">
-        <%# <%= f.text_field :nickname_cont, placeholder:"ユーザー名を入力", class: "search-distributer" %> %>
+        <%= f.text_field :user_nickname_cont, placeholder:"ユーザー名を入力", class: "search-distributer" %>
       </div>
     </div>
     <div class="search-discription-area">
