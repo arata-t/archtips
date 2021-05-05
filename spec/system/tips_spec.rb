@@ -228,15 +228,15 @@ RSpec.describe '詳細検索', type: :system do
   end
 
   context '詳細検索に成功する' do
-    it 'タイトルを入力すると入力した内容を含むタイトルが表示される'do
+    it 'タイトルを入力すると入力した内容を含むタイトルが表示される' do
       # ログイン
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_title_cont', with: @tip.title
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(@tip.title)
     end
 
@@ -245,10 +245,10 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(@tag.name)
     end
 
@@ -257,22 +257,22 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
     end
 
-    it 'ユーザーを入力すると入力した内容を含むユーザーが表示される'do
+    it 'ユーザーを入力すると入力した内容を含むユーザーが表示される' do
       # ログイン
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(@tip.user.nickname)
     end
 
@@ -281,10 +281,10 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_description_cont', with: @tip.description
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(@tip.description)
     end
 
@@ -293,14 +293,14 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_title_cont', with: @tip.title
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
       select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname
       expect(page).to have_content(@tip.description)
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(@tag.name)
       expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
@@ -310,16 +310,16 @@ RSpec.describe '詳細検索', type: :system do
   end
 
   context '詳細検索に失敗する' do
-    it 'タイトルに入力した内容がヒットしなけば、投稿はありませんと表示される'do
-    # ログイン
-    sign_in(@tip.user)
-    # 新規投稿
-    post(@tip)
-    #詳細検索
-    find(:xpath,"//*[text()='詳細検索']").click
-    fill_in 'q_user_nickname_cont', with: @tip.user.nickname + 'abc'
-    click_on "search-submit"
-    expect(page).to have_content('投稿はありません')
+    it 'タイトルに入力した内容がヒットしなけば、投稿はありませんと表示される' do
+      # ログイン
+      sign_in(@tip.user)
+      # 新規投稿
+      post(@tip)
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
+      fill_in 'q_user_nickname_cont', with: @tip.user.nickname + 'abc'
+      click_on 'search-submit'
+      expect(page).to have_content('投稿はありません')
     end
 
     it 'タグに入力した内容がヒットしなけば、投稿はありませんと表示される' do
@@ -327,10 +327,10 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name + 'abc'
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
@@ -339,10 +339,10 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname + 'abc'
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
@@ -351,10 +351,10 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_description_cont', with: @tip.description + 'abc'
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
@@ -363,14 +363,14 @@ RSpec.describe '詳細検索', type: :system do
       sign_in(@tip.user)
       # 新規投稿
       post(@tip)
-      #詳細検索
-      find(:xpath,"//*[text()='詳細検索']").click
+      # 詳細検索
+      find(:xpath, "//*[text()='詳細検索']").click
       fill_in 'q_title_cont', with: @tip.title + 'abc'
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
       select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname
       expect(page).to have_content(@tip.description)
-      click_on "search-submit"
+      click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
   end
