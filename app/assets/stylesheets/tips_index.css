@@ -68,18 +68,49 @@ display: none;
   /* border-bottom:1px solid ; */
 }
 /* ------------side-bar-------------- */
-  .side-bar {
-    background-color: white;
-    width: 300px;
-    padding-top: 10px;
-    border-right: 1.5px solid gray;
-    height: calc(100vh - 100px);
+.side-bar {
+  background-color: white;
+  width: 300px;
+  border-right: 1.5px solid gray;
+  height: calc(100vh - 100px);
+}
+
+  .new-tip{
+    padding: 20px 40px 18px 40px;
+    font-size: 21px;
   }
-    .new-tip,.new-question,.my-page,.search
-    {
-      padding: 15px 40px;
-      font-size: 21px;
-    }
+
+  .new-question,.my-page,.search{
+    padding: 12px 40px;
+    font-size: 21px;
+  }
+
+  .detail-search-area{
+    display: none;
+    padding-top:10px ;
+    margin: 0 40px 15px 40px;
+    width: 220px;
+    height: 420px;
+  }
+
+  .search-title-area,
+  .search-tag-area,
+  .search-category-area,
+  .search-distributer-area,
+  .search-description-area{
+    margin-top: 10px;
+  }
+
+  .search-btn{
+    cursor : pointer;
+  }
+
+  .search-submit{
+    width: 140px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+  
   /* ------------main-area----------------- */
   .main-area{
     width: calc(100vw - 300px);
@@ -181,6 +212,15 @@ display: none;
 
       .search-nil{
         margin: 20px;
-        font-size: 18px;
+        font-size: 14px;
       }
+
+      .search-to-top{
+        text-align: center;
+        margin: 50px auto;
+        width:100%;
+      }
+
+
+
 
