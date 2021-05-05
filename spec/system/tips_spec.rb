@@ -317,7 +317,7 @@ RSpec.describe '詳細検索', type: :system do
       post(@tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_user_nickname_cont', with: @tip.user.nickname + 'abc'
+      fill_in 'q_title_cont', with: @tip.title + 'abc'
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
