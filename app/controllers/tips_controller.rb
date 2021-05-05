@@ -63,6 +63,7 @@ class TipsController < ApplicationController
 
   def tagsearch
     return nil if params[:keyword] == ''
+
     tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: tag }
   end
@@ -83,6 +84,6 @@ class TipsController < ApplicationController
   end
 
   def search_tip
-    @t = Tip.ransack(params[:q]) #タグ機能はない状態
+    @t = Tip.ransack(params[:q]) # タグ機能はない状態
   end
 end
