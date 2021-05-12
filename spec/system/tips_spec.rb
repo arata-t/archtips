@@ -12,9 +12,7 @@ RSpec.describe '投稿する', type: :system do
       # 新規投稿
       expect(page).to have_content('新規投稿')
       click_on '新規投稿'
-      expect do
-        find('input[type="submit"]').click
-      end.not_to change { Tip.count }
+      expect(current_path).to eq(new_tip_path)
     end
   end
   context '投稿に成功した時' do

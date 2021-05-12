@@ -37,8 +37,6 @@ class TipTag
 
   private
 
-  attr_reader :tip
-
   def default_attributes
     {
       title: tip.title,
