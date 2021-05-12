@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :request do
       expect(response.status).to eq 200
     end
     # マイページ
-    it 'マイページにアクセスると正常にレスポンスを返す' do
+    it 'マイページにアクセスすると正常にレスポンスを返す' do
       get user_path(@user.id)
       expect(response.status).to eq 200
     end
