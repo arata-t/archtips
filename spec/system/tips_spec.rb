@@ -333,7 +333,7 @@ RSpec.describe '詳細検索', type: :system do
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
       select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-      expect(page).to have_content(@tip.description)
+      fill_in 'q_description_cont', with: @tip.description
       click_on 'search-submit'
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(@tag.name)
@@ -341,6 +341,35 @@ RSpec.describe '詳細検索', type: :system do
       expect(page).to have_content(@tip.user.nickname)
       expect(page).to have_content(@tip.description)
     end
+  end
+
+  it ' pdfを含めた投稿が成功し、検索が可能なこと ' do
+    # ログイン
+    sign_in(@tip.user)
+    # 新規投稿
+    click_on '新規投稿'
+    fill_in 'tip_title', with: @tip.title
+    fill_in 'tip_name',  with: @tag.name
+    select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+    image_path = Rails.root.join('public/images/pdf-test.pdf')
+    attach_file 'tip-image-main-img', image_path, make_visible: true
+    fill_in 'tip_description', with: @tip.description
+    expect  do
+      find('input[type="submit"]').click
+    end.to change { Tip.count }.by(1)
+    # 詳細検索
+    find(:xpath, "//*[text()='詳細検索']").click
+    fill_in 'q_title_cont', with: @tip.title
+    fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
+    select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
+    fill_in 'q_user_nickname_cont', with: @tip.user.nickname
+    fill_in 'q_description_cont', with: @tip.description
+    click_on 'search-submit'
+    expect(page).to have_content(@tip.title)
+    expect(page).to have_content(@tag.name)
+    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+    expect(page).to have_content(@tip.user.nickname)
+    expect(page).to have_content(@tip.description)
   end
 
   context '詳細検索に失敗する' do
