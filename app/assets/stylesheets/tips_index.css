@@ -192,6 +192,12 @@ display: none;
         max-width:250px;
         max-height: 250px;
         margin:auto;
+      }
+
+      .uped-image-main-pdf{
+        max-width:250px;
+        max-height: 250px;
+        margin:auto;
         border: 1px solid grey;
       }
 
