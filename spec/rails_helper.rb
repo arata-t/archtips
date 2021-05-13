@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.include MypageSupport
   config.include CommentSupport
   config.include ShowSupport
+  config.include PostPdfSupport
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -66,7 +67,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } # support directoryをrequire
+  # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } # support directoryをrequire
   config.include RequestSpecHelper, type: :request # type: :requestのときにRequestHelperをinclude
+  config.after(:all) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"]) if Rails.env.test?
+  end
 end
 I18n.locale = 'en'

@@ -12,9 +12,7 @@ RSpec.describe '投稿する', type: :system do
       # 新規投稿
       expect(page).to have_content('新規投稿')
       click_on '新規投稿'
-      expect do
-        find('input[type="submit"]').click
-      end.not_to change { Tip.count }
+      expect(current_path).to eq(new_tip_path)
     end
   end
   context '投稿に成功した時' do
@@ -53,6 +51,25 @@ RSpec.describe '投稿する', type: :system do
       expect(page).to have_content(@tip.description)
       expect(page).to have_selector('img')
     end
+    it ' pdfを含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
+      # ログイン
+      sign_in(@tip.user)
+      # 新規投稿
+      click_on '新規投稿'
+      fill_in 'tip_title', with: @tip.title
+      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      image_path = Rails.root.join('public/images/pdf-test.pdf')
+      attach_file 'tip-image-main-img', image_path, make_visible: true
+      fill_in 'tip_description', with: @tip.description
+      expect  do
+        find('input[type="submit"]').click
+      end.to change { Tip.count }.by(1)
+      expect(current_path).to eq root_path
+      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+      expect(page).to have_content(@tip.description)
+      expect(page).to have_selector('img')
+    end
     it ' 画像とタグを含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
       sign_in(@tip.user)
@@ -77,15 +94,24 @@ RSpec.describe '詳細', type: :system do
       click_on @tip.title, match: :first
       show(@tip)
     end
-  end
-  it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
-    visit tip_path(@tip)
-    expect(page).to have_content(@tip.title)
-    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-    expect(page).to have_content(@tip.description)
-    expect(page).to have_selector('img')
-    expect(page).not_to have_selector 'form'
-    expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
+    it 'pdfは投稿に成功すると、詳細ページはPNGに変換され、pdfへのリンクが表示される' do
+      # ログイン
+      sign_in(@tip.user)
+      # 新規投稿
+      post_pdf(@tip)
+      # 詳細
+      click_on @tip.title, match: :first
+      expect(page).to have_content '＜ーーーリンクへ移動ーーー＞'
+    end
+    it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
+      visit tip_path(@tip)
+      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+      expect(page).to have_content(@tip.description)
+      expect(page).to have_selector('img')
+      expect(page).not_to have_selector 'form'
+      expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
+    end
   end
 end
 
@@ -299,7 +325,7 @@ RSpec.describe '詳細検索', type: :system do
       fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
       select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
       fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-      expect(page).to have_content(@tip.description)
+      fill_in 'q_description_cont', with: @tip.description
       click_on 'search-submit'
       expect(page).to have_content(@tip.title)
       expect(page).to have_content(@tag.name)
@@ -307,6 +333,26 @@ RSpec.describe '詳細検索', type: :system do
       expect(page).to have_content(@tip.user.nickname)
       expect(page).to have_content(@tip.description)
     end
+  end
+
+  it ' pdfを含めた投稿が成功し、検索が可能なこと ' do
+    # ログイン
+    sign_in(@tip.user)
+    # 新規投稿
+    post_pdf(@tip)
+    # 詳細検索
+    find(:xpath, "//*[text()='詳細検索']").click
+    fill_in 'q_title_cont', with: @tip.title
+    fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
+    select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
+    fill_in 'q_user_nickname_cont', with: @tip.user.nickname
+    fill_in 'q_description_cont', with: @tip.description
+    click_on 'search-submit'
+    expect(page).to have_content(@tip.title)
+    expect(page).to have_content(@tag.name)
+    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+    expect(page).to have_content(@tip.user.nickname)
+    expect(page).to have_content(@tip.description)
   end
 
   context '詳細検索に失敗する' do

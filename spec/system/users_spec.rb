@@ -22,12 +22,10 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_content 'ログアウト'
       expect(page).to have_content other_user.nickname
     end
-    it '送る値が空のため新規投稿に失敗すること' do
+    it '送る値が空のため新規登録に失敗すること' do
       visit new_user_registration_path
       find('input[type="submit"]').click
-      expect do
-        find('input[type="submit"]').click
-      end.not_to change { User.count }
+      expect(current_path).to eq(user_registration_path)
     end
   end
 
