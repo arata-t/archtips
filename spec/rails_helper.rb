@@ -71,6 +71,7 @@ RSpec.configure do |config|
   config.include RequestSpecHelper, type: :request # type: :requestのときにRequestHelperをinclude
   config.after(:all) do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"]) if Rails.env.test?
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp/"]) if Rails.env.test?
   end
 end
 I18n.locale = 'en'
