@@ -20,7 +20,7 @@ if (location.pathname.match("tips/new")){
             searchResult.appendChild(childElement);
             const clickElement = document.getElementById(tag.id);
             clickElement.addEventListener("click", () => {
-              document.getElementById("tip_tag_name").value = clickElement.textContent;
+              document.getElementById("tip_name").value = clickElement.textContent;
               clickElement.remove();
             });
           });

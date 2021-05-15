@@ -228,6 +228,10 @@ display: none;
         width:100%;
       }
 
+      .search-to-top a{
+        color: red;
+      }
+
 
 
 
