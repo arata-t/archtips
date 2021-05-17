@@ -111,7 +111,7 @@ RSpec.describe '詳細', type: :system do
       post(@tip)
       # 詳細
       click_on @tip.title, match: :first
-      
+
       show(@tip)
     end
     it 'pdfは投稿に成功すると、詳細ページはPNGに変換され、pdfへのリンクが表示される' do
