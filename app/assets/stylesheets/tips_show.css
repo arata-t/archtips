@@ -32,7 +32,10 @@ p.tip-title-show {
   margin-top: 10px;
   display: flex;
   justify-content: center;
+}
 
+.pdf-layout a {
+  border-bottom: 1px solid gray;
 }
 
 .image-show-content{

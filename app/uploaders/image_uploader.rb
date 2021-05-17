@@ -47,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-      process :cover
+      # process :cover
       process resize_to_limit: [1000, 1000]
       process convert: 'png'
   end

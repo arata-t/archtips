@@ -92,6 +92,7 @@ RSpec.describe '詳細', type: :system do
       post(@tip)
       # 詳細
       click_on @tip.title, match: :first
+      
       show(@tip)
     end
     it 'pdfは投稿に成功すると、詳細ページはPNGに変換され、pdfへのリンクが表示される' do
@@ -101,7 +102,7 @@ RSpec.describe '詳細', type: :system do
       post_pdf(@tip)
       # 詳細
       click_on @tip.title, match: :first
-      expect(page).to have_content '＜ーーーリンクへ移動ーーー＞'
+      expect(page).to have_content 'リンクへ移動 >>'
     end
     it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
       visit tip_path(@tip)
