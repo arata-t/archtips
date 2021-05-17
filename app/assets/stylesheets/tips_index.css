@@ -118,7 +118,7 @@ display: none;
     overflow: auto;
   }
     .main-top{
-      
+      background-color: rgb(230, 230, 230);
       height: 70px;
       display: flex;
       justify-content: space-between;

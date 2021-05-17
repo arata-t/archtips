@@ -29,11 +29,11 @@
               <div class="tiped-title">
                 <%= link_to f.title, tip_path(f.id, method: :get) %>
               </div>
-              <p class="tiped-title-contents">カテゴリー :  <%= Category.data[f.category_id - 1][:name] %></p>
-              <p class="tiped-title-contents">タグ :  <% f.tags.each do |tag| %>  <%=tag.name%> <% end %> </p>
-              <p class="tiped-title-contents">投稿者 :  <%= link_to f.user.nickname, "/users/#{f.user.id}" %> </p>
-              <p class="tiped-title-contents">説明 : <br> <%= f.description%></p>
-              <p class="tiped-title-contents">投稿時間 :  <%= l f.updated_at%></p>
+              <p class="tiped-title-contents">カテゴリー　:  <%= Category.data[f.category_id - 1][:name] %></p>
+              <p class="tiped-title-contents">タグ　　　　:  <% f.tags.each do |tag| %>  <%=tag.name%> <% end %> </p>
+              <p class="tiped-title-contents">投稿者　　　:  <%= link_to f.user.nickname, "/users/#{f.user.id}" %> </p>
+              <p class="tiped-title-contents">説明　　　　: <br> <%= f.description%></p>
+              <p class="tiped-title-contents" style="position:absolute; top:320px; font-size:12px; ">投稿時間 :  <%= l f.updated_at%></p>
             </div>
             <div class="tiped-image-field">
               <div class="main-image", id="main-image">
