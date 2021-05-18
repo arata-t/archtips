@@ -76,6 +76,25 @@ RSpec.describe '投稿する', type: :system do
       # 新規投稿
       post(@tip)
     end
+    it '複数ページあるpdfを含めた投稿が成功し、トップページに投稿した画像が表示されていること' do
+      # ログイン
+      sign_in(@tip.user)
+      # 新規投稿
+      click_on '新規投稿'
+      fill_in 'tip_title', with: @tip.title
+      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      image_path = Rails.root.join('public/images/multi-pdf-test.pdf')
+      attach_file 'tip-image-main-img', image_path, make_visible: true
+      fill_in 'tip_description', with: @tip.description
+      expect  do
+        find('input[type="submit"]').click
+      end.to change { Tip.count }.by(1)
+      expect(current_path).to eq root_path
+      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+      expect(page).to have_content(@tip.description)
+      expect(page).to have_selector('img')
+    end
   end
 end
 
@@ -92,6 +111,7 @@ RSpec.describe '詳細', type: :system do
       post(@tip)
       # 詳細
       click_on @tip.title, match: :first
+
       show(@tip)
     end
     it 'pdfは投稿に成功すると、詳細ページはPNGに変換され、pdfへのリンクが表示される' do
@@ -101,7 +121,7 @@ RSpec.describe '詳細', type: :system do
       post_pdf(@tip)
       # 詳細
       click_on @tip.title, match: :first
-      expect(page).to have_content '＜ーーーリンクへ移動ーーー＞'
+      expect(page).to have_content 'リンクへ移動 >>'
     end
     it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
       visit tip_path(@tip)

@@ -9,7 +9,7 @@
         <%if @tip.image.present? && @tip.image.content_type == 'application/pdf'%>
           <div>
             <%= image_tag(@tip.image_url(:thumb).to_s, class: 'image-show-content') %>
-            <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image.url)) %>">＜ーーーリンクへ移動ーーー＞</a></div>
+            <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image.url)) %>">リンクへ移動 >></a></div>
           </div>
         <% elsif @tip.image.present? %>
           <%= image_tag @tip.image.url, class: 'image-show-content' %>

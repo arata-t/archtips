@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fit: [1000, 1000]
+  # process resize_to_fit: [1000, 1000]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?
@@ -47,15 +47,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-      process :cover
-      process resize_to_limit: [1000, 1000]
-      process convert: 'png'
-  end
-
-  # 1ページ目だけを指定してPNG形式への変換を行う
-  def cover
-    image = Magick::Image.read(filename)
-    image[0]
+    process convert: ['png', 0]
+    process resize_to_limit: [1000, 1000]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

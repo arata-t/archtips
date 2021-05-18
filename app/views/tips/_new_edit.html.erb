@@ -1,13 +1,13 @@
       <div class="tip-title">
         <p>タイトル</p>
         <div class="tip-title-content">
-          <%= form.text_field :title, placeholder: "" %>
+          <%= form.text_field :title, placeholder: "40文字以内", maxlength: "40" %>
         </div>
       </div>
       <div class="tip-tag">
-        <p>タグ</p>
+        <p>タグ<span style="font-size:14px;" >　※複数選指定する場合は「,」で区切る</span></p>
         <div class="tag-content", id='tag-content'>
-          <%= form.text_field :name, class:"input-tag", autocomplete: 'off' %>
+          <%= form.text_field :name, class:"input-tag", autocomplete: 'off',placeholder: '例：建築,設計' %>
           <div id="search-result" class="search-result"></div>
         </div>
       </div>
