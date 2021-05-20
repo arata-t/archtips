@@ -22,3 +22,20 @@
   margin-bottom: 10px;
   font-size: 21px;
 }
+
+/* 半分画面表示時 */
+@media (max-width: 900px) {
+  *{
+    font-size: 14px;
+  }
+  .wrapper{
+    width: 540px;
+    display: block;
+    margin: 60px auto;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+  }
+  em {
+    font-size: 12px;
+}
+}
