@@ -1,21 +1,3 @@
-.error_messages{
-  margin-bottom: 20px;
-  }
-
-.error_messages h2{
-display: none;
-}
-
-.error_messages li{
-  color: red;
-  list-style: none;
-}
-
-.login-flash-message{
-  color: red;
-  margin-bottom: 20px;
-}
-
 .back {
   background-color: white;
 }
@@ -260,7 +242,61 @@ display: none;
               margin: auto 0;
             }
       }
-
-
-
-
+/* ----------半分画面表示時--------------- */
+@media (max-width: 900px){
+  .top {
+    padding: 0px 20px;
+  }
+  /* -----------side-bar--------------- */
+  .side-bar {
+    width: 200px;
+    border-right: 1.5px solid gray;
+    height: calc(100vh - 100px);
+  }
+  .new-tip,
+  .new-question,
+  .my-page,
+  .search{
+    font-size: 18px;
+    padding: 15px 20px;
+  }
+  .search-area-form {
+    width: 220px;
+  }
+  .search-button {
+    margin: 20px 5px;
+  }
+  input, button, select, textarea {
+    width: 140px;
+  }
+  .detail-search-area {
+    margin: 0 20px 15px 20px;
+  }
+  .search-submit {
+    width: 100px;
+    margin-left: 20px;
+  }
+  /* -----------main-area--------------- */
+  .main-area{
+    width: calc(100vw - 200px);
+    height: calc(100vh - 100px);
+    overflow: auto;
+  }
+  .main-top {
+    height: 57px;
+    align-items: center;
+  }
+  .new-tip-title {
+    padding: 20px 10px;
+  }
+  .new-tip-title p{
+    font-size: 21px;
+    min-width: 150px;
+  }
+  .tiped-title {
+    font-size: 21px;
+  }
+  .uped-image-main-pdf {
+    max-width: 250px;
+  }
+}

@@ -4,6 +4,23 @@
   text-decoration: none;
   color:rgb(83, 83, 83);
 }
+.error_messages{
+  margin-bottom: 20px;
+  }
+
+.error_messages h2{
+display: none;
+}
+
+.error_messages li{
+  color: red;
+  list-style: none;
+}
+
+.login-flash-message{
+  color: red;
+  margin-bottom: 20px;
+}
 
 .wrapper{
   width: 900px;
@@ -25,9 +42,6 @@
 
 /* 半分画面表示時 */
 @media (max-width: 900px) {
-  *{
-    font-size: 14px;
-  }
   .wrapper{
     width: 540px;
     display: block;
@@ -35,7 +49,11 @@
     border: 3px solid #ddd;
     border-radius: 10px;
   }
+  .error_messages li {
+    font-size: 14px;
+    padding-top: 5px;
+  }
   em {
     font-size: 12px;
-}
+  }
 }

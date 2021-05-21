@@ -34,3 +34,24 @@
   padding-top: 20px;
   text-align: center;
 }
+
+/* ----------半分画面表示時--------------- */
+@media (max-width: 900px){
+  .plofile-name p {
+    font-size: 24px;
+    text-align: center;
+  }
+  .plofile-introduction p {
+    font-size: 14px;
+    padding: 10px 30px;
+  }
+  .plofile-introduction {
+    margin: 10px 20px;
+  }
+  .plofile-status {
+    margin: 0 20px;
+  }
+  .plofile-status-contents {
+    padding-top: 10px;
+  }
+}

@@ -79,3 +79,39 @@
 .search-result{
   font-size: 14px;
 }
+
+/* ----------半分画面表示時--------------- */
+@media (max-width: 900px){
+  .new-tip-string {
+    padding: 16px;
+    margin-bottom: 0;
+    font-size: 21px;
+  }
+  .tip-title,
+  .tip-category,
+  .tip-tag,
+  .tip-description,
+  .tip-image-main {
+    padding: 10px 20px; 
+    margin-bottom: 0;
+  }
+  .tip-title p,
+  .tip-category p,
+  .tip-tag p,
+  .tip-image-main p,
+  .tip-description p  {
+    font-size: 16px;
+  }
+  .text-form {
+    height: 240px;
+  }
+  .input-submit {
+    margin: 0 auto 30px 180px;
+    padding: 5px 0;
+    font-size: 15px;
+  }
+  .error-message{
+    font-size:14px;
+    padding-top: 10px;
+  }
+}
