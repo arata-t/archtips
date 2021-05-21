@@ -38,6 +38,7 @@ display: none;
   padding: 20px;
   margin-bottom: 10px;
   font-size: 21px;
+  overflow: hidden;
 }
 
 /* 半分画面表示時 */
