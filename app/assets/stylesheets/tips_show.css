@@ -41,7 +41,7 @@ p.tip-title-show {
 .image-show-content{
   max-width: 700px;
   max-height: 500px;
-  border: 1px solid;
+  border: 1px solid gray;
 }
 
 .image-show-content-none{
@@ -94,7 +94,6 @@ p.tip-title-show {
 
 .comments-area{
   padding: 30px 0;
-  width: 700px;
   margin: 0 auto;
   max-height: 300px;
   overflow: auto;
@@ -140,4 +139,39 @@ border-top: 1.5px solid #ddd;;
   background-color: #efefef;
   margin: 30px auto;
 }
-
+/* ----------半分画面表示時--------------- */
+@media (max-width: 900px){
+  p.tip-title-show {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 5px;
+  }
+  .image-show {
+    margin: 0 20px 20px 20px;
+  }
+  .image-show-content {
+    max-width: 420px;
+    max-height: 300px;
+  }
+  .pdf-layout a {
+    font-size: 14px;
+  }
+  .tip-contributer{
+    padding: 15px 20px; 
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+  .tip-description{
+    font-size: 14px;
+    padding-top: 10px;
+  }
+  .comment-form {
+    width: 460px;
+  }
+  .comments-area {
+    padding: 30px 0;
+    max-height: 240px;
+    overflow: auto;
+    font-size: 14px;
+  }
+}

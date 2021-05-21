@@ -1,6 +1,5 @@
 /* header */
 .header{
-  
   height: 100px;
   display: flex;
   justify-content: center;
@@ -31,29 +30,34 @@
 width: 500px;
 display: flex;
 }
-.contents-text{
+.contents-text,
+.contents-text-registration{
   padding: 20px;
   width: max-width;
 }
-.contents-text h2{
+.contents-text h2,
+.contents-text-registration h2{
   font-size: 28px;
   margin-bottom: 8px;
   text-align: center;
   font-weight: 50;
-  color: rgb(83, 83, 83);
 }
-.contents-text p{
+.contents-text p,
+.contents-text-registration p{
   font-size: 21px;
   margin-bottom: 16px;
   padding-left: 30px;
-  color: rgb(83, 83, 83);
 }
 
-.contents-text a{
-  font-size: 21px;
+.to-sign-up {
+  width: fit-content;
+  margin: 0 auto;
   margin-bottom: 16px;
-  padding-left: 30px;
-  color: red;
+}
+.to-sign-up a{
+  text-align: center;
+  font-size: 24px;
+  border-bottom: 1px solid ;
 }
 
 /* session-contents */
@@ -102,4 +106,89 @@ textarea#user_introduction {
   cursor: pointer;
   padding: 5px 12px;
   font-size: 14px;
+}
+
+/* ----------半分画面表示時--------------- */
+@media (max-width: 900px) {
+  /* header */
+  .header{
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo{  
+    border-bottom: 3px solid #ddd;
+    width: 540px;
+  }
+
+  .logo a{
+    font-size: 40px;
+    color:rgb(83, 83, 83);
+    text-decoration: none;
+    height: 75px;
+  }
+
+  /* middle */
+  .left-contents{
+    display: flex;
+    }
+    .contents-text{
+      padding: 20px;
+      padding-right: 10px;
+    }
+    .contents-text h2{
+      font-size: 21px;
+      padding-top: 8px;
+    }
+    .contents-text p{
+      font-size: 16px;
+      padding-left: 5px;
+      padding-bottom: 18px;
+    }
+    .contents-text a{
+      font-size: 21px;
+      margin-bottom: 16px;
+    }
+    .to-sign-up a{
+      font-size: 21px;
+    }
+    /* registration-contents */
+  .registration-contents{
+    width: 320px;
+  }
+  .contents-text-registration {
+    padding: 20px 0 20px 20px;
+  }
+  .contents-text-registration p{
+    font-size: 16px;
+    padding-left: 5px;
+  }
+  .contents-text-strings{
+    display: none;
+  }
+  textarea#user_introduction {
+    width: 234px;
+    height: 120px;
+} 
+
+/* session-contents */
+  .contents-box{
+    padding-top: 5px ;
+  }
+
+  .actions{
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .btn {
+    padding: 2px;
+    width: 150px;
+  }
+  
+  .login-flash-message {
+    font-size: 14px;
+  }
 }
