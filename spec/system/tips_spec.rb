@@ -153,18 +153,18 @@ RSpec.describe '編集する', type: :system do
       @tip[:id] = @tip.id + 1
       expect(current_path).to eq edit_tip_path(@tip)
       other_tip = FactoryBot.build(:tip)
-      fill_in 'tip_title', with: other_tip.title
+      fill_in 'tip_title', with: 'test_tip_title'
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
       after_image_path = Rails.root.join('public/images/after_image.png')
       attach_file 'tip-image-main-img', after_image_path, make_visible: true
-      fill_in 'tip_description', with: other_tip.description
+      fill_in 'tip_description', with: 'test_tip_description'
       expect  do
         find('input[type="submit"]').click
       end.to change { Tip.count }.by(0)
       expect(current_path).to eq root_path
-      expect(page).to have_content(other_tip.title)
+      expect(page).to have_content('test_tip_title')
       expect(page).to have_content(Category.data[other_tip.category_id - 1][:name])
-      expect(page).to have_content(other_tip.description)
+      expect(page).to have_content('test_tip_description')
       expect(page).to have_selector('img')
     end
   end
