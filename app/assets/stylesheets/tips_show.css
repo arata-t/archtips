@@ -41,6 +41,10 @@ p.tip-title-show {
 .image-show-content{
   max-width: 700px;
   max-height: 500px;
+}
+.image-show-content-pdf{
+  max-width: 700px;
+  max-height: 500px;
   border: 1px solid gray;
 }
 
