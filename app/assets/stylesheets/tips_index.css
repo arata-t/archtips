@@ -18,12 +18,13 @@
     display: flex;
   }
     .logo-image{
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
+      margin-top: 12.5px
     }
     .top-text{
       font-size: 36px;
-      margin:20px 0 ;
+      margin:20px 7.5px ;
     }
 
   .user-area{
@@ -259,12 +260,13 @@
             display: flex;
           }
             .logo-image{
-              width: 75px;
-              height: 75px;
+              width: 60px;
+              height: 60px;
+              margin-top: 5px;
             }
             .top-text{
               font-size: 36px;
-              margin: auto 0;
+              margin: auto 10px;
             }
       }
 /* ----------半分画面表示時--------------- */
