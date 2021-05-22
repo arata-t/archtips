@@ -29,9 +29,9 @@
               <div class="tiped-title">
                 <%= link_to f.title, tip_path(f.id, method: :get) %>
               </div>
-              <p class="tiped-title-contents-category"><span class="tiped-title-contents-span">カテゴリー　: </span> <%= Category.data[f.category_id - 1][:name] %></p>
+              <p class="tiped-title-contents-category">カテゴリー　: <%= Category.data[f.category_id - 1][:name] %></p>
               <p class="tiped-title-contents-tag">タグ　　　　:  <% f.tags.each do |tag| %>  <%=tag.name%> <% end %> </p>
-              <p class="tiped-title-contents-contributer">投稿者　　　:  <%= link_to f.user.nickname, "/users/#{f.user.id}" %> </p>
+              <p class="tiped-title-contents-contributer">投稿者　　　:  <%= link_to f.user.nickname + " >>", "/users/#{f.user.id}", id:'tiped-title-contents-distributer' %> </p>
               <p class="tiped-title-contents-description">説明 <br> <%= f.description%></p>
               <p class="tiped-title-contents-time">投稿時間 :  <%= l f.updated_at%></p>
             </div>
