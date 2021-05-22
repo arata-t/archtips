@@ -34,10 +34,6 @@ p.tip-title-show {
   justify-content: center;
 }
 
-.pdf-layout a {
-  border-bottom: 1px solid gray;
-}
-
 .image-show-content{
   max-width: 700px;
   max-height: 500px;
