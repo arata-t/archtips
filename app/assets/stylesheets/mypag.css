@@ -11,6 +11,7 @@
 }
 .plofile-name{
   margin: 0 auto;
+
 }
 .plofile-name p{
   font-size: 28px;
@@ -33,6 +34,8 @@
 .plofile-status-contents{
   padding-top: 20px;
   text-align: center;
+  width:100px;
+  white-space: nowrap;
 }
 
 /* ----------半分画面表示時--------------- */

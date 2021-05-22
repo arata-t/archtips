@@ -8,7 +8,7 @@
       <div class="image-show">
         <%if @tip.image.present? && @tip.image.content_type == 'application/pdf'%>
           <div>
-            <%= image_tag(@tip.image_url(:thumb).to_s, class: 'image-show-content') %>
+            <%= image_tag(@tip.image_url(:thumb).to_s, class: 'image-show-content-pdf') %>
             <div class="pdf-layout"><a href="<%= image_url(url_for(@tip.image.url)) %>">リンクへ移動 >></a></div>
           </div>
         <% elsif @tip.image.present? %>
@@ -45,7 +45,7 @@
         <p>カテゴリー : <%= Category.data[@tip.category_id - 1][:name] %></p>
       </div>
       <div class="tip-contributer">
-        <p>投稿者 : <%= link_to @tip.user.nickname, "/users/#{@tip.user.id}" %> </p>
+        <p>投稿者 : <%= link_to @tip.user.nickname + " >>", "/users/#{@tip.user.id}", id:"tip-show-contributor" %> </p>
       </div>
       <div class="tip-description">
         <p>説明 :  </p>

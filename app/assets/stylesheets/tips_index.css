@@ -18,12 +18,13 @@
     display: flex;
   }
     .logo-image{
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
+      margin-top: 12.5px
     }
     .top-text{
       font-size: 36px;
-      margin:20px 0 ;
+      margin:20px 7.5px ;
     }
 
   .user-area{
@@ -151,13 +152,38 @@
         .tiped-title{
           font-size: 24px;
           margin-bottom:21px;
+          height: 30px;
+          overflow: hidden;
         }
-        .tiped-title-contents{
+        .tiped-title-contents-category,
+        .tiped-title-contents-tag,
+        .tiped-title-contents-contributer,
+        .tiped-title-contents-description,
+        .tiped-title-contents-time{
           font-size: 14px;
           margin-bottom: 15px;
           max-height: 100px;
+          min-width: 200px;
+          white-space: nowrap;
+        }
+        .tiped-title-contents-description{
+          white-space:unset;
           overflow: hidden;
         }
+        .tiped-title-contents-time{
+          position:absolute; bottom: 0px; font-size:12px;
+        }
+        p.tiped-title-contents-tag {
+          padding-left: 6.5em;
+          text-indent: -6.5em;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
       .tiped-image-field{
         width: 600px;
         display: flex;
@@ -234,12 +260,13 @@
             display: flex;
           }
             .logo-image{
-              width: 75px;
-              height: 75px;
+              width: 60px;
+              height: 60px;
+              margin-top: 5px;
             }
             .top-text{
               font-size: 36px;
-              margin: auto 0;
+              margin: auto 10px;
             }
       }
 /* ----------半分画面表示時--------------- */
