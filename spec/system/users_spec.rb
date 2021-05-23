@@ -5,6 +5,7 @@ RSpec.describe 'Users', type: :system do
     @tip = FactoryBot.create(:tip)
     @tag = FactoryBot.create(:tag)
   end
+
   context '新規登録をする' do
     it '新規登録を成功させること' do
       other_user = FactoryBot.build(:user)
@@ -41,6 +42,7 @@ RSpec.describe 'Users', type: :system do
       expect(current_path).to eq(root_path)
     end
   end
+
   context 'マイページにアクセスする' do
     it '投稿後にマイページアクセスすると投稿した内容が表示される。' do
       # ログイン
