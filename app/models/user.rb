@@ -13,4 +13,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   has_many :liked_tips, through: :like, source: :tip
+  def already_tiped?(tip)
+    self.likes.exists?(tip_id: tip.id)
+  end
 end
