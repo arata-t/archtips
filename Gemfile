@@ -78,3 +78,4 @@ gem "aws-sdk-s3", require: false
 gem 'rmagick'
 gem 'ransack'
 gem "carrierwave"
+gem 'dotenv-rails'
