@@ -153,6 +153,10 @@ border-top: 1.5px solid #ddd;;
     max-width: 420px;
     max-height: 300px;
   }
+  .image-show-content-pdf{
+    max-width: 420px;
+    max-height: 300px;
+  }
   .pdf-layout a {
     font-size: 14px;
   }
