@@ -11,4 +11,6 @@ class User < ApplicationRecord
 
   has_many :tips
   has_many :comments
+  has_many :likes
+  has_many :liked_tips, through: :like, source: :tip
 end
