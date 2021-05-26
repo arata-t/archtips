@@ -10,6 +10,7 @@
         <p class="tiped-title-contents-contributer">投稿者　　　:  <%= link_to f.user.nickname + " >>", "/users/#{f.user.id}", id:'tiped-title-contents-distributer' %> </p>
         <p class="tiped-title-contents-description">説明 <br> <%= f.description%></p>
         <p class="tiped-title-contents-time">投稿時間 :  <%= l f.updated_at%></p>
+        <p> いいね:<%= tip.liked_user.count %> </p>
       </div>
       <div class="tiped-image-field">
         <div class="main-image", id="main-image">
