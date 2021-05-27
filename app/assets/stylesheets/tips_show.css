@@ -13,6 +13,30 @@
   position:absolute;
   top: 20px;
   right: -60px;
+  display: flex;
+  align-items: center;
+}
+
+.like-show p{
+  color: #808080;
+  padding-left: 3px;
+  margin-bottom: 2px;
+}
+
+.like-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080; 
+  margin-left: 20px;
+}
+
+.unlike-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 20px;
 }
 
 .tip-title-show{
