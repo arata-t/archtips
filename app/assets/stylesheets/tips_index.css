@@ -144,22 +144,32 @@
       height: 360px;
       position: relative;
     }
+
       .like-index{
         position:absolute;
         top:20px;
         right: 20px;
+        display: flex;
       }
+
+      .like-index p{
+        color: #808080;
+        padding-left: 3px;
+      }
+
       .tiped-contents{
         padding: 10px;
         width: 400px;
         min-width: 200px;
       }
+
         .tiped-title{
           font-size: 24px;
           margin-bottom:21px;
           height: 30px;
           overflow: hidden;
         }
+
         .tiped-title-contents-category,
         .tiped-title-contents-tag,
         .tiped-title-contents-contributer,
@@ -171,13 +181,16 @@
           min-width: 200px;
           white-space: nowrap;
         }
+
         .tiped-title-contents-description{
           white-space:unset;
           overflow: hidden;
         }
+
         .tiped-title-contents-time{
           position:absolute; bottom: 0px; font-size:12px;
         }
+
         p.tiped-title-contents-tag {
           padding-left: 6.5em;
           text-indent: -6.5em;
@@ -248,37 +261,24 @@
         
         border-bottom: 1px solid gray;
       }
-
-      @media (max-width: 900px) {
-        .top{
-          background-color: white;
-          width: 100vw;
-          height: 100px;
-          padding: 0px 40px;
-          border-bottom: 1.5px solid gray;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-          .logo-area{
-            width: 300px;
-            display: flex;
-          }
-            .logo-image{
-              width: 60px;
-              height: 60px;
-              margin-top: 5px;
-            }
-            .top-text{
-              font-size: 36px;
-              margin: auto 10px;
-            }
-      }
 /* ----------半分画面表示時--------------- */
 @media (max-width: 900px){
   .top {
     padding: 0px 20px;
   }
+  .logo-area{
+    width: 300px;
+    display: flex;
+  }
+    .logo-image{
+      width: 60px;
+      height: 60px;
+      margin-top: 5px;
+    }
+    .top-text{
+      font-size: 36px;
+      margin: auto 10px;
+    }
   /* -----------side-bar--------------- */
   .side-bar {
     width: 200px;
@@ -331,4 +331,12 @@
   .uped-image-main-pdf {
     max-width: 250px;
   }
+}
+/* ----------760画面表示時--------------- */
+@media (max-width: 760px) {
+  .uped-image-main {
+    max-width: 250px;
+    max-height: 250px;
+    margin-top: 3px;
+}
 }

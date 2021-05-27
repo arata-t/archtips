@@ -2,7 +2,14 @@
   <% @tips.each do |f| %>
     <div class="tiped">
       <div class="like-index">
-        <p> いいね:<%= f.liked_users.count %> </p>
+        <% if user_signed_in? && current_user.already_liked?(f) %>
+          <i class="fas fa-heart unlike-btn"></i>
+        <% elsif user_signed_in? %>
+          <i class="far fa-heart like-btn" ></i>
+        <% else %>
+          <i class="far fa-heart like-btn" ></i>
+        <% end %>
+        <p><%= f.liked_users.count %> </p>
       </div>
       <div class="tiped-contents">
         <div class="tiped-title">

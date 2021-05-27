@@ -192,6 +192,7 @@ border-top: 1.5px solid #ddd;;
     text-align: center;
     font-size: 24px;
     margin-top: 5px;
+    max-width: 420px;
   }
 
   .image-show {

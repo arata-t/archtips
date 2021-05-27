@@ -10,6 +10,8 @@
         <%= link_to tip_likes_path(@tip),method: :post do %>
           <i class="far fa-heart like-btn" ></i>
         <% end %>
+      <% else %>
+        <i class="far fa-heart like-btn" ></i>
       <% end %>
       <p><%=@tip.likes.count %> </p>
     </div>
