@@ -1,9 +1,18 @@
 .main-tips-show{
   margin-bottom: 20px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 500px;
+  width: 700px;
   margin: 0 auto 40px auto;
+  position: relative;
+}
+
+.like-show{
+  font-size: 21px;
+  position:absolute;
+  top: 20px;
+  right: -60px;
 }
 
 .tip-title-show{
@@ -139,39 +148,61 @@ border-top: 1.5px solid #ddd;;
   background-color: #efefef;
   margin: 30px auto;
 }
+
 /* ----------半分画面表示時--------------- */
 @media (max-width: 900px){
+  .main-tips-show{
+    margin-bottom: 20px;
+    display: block;
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto 40px auto;
+    }
+
+    .like-show{
+      font-size: 18px;
+      right: 0px;
+    }
+
   p.tip-title-show {
     text-align: center;
     font-size: 24px;
     margin-top: 5px;
   }
+
   .image-show {
     margin: 0 20px 20px 20px;
   }
+
   .image-show-content {
     max-width: 420px;
     max-height: 300px;
   }
+
   .image-show-content-pdf{
     max-width: 420px;
     max-height: 300px;
   }
+
   .pdf-layout a {
     font-size: 14px;
   }
+
   .tip-contributer{
     padding: 15px 20px; 
     margin-bottom: 0;
     font-size: 16px;
   }
+
   .tip-description{
     font-size: 14px;
     padding-top: 10px;
   }
+
   .comment-form {
     width: 460px;
   }
+
   .comments-area {
     padding: 30px 0;
     max-height: 240px;
