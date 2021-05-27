@@ -144,6 +144,11 @@
       height: 360px;
       position: relative;
     }
+      .like-index{
+        position:absolute;
+        top:20px;
+        right: 20px;
+      }
       .tiped-contents{
         padding: 10px;
         width: 400px;
