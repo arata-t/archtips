@@ -44,7 +44,7 @@ display: none;
 /* 半分画面表示時 */
 @media (max-width: 900px) {
   .wrapper{
-    width: 540px;
+    width: 560px;
     display: block;
     margin: 60px auto;
     border: 3px solid #ddd;
