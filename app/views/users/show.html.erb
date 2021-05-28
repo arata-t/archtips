@@ -26,17 +26,17 @@
   </div>
   <div class="main-top">
     <div class="new-tip-title">
-      <p> 投稿一覧</p>
+      <p class="tiplist-likelist"> 投稿一覧</p>
     </div>
     <div class="like-appear">
-        <a>いいね一覧</a>
+      <a class="like-appear-str">いいね一覧 >></a>
     </div>
   </div>
   <div class="mypage-area">
-    <div>
+    <div id="tip-list-area">
       <%= render "tips/main_search_area" %>
     </div>
-    <div style="display:none;">
+    <div id="like-list-area" style="display:none;">
       <%= render "tips/like_area" %>
     </div>
   </div>
