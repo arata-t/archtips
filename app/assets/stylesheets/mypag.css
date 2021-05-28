@@ -4,6 +4,10 @@
   overflow: auto;
 }
 
+.like-appear{
+  padding-right: 20px;
+}
+
 .plofile{
   display: block;
   align-items: center;

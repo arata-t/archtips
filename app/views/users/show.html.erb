@@ -28,14 +28,16 @@
     <div class="new-tip-title">
       <p> 投稿一覧</p>
     </div>
-    <div class="search-area">
-        <% form_with(url: search_tips_path, local: true, method: :get) do |form| %>
-          <% form.text_field :keyword, placeholder: "キーワードを入力", class: "search-form" %>
-          <% form.submit "検索", class: "search-button" %>
-        <% end %>
+    <div class="like-appear">
+        <a>いいね一覧</a>
     </div>
   </div>
   <div class="mypage-area">
-    <%= render "tips/main_search_area" %>
+    <div>
+      <%= render "tips/main_search_area" %>
+    </div>
+    <div style="display:none;">
+      <%= render "tips/like_area" %>
+    </div>
   </div>
 </div>
