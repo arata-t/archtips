@@ -47,4 +47,10 @@ $(function () {
   }).on("mouseout", ".pdf-layout > a", function () {
     $(this).css({ "color": "", "border-bottom": "none"});
   })
+
+  $(document).on("mouseover", ".like-appear-str", function () {
+    $(this).css({ "color": "#7B68EE","border-bottom": "1px solid" });
+  }).on("mouseout", ".like-appear-str", function () {
+    $(this).css({ "color": "", "border-bottom": "none"});
+  })
 });

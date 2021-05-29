@@ -6,6 +6,12 @@
 
 .like-appear{
   padding-right: 20px;
+  display: flex;
+}
+
+.like-appear{
+  display: flex;
+  align-items: center;
 }
 
 .plofile{
@@ -60,5 +66,8 @@
   }
   .plofile-status-contents {
     padding-top: 10px;
+  }
+  .like-appear-str{
+    font-size: 14px;
   }
 }
