@@ -41,6 +41,19 @@ display: none;
   overflow: hidden;
 }
 
+.unlike-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 20px;
+}
+
+.logo-btn{
+  color: gray;
+  padding-right:3px ;
+}
+
 /* 半分画面表示時 */
 @media (max-width: 900px) {
   .wrapper{
