@@ -1,17 +1,17 @@
 <ul>
   <li class="new-tip" id="new-tip">
-    <%= link_to "新規投稿", new_tip_path, id:"new-tip-btn" %>
+    <i class="fas fa-pen f304"> </i><%= link_to "新規投稿", new_tip_path, id:"new-tip-btn" %>
   </li>
   <li class="new-question" id="new-question">
-    <%= link_to "質問する", root_path, id:"new-question-btn" %>
+    <i class="fas fa-question-circle"></i><%= link_to "質問する", root_path, id:"new-question-btn" %>
   </li>
   <% if user_signed_in? %>
     <li class="my-page" id="my-page">
-      <%= link_to "マイページ", "/users/#{current_user.id}", id:"my-page-btn" %>
+      <i class="fas fa-user"></i><%= link_to "マイページ", "/users/#{current_user.id}", id:"my-page-btn" %>
     </li>
   <% end %>
   <li class="search" id="search">
-    <a id="search-btn" class="search-btn">詳細検索</a>
+    <i class="fas fa-search"></i><a id="search-btn" class="search-btn">詳細検索</a>
   </li>
 </ul>
 <div class="detail-search-area" id="detail-search-area" >

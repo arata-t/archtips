@@ -36,11 +36,11 @@
     list-style: none;
   }
     .user-button,.new-user-button{
-      margin: 20px;
+      margin:0 60px 0 5px;
       white-space: nowrap
     }
     .login-button,.logout-button{
-      margin:20px;
+      margin:0 0 0 5px;
       white-space: nowrap
     }
 
@@ -331,6 +331,14 @@
   .uped-image-main-pdf {
     max-width: 250px;
   }
+  .user-button,.new-user-button{
+      margin:0 25px 0 5px;
+      white-space: nowrap
+    }
+    .login-button,.logout-button{
+      margin:0 0 0 5px;
+      white-space: nowrap
+    }
 }
 /* ----------760画面表示時--------------- */
 @media (max-width: 760px) {

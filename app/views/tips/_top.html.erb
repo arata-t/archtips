@@ -4,12 +4,12 @@
 </div>
   <% if user_signed_in? %>
   <ul class = "user-area">
-    <li ><%= link_to current_user.nickname, "/users/#{current_user.id}",  class:"user-button"%> </li>
-    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout-button" %></li>
+    <i class="fas fa-user"></i><li ><%= link_to current_user.nickname, "/users/#{current_user.id}",  class:"user-button"%> </li>
+    <i class="fas fa-door-open"></i><li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout-button" %></li>
   </ul>
   <% else %>
     <ul class = "user-area">
-    <li ><%= link_to "ユーザー登録", new_user_registration_path, class:"new-user-button"%> </li>
-    <li><%= link_to 'ログイン', new_user_session_path, class: "login-button" %></li>
+    <i class="fas fa-users"></i><li ><%= link_to "ユーザー登録", new_user_registration_path, class:"new-user-button"%> </li>
+    <i class="fas fa-door-open"></i><li><%= link_to 'ログイン', new_user_session_path, class: "login-button" %></li>
     </ul>
   <% end %>
