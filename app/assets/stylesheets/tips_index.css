@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100px;
   padding: 0px 40px;
-  border-bottom: 1.5px solid gray;
+  border-bottom: 2px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,18 +54,18 @@
 .side-bar {
   background-color: white;
   width: 300px;
-  border-right: 1.5px solid gray;
+  border-right: 2px solid #ddd;
   height: calc(100vh - 100px);
 }
 
   .new-tip{
     padding: 20px 40px 18px 40px;
-    font-size: 21px;
+    font-size: 22.5px;
   }
 
   .new-question,.my-page,.search{
     padding: 12px 40px;
-    font-size: 21px;
+    font-size: 22.5px;
   }
 
   .detail-search-area{
@@ -282,8 +282,6 @@
   /* -----------side-bar--------------- */
   .side-bar {
     width: 200px;
-    border-right: 1.5px solid gray;
-    height: calc(100vh - 100px);
   }
   .new-tip,
   .new-question,
