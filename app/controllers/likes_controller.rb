@@ -1,12 +1,12 @@
 class LikesController < ApplicationController
   def create
-    @like = current_user.likes.create(tip_id: params[:tip_id])
-    redirect_back(fallback_location: root_path)
+    @like = Like.create(user_id: current_user.id, tip_id: params[:tip_id])
+    @tip = Tip.find_by(id: params[:tip_id])
   end
 
   def destroy
     @like = Like.find_by(tip_id: params[:tip_id], user_id: current_user.id)
+    @tip = Tip.find_by(id: params[:tip_id])
     @like.destroy
-    redirect_back(fallback_location: root_path)
   end
 end

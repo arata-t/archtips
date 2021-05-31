@@ -1,19 +1,8 @@
 <div class = "wrapper">
   <%= render "shared/header" %>
   <div class="main-tips-show">
-    <div class="like-show">
-      <% if user_signed_in? && current_user.already_liked?(@tip) %>
-        <%= link_to tip_like_path(@tip),method: :delete do %>
-          <i class="fas fa-heart unlike-btn"></i>
-        <% end %>
-      <% elsif user_signed_in? %>
-        <%= link_to tip_likes_path(@tip),method: :post do %>
-          <i class="far fa-heart like-btn" ></i>
-        <% end %>
-      <% else %>
-        <i class="far fa-heart like-btn" ></i>
-      <% end %>
-      <p><%=@tip.likes.count %> </p>
+    <div class="like-show" id="likes_buttons_<%= @tip.id %>">
+      <%= render partial: 'likes/like_partial', locals: { tip: @tip } %>
     </div>
     <div class="tip-title">
       <p class="tip-title-show"><%= @tip.title %></p>
