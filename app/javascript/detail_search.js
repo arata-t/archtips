@@ -7,8 +7,8 @@ window.addEventListener('load', function(){
   const newTipArea  = document.getElementById("new-tip")
   const newTipBtn   = document.getElementById("new-tip-btn")
   // 質問する
-  const newQuestionArea = document.getElementById("new-question")
-  const newQuestionBtn  = document.getElementById("new-question-btn")
+  const newTrendArea = document.getElementById("new-trend")
+  const newTrendBtn  = document.getElementById("new-trend-btn")
   // マイページ
   const myPageArea = document.getElementById("my-page")
   const myPageBtn  = document.getElementById("my-page-btn")
@@ -39,11 +39,11 @@ window.addEventListener('load', function(){
     newTipArea.removeAttribute("style", "background-color:rgb(230, 230, 230);")
   })
   // 質問する
-  newQuestionBtn.addEventListener('mouseover', function(){
-    newQuestionArea.setAttribute("style", "background-color:rgb(230, 230, 230);")
+  newTrendBtn.addEventListener('mouseover', function(){
+    newTrendArea.setAttribute("style", "background-color:rgb(230, 230, 230);")
   })
-  newQuestionBtn.addEventListener("mouseout", function(){
-    newQuestionArea.removeAttribute("style", "background-color:rgb(230, 230, 230);")
+  newTrendBtn.addEventListener("mouseout", function(){
+    newTrendArea.removeAttribute("style", "background-color:rgb(230, 230, 230);")
   })
   // マイページ
   myPageBtn.addEventListener('mouseover', function(){

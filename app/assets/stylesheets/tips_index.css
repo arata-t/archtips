@@ -63,7 +63,7 @@
     font-size: 22.5px;
   }
 
-  .new-question,.my-page,.search{
+  .new-trend,.my-page,.search{
     padding: 12px 40px;
     font-size: 22.5px;
   }
@@ -284,7 +284,7 @@
     width: 200px;
   }
   .new-tip,
-  .new-question,
+  .new-trend,
   .my-page,
   .search{
     font-size: 18px;

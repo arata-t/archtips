@@ -2,8 +2,8 @@
   <li class="new-tip" id="new-tip">
     <i class="fas fa-pen logo-btn"> </i><%= link_to "新規投稿", new_tip_path, id:"new-tip-btn" %>
   </li>
-  <li class="new-question" id="new-question">
-    <i class="fas fa-question-circle logo-btn"></i><%= link_to "質問する", root_path, id:"new-question-btn" %>
+  <li class="new-trend" id="new-trend">
+    <i class="fas fa-chart-line logo-btn"></i><%= link_to "トレンド", root_path, id:"new-trend-btn" %>
   </li>
   <% if user_signed_in? %>
     <li class="my-page" id="my-page">
