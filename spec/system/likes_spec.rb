@@ -82,7 +82,6 @@ RSpec.describe 'Users', type: :system do
     it 'ログインしていないといいねボタンが押せない', js: true do
       # 詳細
       visit tip_path(@tip)
-
       expect do
         find('.far').click
       end.to change(Like, :count).by(0)
