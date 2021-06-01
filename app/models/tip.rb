@@ -4,6 +4,8 @@ class Tip < ApplicationRecord
   mount_uploader :image, ImageUploader # carrierwave
   has_many :tip_tag_relations, foreign_key: :tip_id, dependent: :destroy
   has_many :tags, through: :tip_tag_relations
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

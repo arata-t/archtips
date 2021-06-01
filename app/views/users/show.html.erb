@@ -19,23 +19,25 @@
         <p> <%=@user.comments.length%> </p>
       </div>
       <div class="plofile-status-contents">
-        <p>コメントされた数</p>
-        <p> <%=@commented_num%> </p>
+        <p>いいね数</p>
+        <p> <%=@user.likes.length%> </p>
       </div>
     </div>
   </div>
   <div class="main-top">
     <div class="new-tip-title">
-      <p> 投稿一覧</p>
+      <p class="tiplist-likelist"> 投稿一覧</p>
     </div>
-    <div class="search-area">
-        <% form_with(url: search_tips_path, local: true, method: :get) do |form| %>
-          <% form.text_field :keyword, placeholder: "キーワードを入力", class: "search-form" %>
-          <% form.submit "検索", class: "search-button" %>
-        <% end %>
+    <div class="like-appear">
+      <a href="#" class="like-appear-str">いいね一覧 >></a>
     </div>
   </div>
   <div class="mypage-area">
-    <%= render "tips/main_search_area" %>
+    <div id="tip-list-area">
+      <%= render "tips/main_search_area" %>
+    </div>
+    <div id="like-list-area" style="display:none;">
+      <%= render "tips/like_area" %>
+    </div>
   </div>
 </div>

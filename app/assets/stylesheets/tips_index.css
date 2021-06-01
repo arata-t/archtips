@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100px;
   padding: 0px 40px;
-  border-bottom: 1.5px solid gray;
+  border-bottom: 2px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,11 +36,11 @@
     list-style: none;
   }
     .user-button,.new-user-button{
-      margin: 20px;
+      margin:0 60px 0 5px;
       white-space: nowrap
     }
     .login-button,.logout-button{
-      margin:20px;
+      margin:0 0 0 5px;
       white-space: nowrap
     }
 
@@ -54,18 +54,18 @@
 .side-bar {
   background-color: white;
   width: 300px;
-  border-right: 1.5px solid gray;
+  border-right: 2px solid #ddd;
   height: calc(100vh - 100px);
 }
 
   .new-tip{
     padding: 20px 40px 18px 40px;
-    font-size: 21px;
+    font-size: 22.5px;
   }
 
   .new-question,.my-page,.search{
     padding: 12px 40px;
-    font-size: 21px;
+    font-size: 22.5px;
   }
 
   .detail-search-area{
@@ -144,17 +144,32 @@
       height: 360px;
       position: relative;
     }
+
+      .like-index{
+        position:absolute;
+        top:20px;
+        right: 20px;
+        display: flex;
+      }
+
+      .like-index p{
+        color: #808080;
+        padding-left: 3px;
+      }
+
       .tiped-contents{
         padding: 10px;
         width: 400px;
         min-width: 200px;
       }
+
         .tiped-title{
           font-size: 24px;
           margin-bottom:21px;
           height: 30px;
           overflow: hidden;
         }
+
         .tiped-title-contents-category,
         .tiped-title-contents-tag,
         .tiped-title-contents-contributer,
@@ -166,13 +181,16 @@
           min-width: 200px;
           white-space: nowrap;
         }
+
         .tiped-title-contents-description{
           white-space:unset;
           overflow: hidden;
         }
+
         .tiped-title-contents-time{
           position:absolute; bottom: 0px; font-size:12px;
         }
+
         p.tiped-title-contents-tag {
           padding-left: 6.5em;
           text-indent: -6.5em;
@@ -243,42 +261,27 @@
         
         border-bottom: 1px solid gray;
       }
-
-      @media (max-width: 900px) {
-        .top{
-          background-color: white;
-          width: 100vw;
-          height: 100px;
-          padding: 0px 40px;
-          border-bottom: 1.5px solid gray;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-          .logo-area{
-            width: 300px;
-            display: flex;
-          }
-            .logo-image{
-              width: 60px;
-              height: 60px;
-              margin-top: 5px;
-            }
-            .top-text{
-              font-size: 36px;
-              margin: auto 10px;
-            }
-      }
 /* ----------半分画面表示時--------------- */
 @media (max-width: 900px){
   .top {
     padding: 0px 20px;
   }
+  .logo-area{
+    width: 300px;
+    display: flex;
+  }
+    .logo-image{
+      width: 60px;
+      height: 60px;
+      margin-top: 5px;
+    }
+    .top-text{
+      font-size: 36px;
+      margin: auto 10px;
+    }
   /* -----------side-bar--------------- */
   .side-bar {
     width: 200px;
-    border-right: 1.5px solid gray;
-    height: calc(100vh - 100px);
   }
   .new-tip,
   .new-question,
@@ -326,4 +329,20 @@
   .uped-image-main-pdf {
     max-width: 250px;
   }
+  .user-button,.new-user-button{
+      margin:0 25px 0 5px;
+      white-space: nowrap
+    }
+    .login-button,.logout-button{
+      margin:0 0 0 5px;
+      white-space: nowrap
+    }
+}
+/* ----------760画面表示時--------------- */
+@media (max-width: 760px) {
+  .uped-image-main {
+    max-width: 250px;
+    max-height: 250px;
+    margin-top: 3px;
+}
 }

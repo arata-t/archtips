@@ -1,6 +1,9 @@
 <div class = "wrapper">
   <%= render "shared/header" %>
   <div class="main-tips-show">
+    <div class="like-show" id="likes_buttons_<%= @tip.id %>">
+      <%= render partial: 'likes/like_partial', locals: { tip: @tip } %>
+    </div>
     <div class="tip-title">
       <p class="tip-title-show"><%= @tip.title %></p>
     </div>
@@ -16,27 +19,6 @@
         <% else %>
           <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
         <% end %>
-      </div>
-<% 
-=begin
-%>
-      <div class="image-show">
-        <%if @tip.image.present?%>
-        <%= image_tag @tip.image, class: 'image-show-content' %>
-        <% else %>
-        <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
-        <% end %>
-      </div>
-      <div class="image-show">
-        <%if @tip.image.present?%>
-        <%= image_tag @tip.image, class: 'image-show-content' %>
-        <% else %>
-        <%= image_tag "noimage.jpg", class:"image-show-content-none" %>
-        <% end %>
-      </div>
-<%
-=end
-%>
       </div>
       <div class="tip-tag">
         <p>タグ : <% @tip.tags.each do |tag| %>  <%=tag.name%> <% end %></p>

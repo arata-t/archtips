@@ -1,5 +1,5 @@
-<% if @tips.present? %>
-  <% @tips.each do |f| %>
+<% if @user.liked_tips.present? %>
+  <% @user.liked_tips.each do |f| %>
     <div class="tiped">
       <div class="like-index">
         <% if user_signed_in? && current_user.already_liked?(f) %>
@@ -35,7 +35,7 @@
     </div>
   <% end %>
 <% else %>
-  <p class="search-nil">投稿はありません</p>
+  <p class="search-nil">いいねした投稿はありません</p>
   <div  class="search-to-top">
     <a href="/"><< トップページへ戻る</a>
   </div>
