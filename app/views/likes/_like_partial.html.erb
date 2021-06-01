@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <% if current_user.already_liked?(@tip)%>
     <%= link_to tip_like_path(id: @tip.likes[0].id, tip_id: @tip.id),method: :delete, remote: true do %>
-      <i class="fas fa-heart unlike-btn"></i>
+      <i class="fas fa-heart unlike-btn" id="unlike-btn"></i>
     <% end %>
   <% else %>
     <%= link_to tip_likes_path(@tip),method: :post, remote: true do %>
-      <i class="far fa-heart like-btn" ></i>
+      <i class="far fa-heart like-btn" id="like-btn" ></i>
     <% end %>
   <% end %>
 <% else %>

@@ -14,6 +14,6 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_tips, through: :likes, source: :tip
   def already_liked?(tip)
-    self.likes.exists?(tip_id: tip.id)
+    likes.exists?(tip_id: tip.id)
   end
 end

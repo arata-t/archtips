@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Likes", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+  before do
+    @user = FactoryBot.create(:user)
+    @tip = FactoryBot.create(:tip)
+  end
+
+  describe "GET /users" do
+    it 'トップページにいいねアイコンが表示される' do
+      get root_path
+      expect(response.body).to include "i"
+    end
   end
 end
