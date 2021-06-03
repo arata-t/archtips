@@ -37,11 +37,11 @@ Arch_Tipsのこだわりのポイントは以下3点です。
 比較的慎重な性格のため、テストコードを実装しながら開発を進めました。respecのmodelspec,requestspec,systemspec`計100example以上を実施して高い保守性`を確保しました。
 
 
-<img width="450" alt="投稿ページ" src="https://user-images.githubusercontent.com/76896195/120482150-cbde3380-c3eb-11eb-9772-e5da8adaea23.png">
+<img width="480" alt="投稿ページ" src="https://user-images.githubusercontent.com/76896195/120482150-cbde3380-c3eb-11eb-9772-e5da8adaea23.png">
 
 
 
-<img width="491" alt="マイページ" src="https://user-images.githubusercontent.com/76896195/120484019-9fc3b200-c3ed-11eb-964b-e354fc849e1f.png">
+<img width="480" alt="マイページ" src="https://user-images.githubusercontent.com/76896195/120484019-9fc3b200-c3ed-11eb-964b-e354fc849e1f.png">
 
 # 📂 機能一覧
 
@@ -109,3 +109,6 @@ Arch_Tipsのこだわりのポイントは以下3点です。
     - 単体テスト（model)
     - 機能テスト（request)
     - 結合テスト（system)
+
+# 💻インフラ図
+![archtips_architect](https://user-images.githubusercontent.com/76896195/120641262-5b4c1b00-c4ae-11eb-9054-6c95a6c82f12.png)
