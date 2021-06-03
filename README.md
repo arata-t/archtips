@@ -109,3 +109,6 @@ Arch_Tipsのこだわりのポイントは以下3点です。
     - 単体テスト（model)
     - 機能テスト（request)
     - 結合テスト（system)
+
+# 💻インフラ図
+![archtips_architect](https://user-images.githubusercontent.com/76896195/120641262-5b4c1b00-c4ae-11eb-9054-6c95a6c82f12.png)
