@@ -9,7 +9,7 @@ Arch_Tipsは私が建築設計をしている中で感じた「あったらい�
 
 
 # 🌐 URL
-http://3.139.39.218/
+http://archtips.tk
 
 ログイン  
 メールアドレス：test@test  
@@ -100,7 +100,7 @@ Arch_Tipsのこだわりのポイントは以下3点です。
 
 ## 本番環境
 
-- AWS（EC2、S3）
+- AWS（EC2、S3、route53）
 - Nginx、Unicorn、MariaDB
 
 ## テスト
@@ -111,4 +111,4 @@ Arch_Tipsのこだわりのポイントは以下3点です。
     - 結合テスト（system)
 
 # 💻インフラ図
-![archtips_architect](https://user-images.githubusercontent.com/76896195/120641262-5b4c1b00-c4ae-11eb-9054-6c95a6c82f12.png)
+![archtips](https://user-images.githubusercontent.com/76896195/120812072-a128e200-c587-11eb-8499-880660f9043a.png)
