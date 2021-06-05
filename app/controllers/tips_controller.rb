@@ -67,9 +67,9 @@ class TipsController < ApplicationController
   end
 
   def trend
-    to = Time.current.at_beginning_of_day
+    to = Time.now
     from = (to - 2.month)
-    @tips = Tip.where(created_at: from...to ).includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @tips = Tip.where(created_at: from...to).includes(:liked_users).sort { |a, b| b.liked_users.size <=> a.liked_users.size }
   end
 
   private
