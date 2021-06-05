@@ -1,0 +1,37 @@
+<% if @tips.present? %>
+  <% @tips.each do |f| %>
+    <div class="trend-tipped">
+      <div class="trend-title">
+        <h2>
+          <%= link_to f.title, tip_path(f.id, method: :get) %>
+        </h2>
+      </div>
+      <div class="trend-tag-category">
+        <div class="trend-tag">
+          <i class="fas fa-tags logo-btn"></i><a><% f.tags.each do |tag| %>  <%=tag.name%> <% end %></a>
+        </div>
+        <div class="trend-category">
+          <i class="fas fa-crop-alt logo-btn"></i><a>   <%= Category.data[f.category_id - 1][:name] %></a>
+        </div>
+      </div>
+      <div class="username-time">
+        <p><%= link_to f.user.nickname, "/users/#{f.user.id}", id:'tiped-title-contents-distributer' %> が <%= l f.updated_at%> に投稿</p>
+      </div>
+      <div class="like-index">
+        <% if user_signed_in? && current_user.already_liked?(f) %>
+          <i class="fas fa-heart unlike-btn"></i>
+        <% elsif user_signed_in? %>
+          <i class="far fa-heart like-btn" ></i>
+        <% else %>
+          <i class="far fa-heart like-btn" ></i>
+        <% end %>
+        <p><%= f.liked_users.count %> </p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p class="search-nil">投稿はありません</p>
+  <div  class="search-to-top">
+    <a href="/"><< トップページへ戻る</a>
+  </div>
+<% end %>
