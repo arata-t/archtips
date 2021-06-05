@@ -59,7 +59,7 @@
 }
 
   .new-tip{
-    padding: 20px 40px 18px 40px;
+    padding: 20px 40px 16px 40px;
     font-size: 22.5px;
   }
 
@@ -312,17 +312,7 @@
     height: calc(100vh - 100px);
     overflow: auto;
   }
-  .main-top {
-    height: 57px;
-    align-items: center;
-  }
-  .new-tip-title {
-    padding: 20px 10px;
-  }
-  .new-tip-title p{
-    font-size: 21px;
-    min-width: 150px;
-  }
+
   .tiped-title {
     font-size: 21px;
   }
