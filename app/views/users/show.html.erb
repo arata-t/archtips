@@ -40,4 +40,18 @@
       <%= render "tips/like_area" %>
     </div>
   </div>
+  <% if user_signed_in? && current_user.id == @user.id%>
+    <div class="edit-delete-area">
+      <div class="show-edit">
+        <div class="btn-edit">
+          <%= link_to 'ユーザー編集', edit_user_registration_path(current_user.id), class: "btn-edit-str" %>
+        </div>
+      </div>
+      <div class="show-delete">
+        <div class="btn-delete">
+          <%= link_to '　退会する　', user_path(current_user.id), method: :delete, class: "btn-delete-str", "data-confirm" => "本当に退会しますか？" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
