@@ -72,7 +72,7 @@ display: none;
 .logo-btn{
   color: gray;
   padding-right:3px ;
-  width: 18px;
+  width: 24px;
   text-align: center;
 }
 
@@ -95,4 +95,12 @@ display: none;
   strong {
     font-size: 12px;
   }
+
+  .logo-btn{
+    color: gray;
+    padding-right:3px ;
+    width: 18px;
+    text-align: center;
+  }
+
 }
