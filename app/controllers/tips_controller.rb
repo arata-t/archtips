@@ -1,11 +1,11 @@
 class TipsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search, :detail_search]
+  before_action :authenticate_user!, except: [:index, :show, :search, :detail_search, :trend]
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
   before_action :user_redirect, only: [:edit, :update, :destroy]
   before_action :search_tip, only: [:index, :search, :detail_search]
 
   def index
-    @tips = Tip.order(updated_at: :DESC)
+    @tips = Tip.includes(:user).order(updated_at: :DESC)
   end
 
   def new
@@ -62,9 +62,14 @@ class TipsController < ApplicationController
 
   def tagsearch
     return nil if params[:keyword] == ''
-
     tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: tag }
+  end
+
+  def trend
+    to = Time.now
+    from = (to - 2.month)
+    @tips = Tip.where(created_at: from...to).includes(:liked_users).sort { |a, b| b.liked_users.size <=> a.liked_users.size }
   end
 
   private

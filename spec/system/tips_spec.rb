@@ -450,3 +450,18 @@ RSpec.describe '詳細検索', type: :system do
     end
   end
 end
+
+RSpec.describe 'トレンド', type: :system do
+  before do
+    @tip = FactoryBot.create(:tip)
+    @tag = FactoryBot.create(:tag)
+  end
+
+  it 'いいねをしたらトレンドの中にいいねした投稿が表示される', js: true do
+    like(@tip)
+    find('.logo-image').click
+    find('#trend-btn').click
+    expect(page).to have_content(@tip.title)
+    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+  end
+end

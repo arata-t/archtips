@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
   const newTipBtn   = document.getElementById("new-tip-btn")
   // 質問する
   const newTrendArea = document.getElementById("new-trend")
-  const newTrendBtn  = document.getElementById("new-trend-btn")
+  const newTrendBtn  = document.getElementById("trend-btn")
   // マイページ
   const myPageArea = document.getElementById("my-page")
   const myPageBtn  = document.getElementById("my-page-btn")

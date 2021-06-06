@@ -3,7 +3,7 @@
     <i class="fas fa-pen logo-btn"> </i><%= link_to "新規投稿", new_tip_path, id:"new-tip-btn" %>
   </li>
   <li class="new-trend" id="new-trend">
-    <i class="fas fa-chart-line logo-btn"></i><%= link_to "トレンド", root_path, id:"new-trend-btn" %>
+    <i class="fas fa-chart-line logo-btn"></i><%= link_to "トレンド", trend_tips_path, id:"trend-btn" %>
   </li>
   <% if user_signed_in? %>
     <li class="my-page" id="my-page">

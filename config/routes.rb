@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'tagsearch'
       get 'detail_search'
+      get 'trend'
     end
     resources :comments, only: :create
     resources :likes, only: [:create, :destroy]

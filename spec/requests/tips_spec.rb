@@ -130,4 +130,15 @@ describe TipsController, type: :request do
       expect(response).to redirect_to new_user_session_path
     end
   end
+
+  describe 'Get#trend' do
+    it 'action#trendにアクセスすると正常にレスポンスを返す' do
+      get trend_tips_path
+      expect(response.status).to eq 200
+    end
+    it 'action#trendにアクセスするとレスポンスに投稿したタイトルが表示されている。' do
+      get trend_tips_path
+      expect(response.body).to include 'トレンド'
+    end
+  end
 end

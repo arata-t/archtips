@@ -1,0 +1,25 @@
+.trend-annotation{
+  padding-right: 20px;
+  font-size: 14px;
+  color: gray;
+}
+
+.trend-tipped{
+  margin: 20px;
+  padding: 10px;
+  border-bottom: 1.5px solid lightgrey;
+  position: relative;
+}
+
+.trend-tag-category{
+  margin-top: 10px;
+}
+
+.trend-tag,.trend-category{
+  margin-top: 5px;
+}
+
+.username-time{
+  margin-top: 20px;
+  font-size: 14px;
+}
