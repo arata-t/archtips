@@ -7,11 +7,11 @@
         </h2>
       </div>
       <div class="trend-tag-category">
-        <div class="trend-tag">
-          <i class="fas fa-tags logo-btn"></i><a><% f.tags.each do |tag| %>  <%=tag.name%> <% end %></a>
-        </div>
         <div class="trend-category">
           <i class="fas fa-crop-alt logo-btn"></i><a>   <%= Category.data[f.category_id - 1][:name] %></a>
+        </div>
+        <div class="trend-tag">
+          <i class="fas fa-tags logo-btn"></i><a><% f.tags.each do |tag| %>  <%=tag.name%> <% end %></a>
         </div>
       </div>
       <div class="username-time">
