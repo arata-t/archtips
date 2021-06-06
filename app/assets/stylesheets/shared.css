@@ -72,6 +72,8 @@ display: none;
 .logo-btn{
   color: gray;
   padding-right:3px ;
+  width: 18px;
+  text-align: center;
 }
 
 /* 半分画面表示時 */
