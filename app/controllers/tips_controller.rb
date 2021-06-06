@@ -5,7 +5,7 @@ class TipsController < ApplicationController
   before_action :search_tip, only: [:index, :search, :detail_search]
 
   def index
-    @tips = Tip.order(updated_at: :DESC)
+    @tips = Tip.includes(:user).order(updated_at: :DESC)
   end
 
   def new
