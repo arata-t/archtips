@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: :destroy
   before_action :set_user, only: [:show, :destroy]
   before_action :user_redirect, only: [:destroy]
-  
+
   def show
     @tips = User.find(params[:id]).tips.order(updated_at: :DESC)
   end
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to root_path
     else
-      render:show
+      render :show
     end
   end
 
@@ -25,5 +25,4 @@ class UsersController < ApplicationController
   def user_redirect
     redirect_to action: :index unless current_user.id == @user.id
   end
-
 end
