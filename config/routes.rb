@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  resources :blogs
+
   root to: 'tips#index'
-  resources :users, only: :show
+  resources :users, only: [:show,:destroy]
   resources :tips do
     collection do
       get 'search'

@@ -97,7 +97,7 @@ label, input, button, select, textarea {
   width: 200px;
 }
 
-textarea#user_introduction {
+.field-introduction {
   width:360px;
   height:200px;
 }
@@ -107,6 +107,37 @@ textarea#user_introduction {
   padding: 5px 12px;
   font-size: 14px;
 }
+
+/* -----------ユーザー編集--------------- */
+.registration-contents-user{
+  width: 500px;
+}
+
+.contents-box-user{
+  border-radius: 5px;
+  background-color:white;
+  margin: 20px;
+  padding: 20px;
+}
+
+.field-user-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  margin-bottom: 10px;
+  width: 250px;
+}
+
+.field-introduction-text{
+  width:420px;
+  height:200px;
+}
+
+.actions-user{
+  display: flex;
+  justify-content: center;
+}
+
 
 /* ----------半分画面表示時--------------- */
 @media (max-width: 900px) {
@@ -168,7 +199,7 @@ textarea#user_introduction {
   .contents-text-strings{
     display: none;
   }
-  textarea#user_introduction {
+  .field-introduction {
     width: 234px;
     height: 120px;
 } 

@@ -30,6 +30,14 @@ display: none;
   border-radius: 10px;
 }
 
+.wrapper-user{
+  width: 500px;
+  display: block;
+  margin: 60px auto;
+  border: 3px solid #ddd;
+  border-radius: 10px;
+}
+
 .tip-title, 
 .tip-category, 
 .tip-description,
@@ -72,7 +80,7 @@ display: none;
 .logo-btn{
   color: gray;
   padding-right:3px ;
-  width: 18px;
+  width: 24px;
   text-align: center;
 }
 
@@ -95,4 +103,12 @@ display: none;
   strong {
     font-size: 12px;
   }
+
+  .logo-btn{
+    color: gray;
+    padding-right:3px ;
+    width: 18px;
+    text-align: center;
+  }
+
 }
