@@ -2,5 +2,6 @@ class Like < ApplicationRecord
   belongs_to :user
   belongs_to :tip
 
-  validates_uniqueness_of :tip_id, scope: :user_id
+  validates :user_id, presence:true
+  validates :tip_id, uniqueness: { scope: :user_id }, presence: true
 end
