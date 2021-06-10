@@ -11,13 +11,14 @@ RSpec.describe TipTagRelation, type: :model do
     end
     it 'tag_idが同じでもtip_idが異なればあれば正常' do
       tip_tag_relation = FactoryBot.create(:tip_tag_relation)
-      expect(FactoryBot.create(:tip_tag_relation, tag_id:tip_tag_relation.tag_id )).to be_valid
+      expect(FactoryBot.create(:tip_tag_relation, tag_id: tip_tag_relation.tag_id)).to be_valid
     end
     it 'tip_idが同じでもtag_idが異なればあれば正常' do
       tip_tag_relation = FactoryBot.create(:tip_tag_relation)
-      expect(FactoryBot.create(:tip_tag_relation, tip_id:tip_tag_relation.tip_id )).to be_valid
+      expect(FactoryBot.create(:tip_tag_relation, tip_id: tip_tag_relation.tip_id)).to be_valid
     end
   end
+
   context '異常系' do
     it 'tip_idがなければ無効な状態であること' do
       @tip_tag_relation.tip_id = nil
