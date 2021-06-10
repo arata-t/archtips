@@ -24,29 +24,7 @@
       </div>
       <% if @results.length !=0 %>
         <% @results.each do |f| %>
-          <div class="tiped">
-            <div class="tiped-contents">
-              <div class="tiped-title">
-                <%= link_to f.title, tip_path(f.id, method: :get) %>
-              </div>
-              <p class="tiped-title-contents-category">カテゴリー　: <%= Category.data[f.category_id - 1][:name] %></p>
-              <p class="tiped-title-contents-tag">タグ　　　　:  <% f.tags.each do |tag| %>  <%=tag.name%> <% end %> </p>
-              <p class="tiped-title-contents-contributer">投稿者　　　:  <%= link_to f.user.nickname + " >>", "/users/#{f.user.id}", id:'tiped-title-contents-distributer' %> </p>
-              <p class="tiped-title-contents-description">説明 <br> <%= f.description%></p>
-              <p class="tiped-title-contents-time">投稿時間 :  <%= l f.updated_at%></p>
-            </div>
-            <div class="tiped-image-field">
-              <div class="main-image", id="main-image">
-                <% if f.image.present? && f.image.content_type == 'application/pdf' %>
-                  <%= link_to image_tag(f.image_url(:thumb).to_s, class: 'uped-image-main-pdf', id:'uped-image-main'), tip_path(f.id, method: :get) %>
-                <% elsif f.image.present? %>
-                    <%= link_to image_tag(f.image.url, class: 'uped-image-main', id:'uped-image-main'), tip_path(f.id, method: :get) %>
-                <% else %>
-                  <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "tiped", locals: { f: f } %>
         <% end %>
       <% else %>
         <p class="search-nil">投稿はありません</p>

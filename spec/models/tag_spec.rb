@@ -5,7 +5,7 @@ RSpec.describe Tag, type: :model do
     @tag = FactoryBot.create(:tag)
   end
 
-  context'正常系' do
+  context '正常系' do
     it 'タグが有効である' do
       expect(@tag).to be_valid
     end
@@ -14,6 +14,7 @@ RSpec.describe Tag, type: :model do
       expect(@tag).to be_valid
     end
   end
+
   context '異常系' do
     it 'タグは同じものは登録できない' do
       @tag.save!

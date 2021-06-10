@@ -1,0 +1,33 @@
+    <div class="tiped">
+      <div class="like-index">
+        <% if user_signed_in? && current_user.already_liked?(f) %>
+          <i class="fas fa-heart unlike-btn"></i>
+        <% elsif user_signed_in? %>
+          <i class="far fa-heart like-btn" ></i>
+        <% else %>
+          <i class="far fa-heart like-btn" ></i>
+        <% end %>
+        <p><%= f.liked_users.count %> </p>
+      </div>
+      <div class="tiped-contents">
+        <div class="tiped-title">
+          <%= link_to f.title, tip_path(f.id, method: :get), id:"tiped-title" %>
+        </div>
+        <p class="tiped-title-contents-category"><i class="fas fa-crop-alt logo-btn"></i> カテゴリー  : <%= Category.data[f.category_id - 1][:name] %></p>
+        <p class="tiped-title-contents-tag"> <i class="fas fa-tags logo-btn" style=display:inline;></i> タグ 　　　 : <% f.tags.each do |tag| %>  <%=tag.name%> <% end %> </p>
+        <p class="tiped-title-contents-contributer"><i class="fas fa-users logo-btn"></i> 投稿者 　　:  <%= link_to f.user.nickname + " >>", "/users/#{f.user.id}", id:'tiped-title-contents-distributer' %> </p>
+        <p class="tiped-title-contents-description"><i class="fas fa-file-alt logo-btn"></i> 説明 <br> <%= f.description%></p>
+        <p class="tiped-title-contents-time">投稿時間 :  <%= l f.updated_at%></p>
+      </div>
+      <div class="tiped-image-field">
+        <div class="main-image", id="main-image">
+          <% if f.image.present? && f.image.content_type == 'application/pdf' %>
+            <%= link_to image_tag(f.image_url(:thumb).to_s, class: 'uped-image-main-pdf', id:'uped-image-main'), tip_path(f.id, method: :get) %>
+          <% elsif f.image.present? %>
+              <%= link_to image_tag(f.image.url, class: 'uped-image-main', id:'uped-image-main'), tip_path(f.id, method: :get) %>
+          <% else %>
+            <%= link_to image_tag("noimage.jpg", class:"no-image-main"), tip_path(f.id, method: :get) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
