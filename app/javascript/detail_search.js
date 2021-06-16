@@ -6,7 +6,7 @@ window.addEventListener('load', function(){
   // 新規投稿
   const newTipArea  = document.getElementById("new-tip")
   const newTipBtn   = document.getElementById("new-tip-btn")
-  // 質問する
+  // トレンド
   const newTrendArea = document.getElementById("new-trend")
   const newTrendBtn  = document.getElementById("trend-btn")
   // マイページ
