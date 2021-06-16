@@ -62,13 +62,6 @@ display: none;
   min-width: 150px;
 }
 
-.mypage-area, 
-.trend-area{
-  width: 100%;
-  height: calc(100vh - 200px);
-  overflow: auto;
-}
-
 .unlike-btn {
   width: 25px;
   height: 30px;

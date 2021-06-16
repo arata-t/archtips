@@ -1,3 +1,9 @@
+.trend-area{
+  width: 100%;
+  height: calc(100vh - 250px);
+  overflow: auto;
+}
+
 .trend-annotation{
   padding-right: 20px;
   font-size: 14px;
