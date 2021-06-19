@@ -100,12 +100,6 @@
     height: calc(100vh - 100px);
     overflow: auto;
   }
-    .main-top{
-      background-color: rgb(230, 230, 230);
-      height: 70px;
-      display: flex;
-      justify-content: space-between;
-    }
       .new-tip-title{
         padding: 20px;
         margin-left: 10px;
