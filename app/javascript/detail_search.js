@@ -13,11 +13,11 @@ window.addEventListener('load', function(){
   const myPageArea = document.getElementById("my-page")
   const myPageBtn  = document.getElementById("my-page-btn")
   
-  // 詳細検索の時はサイドバーの検索をON、バックグラウンドグレー
+  // 詳細検索の時はサイドバーの検索をON、バックグラウンド
   const path = location.pathname ;
   if (path == "/tips/detail_search"){
     visibleTrue.getAttribute("style")
-    visibleTrue.removeAttribute("style", "display:none;")
+    visibleTrue.setAttribute("style", "display:block;")
     searchArea.setAttribute("style", "background-color:rgb(230, 230, 230);")
   }
 
@@ -32,7 +32,7 @@ window.addEventListener('load', function(){
   })
   searchBtn.addEventListener('click', function(){
     if (visibleTrue.getAttribute("style") == "display:block;"){
-      visibleTrue.removeAttribute("style", "display:block;")
+      visibleTrue.setAttribute("style", "display:none;")
       searchArea.removeAttribute("style", "background-color:rgb(230, 230, 230);")
     }else{
       visibleTrue.setAttribute("style", "display:block;")
