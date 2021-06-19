@@ -13,6 +13,14 @@ window.addEventListener('load', function(){
   const myPageArea = document.getElementById("my-page")
   const myPageBtn  = document.getElementById("my-page-btn")
   
+  // 詳細検索の時はサイドバーの検索をON、バックグラウンドグレー
+  const path = location.pathname ;
+  if (path == "/tips/detail_search"){
+    visibleTrue.getAttribute("style")
+    visibleTrue.removeAttribute("style", "display:none;")
+    searchArea.setAttribute("style", "background-color:rgb(230, 230, 230);")
+  }
+
   // 詳細検索
   searchBtn.addEventListener('mouseover', function(){
     searchArea.setAttribute("style", "background-color:rgb(230, 230, 230);")
