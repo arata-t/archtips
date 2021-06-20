@@ -19,7 +19,7 @@ RSpec.describe 'Users', type: :system do
 
     it 'いいねされたボタンを押すとアイコンといいね数が元に戻る', js: true do
       like(@tip)
-      find('.fas').click
+      find('.fa-heart').click
       expect(page).to have_css ".like-show", text: '0'
     end
 
@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :system do
       # 詳細2
       click_on @tip.title, match: :first
       # いいね2
-      find('.fas').click
+      find('.fa-heart').click
       expect(page).to have_css ".like-show", text: '0'
       find('.logo-image').click
       expect(page).to have_css "div.like-index", text: '0'
@@ -54,7 +54,7 @@ RSpec.describe 'Users', type: :system do
       # 詳細2
       click_on @tip.title, match: :first
       # いいね2
-      find('.fas').click
+      find('.fa-heart').click
       expect(page).to have_css ".like-show", text: '0'
       find('.logo-image').click
       expect(page).to have_css "div.like-index", text: '0'

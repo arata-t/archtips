@@ -4,6 +4,44 @@
   text-decoration: none;
   color:rgb(83, 83, 83);
 }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.btn,
+a.btn,
+button.btn{
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+  padding: 5px 12px;
+  font-size: 14px;
+}
+
+.btn:hover,
+a.btn:hover,
+button.btn:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+  cursor: pointer;
+}
+
+label, input, button, select, textarea {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
 .error_messages{
   margin-bottom: 20px;
   }
@@ -50,7 +88,10 @@ display: none;
 }
 
 .main-top {
-  height: 57px;
+  background-color: rgb(230, 230, 230);
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .new-tip-title {
@@ -60,13 +101,6 @@ display: none;
 .new-tip-title p{
   font-size: 21px;
   min-width: 150px;
-}
-
-.mypage-area, 
-.trend-area{
-  width: 100%;
-  height: calc(100vh - 200px);
-  overflow: auto;
 }
 
 .unlike-btn {
@@ -84,7 +118,7 @@ display: none;
   text-align: center;
 }
 
-/* 半分画面表示時 */
+/* ーーーーーーーーーーーーー半分画面表示時ーーーーーーーーーーーーーー */
 @media (max-width: 900px) {
   .wrapper{
     width: 560px;
@@ -111,4 +145,7 @@ display: none;
     text-align: center;
   }
 
+  .main-top {
+  height: 57px;
+  }
 }

@@ -106,15 +106,27 @@ p.tip-title-show {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+
 }
 
 .comment-button{
-  border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 14px;
   padding: 4px 0;
   margin: 0 auto;
   background-color: #efefef;
+  text-align: center;
+  border: 1px solid #ccc;
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+.comment-button:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+  cursor: pointer;
 }
 
 .comments-area{
@@ -163,6 +175,17 @@ border-top: 1.5px solid #ddd;;
   text-align: center;
   background-color: #efefef;
   margin: 30px auto;
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+.btn-edit-str:hover, 
+.btn-delete-str:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+  cursor: pointer;
 }
 
 /* ----------半分画面表示時--------------- */

@@ -89,24 +89,12 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 
-label, input, button, select, textarea {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 20px;
-  margin-bottom: 10px;
-  width: 200px;
-}
-
 .field-introduction {
   width:360px;
   height:200px;
 }
 
-.btn {
-  cursor: pointer;
-  padding: 5px 12px;
-  font-size: 14px;
-}
+
 
 /* -----------ユーザー編集--------------- */
 .registration-contents-user{
