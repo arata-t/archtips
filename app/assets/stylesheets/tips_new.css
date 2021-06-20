@@ -61,6 +61,20 @@
   margin: 0 auto 20px 20px;
   padding: 5px 0;
   font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+.input-submit:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+  cursor: pointer;
 }
 
 .child{
