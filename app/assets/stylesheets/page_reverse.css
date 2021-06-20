@@ -1,0 +1,30 @@
+#page-reverse {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 10px;
+  line-height: 1;
+  z-index: 99;
+}
+#page-reverse a {
+  background: gray;
+  text-decoration: none;
+  color: #fff;
+  width: 60px;
+  padding: 28px 5px;
+  text-align: center;
+  display: block;
+  border-radius: 90px;
+  opacity: 0.9;
+  transition: all .3s ease;
+  font-size: 14px;
+}
+#page-reverse a:hover {
+  text-decoration: none;
+  opacity: .5;
+}
+
+.logo-reverse{
+  color:white;
+  width: 16px;
+}
