@@ -61,11 +61,14 @@
   .new-tip{
     padding: 20px 40px 16px 40px;
     font-size: 22.5px;
+    display: block;
+    
   }
 
   .new-trend,.my-page,.search{
     padding: 12px 40px;
     font-size: 22.5px;
+    display: block;
   }
 
   .detail-search-area{
