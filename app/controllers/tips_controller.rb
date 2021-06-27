@@ -25,7 +25,7 @@ class TipsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @tip.comments.includes(:user).sort_by { |columun| columun.updated_at }.reverse
+    @comments = @tip.comments.includes(:user).order(updated_at: :DESC)
     @like = Like.new
   end
 
