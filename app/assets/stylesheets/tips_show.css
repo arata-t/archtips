@@ -196,12 +196,12 @@ border-top: 1.5px solid #ddd;;
     justify-content: center;
     width: 500px;
     margin: 0 auto 40px auto;
-    }
+  }
 
-    .like-show{
-      font-size: 18px;
-      right: 0px;
-    }
+  .like-show{
+    font-size: 18px;
+    right: 0px;
+  }
 
   p.tip-title-show {
     text-align: center;

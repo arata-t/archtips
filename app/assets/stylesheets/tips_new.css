@@ -37,7 +37,6 @@
   width: 300px;
 }
 
-
 .tip-image-sub{
   margin: 20px;
 }
@@ -101,6 +100,7 @@
     margin-bottom: 0;
     font-size: 21px;
   }
+
   .tip-title,
   .tip-category,
   .tip-tag,
@@ -109,6 +109,7 @@
     padding: 10px 20px; 
     margin-bottom: 0;
   }
+
   .tip-title p,
   .tip-category p,
   .tip-tag p,
@@ -116,14 +117,17 @@
   .tip-description p  {
     font-size: 16px;
   }
+
   .text-form {
     height: 240px;
   }
+
   .input-submit {
     margin: 0 auto 30px 190px;
     padding: 5px 0;
     font-size: 15px;
   }
+
   .error-message{
     font-size:14px;
     padding-top: 10px;
