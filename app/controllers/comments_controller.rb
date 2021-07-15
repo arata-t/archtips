@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.create(comment_params)
-    redirect_to "/tips/#{comment.tip.id}"
+    redirect_to tip_path(comment.tip.id)
   end
 
   private

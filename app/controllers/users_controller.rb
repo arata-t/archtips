@@ -23,6 +23,6 @@ class UsersController < ApplicationController
   end
 
   def user_redirect
-    redirect_to action: :index unless current_user.id == @user.id
+    redirect_to root_path unless current_user.id == @user.id
   end
 end

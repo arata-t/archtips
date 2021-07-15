@@ -152,47 +152,57 @@ legend {
   /* middle */
   .left-contents{
     display: flex;
-    }
-    .contents-text{
-      padding: 20px;
-      padding-right: 10px;
-    }
-    .contents-text h2{
-      font-size: 21px;
-      padding-top: 8px;
-    }
-    .contents-text p{
-      font-size: 16px;
-      padding-left: 5px;
-      padding-bottom: 18px;
-    }
-    .contents-text a{
-      font-size: 21px;
-      margin-bottom: 16px;
-    }
-    .to-sign-up a{
-      font-size: 21px;
-    }
-    /* registration-contents */
+  }
+
+  .contents-text{
+    padding: 20px;
+    padding-right: 10px;
+  }
+
+  .contents-text h2{
+    font-size: 21px;
+    padding-top: 8px;
+  }
+
+  .contents-text p{
+    font-size: 16px;
+    padding-left: 5px;
+    padding-bottom: 18px;
+  }
+
+  .contents-text a{
+    font-size: 21px;
+    margin-bottom: 16px;
+  }
+
+  .to-sign-up a{
+    font-size: 21px;
+  }
+
+  /* registration-contents */
   .registration-contents{
     width: 320px;
   }
+
   .contents-text-registration {
     padding: 20px 0 20px 20px;
   }
+
   .contents-text-registration p{
     font-size: 16px;
     padding-left: 5px;
   }
+
   .contents-text-strings{
     display: none;
   }
+
   .field-introduction {
     width: 234px;
     height: 120px;
-} 
+  } 
 
-/* session-contents */
+  /* session-contents */
   .contents-box{
     padding-top: 5px ;
   }

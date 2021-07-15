@@ -25,7 +25,7 @@ class TipsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @tip.comments.includes(:user).sort_by { |columun| columun.updated_at }.reverse
+    @comments = @tip.comments.includes(:user).order(updated_at: :DESC)
     @like = Like.new
   end
 
@@ -84,7 +84,7 @@ class TipsController < ApplicationController
   end
 
   def user_redirect
-    redirect_to action: :index unless current_user.id == @tip.user.id
+    redirect_to root_path unless current_user.id == @tip.user.id
   end
 
   def search_tip
