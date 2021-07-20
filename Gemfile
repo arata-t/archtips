@@ -79,3 +79,6 @@ gem 'rmagick'
 gem 'ransack'
 gem "carrierwave"
 gem 'dotenv-rails'
+gem 'sidekiq'
+gem 'redis-namespace'
+gem 'sinatra', require: false

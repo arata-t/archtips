@@ -16,7 +16,7 @@ class TipsController < ApplicationController
     @tip = TipTag.new(tip_params)
     tag_list = params[:tip][:name].split(',')
     if @tip.valid?
-      @tip.save(tag_list)
+      TestWorker.perform_async(tip_params.to_h, tag_list)
       redirect_to root_path
     else
       render :new
