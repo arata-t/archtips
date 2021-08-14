@@ -34,16 +34,18 @@ ActiveRecord::Schema.define(version: 2021_05_26_220618) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tip_id"
-    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "tip_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tip_id"], name: "index_comments_on_tip_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "tip_id"
-    t.bigint "user_id"
+    t.bigint "tip_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tip_id"], name: "index_likes_on_tip_id"
@@ -57,8 +59,8 @@ ActiveRecord::Schema.define(version: 2021_05_26_220618) do
   end
 
   create_table "tip_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "tip_id"
-    t.bigint "tag_id"
+    t.bigint "tip_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_tip_tag_relations_on_tag_id"
@@ -93,6 +95,10 @@ ActiveRecord::Schema.define(version: 2021_05_26_220618) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "tips"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "tips"
+  add_foreign_key "likes", "users"
   add_foreign_key "tip_tag_relations", "tags"
   add_foreign_key "tip_tag_relations", "tips"
   add_foreign_key "tips", "users"
