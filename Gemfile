@@ -77,5 +77,5 @@ gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 gem 'rmagick'
 gem 'ransack'
-gem "carrierwave"
+gem 'carrierwave', '~> 0.5'
 gem 'dotenv-rails'
