@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe '投稿する', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   context '投稿に失敗した時' do
     it '送る値が空の為、メッセージの送信に失敗すること' do
@@ -99,8 +99,8 @@ RSpec.describe '投稿する', type: :system do
 end
 
 RSpec.describe '詳細', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   context '詳細ページに移動できる' do
     it '画像を含めた投稿が成功したら、投稿したタイトル。カテゴリー・説明・画像が詳細ページに表示されること' do
@@ -135,8 +135,8 @@ RSpec.describe '詳細', type: :system do
 end
 
 RSpec.describe '編集する', type: :system do
-  let!(:tip) {FactoryBot.create(:tip)}
-  let!(:tag) {FactoryBot.create(:tag)}
+  let!(:tip) {create(:tip)}
+  let!(:tag) {create(:tag)}
 
   context '編集に成功した時' do
     it '画像を含めた投稿が成功したら投稿が編集できる' do
@@ -150,7 +150,7 @@ RSpec.describe '編集する', type: :system do
       click_on '編集'
       tip[:id] = tip.id + 1
       expect(current_path).to eq edit_tip_path(tip)
-      other_tip = FactoryBot.build(:tip)
+      other_tip = build(:tip)
       fill_in 'tip_title', with: 'test_tip_title'
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
       after_image_path = Rails.root.join('public/images/after_image.png')
@@ -169,7 +169,7 @@ RSpec.describe '編集する', type: :system do
 
   context '編集に失敗した時' do
     it '自分以外の投稿は編集できない' do
-      tip2 = FactoryBot.create(:tip)
+      tip2 = create(:tip)
       # ログイン
       sign_in(tip.user)
       # 詳細
@@ -183,7 +183,7 @@ RSpec.describe '編集する', type: :system do
       expect(page).not_to have_content('編集')
     end
     it '自分以外の投稿編集ページに直接アクセスするとトップページにリダイレクトされる' do
-      tip2 = FactoryBot.create(:tip)
+      tip2 = create(:tip)
       # ログイン
       sign_in(tip.user)
       # 詳細
@@ -200,15 +200,15 @@ RSpec.describe '編集する', type: :system do
 end
 
 RSpec.describe '削除する', type: :system do
-  let!(:tip) {FactoryBot.create(:tip)}
-  let!(:tag) {FactoryBot.create(:tag)}
+  let!(:tip) {create(:tip)}
+  let!(:tag) {create(:tag)}
 
   context '削除に成功する' do
     it '投稿をを正しく削除できる' do
       # ログイン
       sign_in(tip.user)
       # 投稿
-      other_tip = FactoryBot.build(:tip)
+      other_tip = build(:tip)
       post(other_tip)
       # 詳細
       click_on other_tip.title
@@ -221,7 +221,7 @@ RSpec.describe '削除する', type: :system do
 
   context '削除に失敗する' do
     it '自分以外の投稿は削除できない' do
-      tip2 = FactoryBot.create(:tip)
+      tip2 = create(:tip)
       # ログイン
       sign_in(tip.user)
       # 詳細
@@ -238,15 +238,15 @@ RSpec.describe '削除する', type: :system do
 end
 
 RSpec.describe '検索する', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   context '検索に成功する' do
     it '正しく検索を行うと投稿した内容がトップページに検索結果が表示される' do
       # ログイン
       sign_in(tip.user)
       # 投稿
-      other_tip = FactoryBot.build(:tip)
+      other_tip = build(:tip)
       post(other_tip)
     end
   end
@@ -256,7 +256,7 @@ RSpec.describe '検索する', type: :system do
       # ログイン
       sign_in(tip.user)
       # 投稿
-      other_tip = FactoryBot.build(:tip)
+      other_tip = build(:tip)
       post(other_tip)
       # 検索
       fill_in 'keyword', with: other_tip.description + 'abc'
@@ -267,8 +267,8 @@ RSpec.describe '検索する', type: :system do
 end
 
 RSpec.describe '詳細検索', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   context '詳細検索に成功する' do
     it 'タイトルを入力すると入力した内容を含むタイトルが表示される' do
@@ -440,8 +440,8 @@ RSpec.describe '詳細検索', type: :system do
 end
 
 RSpec.describe 'トレンド', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   it 'いいねをしたらトレンドの中にいいねした投稿が表示される', js: true do
     like(tip)
