@@ -1,28 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @comment = FactoryBot.create(:comment)
-  end
+  let(:tip)      {FactoryBot.create(:tip)}
+  let(:comment) {FactoryBot.create(:comment)}
 
   it 'コメントが投稿できること' do
     # ログイン
-    sign_in(@tip.user)
+    sign_in(tip.user)
     # 詳細
-    click_on @tip.title
+    click_on tip.title
     # コメント
-    comment(@comment)
+    comment
   end
   it 'コメントが投稿できたらマイページのコメント数が変更していること' do
     # ログイン
-    sign_in(@tip.user)
+    sign_in(tip.user)
     # 詳細
-    click_on @tip.title
+    click_on tip.title
     # コメント
-    comment(@comment)
+    comment
     # マイページ
-    visit user_path(@tip.user.id)
-    expect(page).to have_content(@tip.user.comments.length)
+    visit user_path(tip.user.id)
+    expect(page).to have_content(tip.user.comments.length)
   end
 end
