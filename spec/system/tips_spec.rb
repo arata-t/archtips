@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe '投稿する', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let(:tip) {FactoryBot.create(:tip)}
+  let(:tag) {FactoryBot.create(:tag)}
 
   context '投稿に失敗した時' do
     it '送る値が空の為、メッセージの送信に失敗すること' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
       expect(page).to have_content('新規投稿')
       click_on '新規投稿'
@@ -20,117 +18,115 @@ RSpec.describe '投稿する', type: :system do
   context '投稿に成功した時' do
     it '投稿に成功し、トップページに投稿したタイトル、カテゴリー、説明が表示されていること' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
       click_on '新規投稿'
-      fill_in 'tip_title', with: @tip.title
-      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
-      fill_in 'tip_description', with: @tip.description
+      fill_in 'tip_title', with: tip.title
+      select Category.data[tip.category_id - 1][:name], from: 'tip_category_id'
+      fill_in 'tip_description', with: tip.description
       expect  do
         find('input[type="submit"]').click
       end.to change(Tip, :count).by(1)
       expect(current_path).to eq(root_path)
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.description)
     end
     it ' 画像を含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
       click_on '新規投稿'
-      fill_in 'tip_title', with: @tip.title
-      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      fill_in 'tip_title', with: tip.title
+      select Category.data[tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/test_image.png')
       attach_file 'tip-image-main-img', image_path, make_visible: true
-      fill_in 'tip_description', with: @tip.description
+      fill_in 'tip_description', with: tip.description
       expect  do
         find('input[type="submit"]').click
       end.to change(Tip, :count).by(1)
       expect(current_path).to eq root_path
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.description)
       expect(page).to have_selector('img')
     end
     it ' pdfを含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
       click_on '新規投稿'
-      fill_in 'tip_title', with: @tip.title
-      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      fill_in 'tip_title', with: tip.title
+      select Category.data[tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/pdf-test.pdf')
       attach_file 'tip-image-main-img', image_path, make_visible: true
-      fill_in 'tip_description', with: @tip.description
+      fill_in 'tip_description', with: tip.description
       expect  do
         find('input[type="submit"]').click
       end.to change(Tip, :count).by(1)
       expect(current_path).to eq root_path
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.description)
       expect(page).to have_selector('img')
     end
     it ' 画像とタグを含めた投稿が成功し、トップページに投稿した画像が表示されていること ' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
     end
     it '複数ページあるpdfを含めた投稿が成功し、トップページに投稿した画像が表示されていること' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
       click_on '新規投稿'
-      fill_in 'tip_title', with: @tip.title
-      select Category.data[@tip.category_id - 1][:name], from: 'tip_category_id'
+      fill_in 'tip_title', with: tip.title
+      select Category.data[tip.category_id - 1][:name], from: 'tip_category_id'
       image_path = Rails.root.join('public/images/multi-pdf-test.pdf')
       attach_file 'tip-image-main-img', image_path, make_visible: true
-      fill_in 'tip_description', with: @tip.description
+      fill_in 'tip_description', with: tip.description
       expect  do
         find('input[type="submit"]').click
       end.to change(Tip, :count).by(1)
       expect(current_path).to eq root_path
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.description)
       expect(page).to have_selector('img')
     end
   end
 end
 
 RSpec.describe '詳細', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let(:tip) {FactoryBot.create(:tip)}
+  let(:tag) {FactoryBot.create(:tag)}
 
   context '詳細ページに移動できる' do
     it '画像を含めた投稿が成功したら、投稿したタイトル。カテゴリー・説明・画像が詳細ページに表示されること' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細
-      click_on @tip.title, match: :first
+      click_on tip.title, match: :first
 
-      show(@tip)
+      show(tip)
     end
     it 'pdfは投稿に成功すると、詳細ページはPNGに変換され、pdfへのリンクが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post_pdf(@tip)
+      post_pdf(tip)
       # 詳細
-      click_on @tip.title, match: :first
+      click_on tip.title, match: :first
       expect(page).to have_content 'リンクへ移動 >>'
     end
     it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
-      visit tip_path(@tip)
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.description)
+      visit tip_path(tip)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.description)
       expect(page).to have_selector('img')
       expect(page).not_to have_selector 'form'
       expect(page).to have_content 'コメントの投稿には新規登録/ログインが必要です'
@@ -139,23 +135,21 @@ RSpec.describe '詳細', type: :system do
 end
 
 RSpec.describe '編集する', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let!(:tip) {FactoryBot.create(:tip)}
+  let!(:tag) {FactoryBot.create(:tag)}
 
   context '編集に成功した時' do
     it '画像を含めた投稿が成功したら投稿が編集できる' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 投稿
-      post(@tip)
+      post(tip)
       # 詳細
-      click_on @tip.title, match: :first
+      click_on tip.title, match: :first
       # 編集
       click_on '編集'
-      @tip[:id] = @tip.id + 1
-      expect(current_path).to eq edit_tip_path(@tip)
+      tip[:id] = tip.id + 1
+      expect(current_path).to eq edit_tip_path(tip)
       other_tip = FactoryBot.build(:tip)
       fill_in 'tip_title', with: 'test_tip_title'
       select Category.data[other_tip.category_id - 1][:name], from: 'tip_category_id'
@@ -175,46 +169,44 @@ RSpec.describe '編集する', type: :system do
 
   context '編集に失敗した時' do
     it '自分以外の投稿は編集できない' do
-      @tip2 = FactoryBot.create(:tip)
+      tip2 = FactoryBot.create(:tip)
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 詳細
-      click_on @tip2.title
+      click_on tip2.title
       expect(page).not_to have_content('編集')
     end
     it 'ログインしていないと編集できない' do
       visit root_path
       # 詳細
-      click_on @tip.title
+      click_on tip.title
       expect(page).not_to have_content('編集')
     end
     it '自分以外の投稿編集ページに直接アクセスするとトップページにリダイレクトされる' do
-      @tip2 = FactoryBot.create(:tip)
+      tip2 = FactoryBot.create(:tip)
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 詳細
-      visit edit_tip_path(@tip2)
+      visit edit_tip_path(tip2)
       expect(current_path).to eq root_path
     end
     it 'ログインせずに投稿編集ページに直接アクセスするとトップページにリダイレクトされる' do
       visit root_path
       # 詳細
-      visit edit_tip_path(@tip)
+      visit edit_tip_path(tip)
       expect(current_path).to eq new_user_session_path
     end
   end
 end
 
 RSpec.describe '削除する', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let!(:tip) {FactoryBot.create(:tip)}
+  let!(:tag) {FactoryBot.create(:tag)}
 
   context '削除に成功する' do
     it '投稿をを正しく削除できる' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
@@ -229,32 +221,30 @@ RSpec.describe '削除する', type: :system do
 
   context '削除に失敗する' do
     it '自分以外の投稿は削除できない' do
-      @tip2 = FactoryBot.create(:tip)
+      tip2 = FactoryBot.create(:tip)
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 詳細
-      click_on @tip2.title
+      click_on tip2.title
       expect(page).not_to have_content('削除')
     end
     it 'ログインしていないと編集できない' do
       visit root_path
       # 詳細
-      click_on @tip.title
+      click_on tip.title
       expect(page).not_to have_content('削除')
     end
   end
 end
 
 RSpec.describe '検索する', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let(:tip) {FactoryBot.create(:tip)}
+  let(:tag) {FactoryBot.create(:tag)}
 
   context '検索に成功する' do
     it '正しく検索を行うと投稿した内容がトップページに検索結果が表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
@@ -264,7 +254,7 @@ RSpec.describe '検索する', type: :system do
   context '検索に失敗する' do
     it '検索結果がない場合は投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 投稿
       other_tip = FactoryBot.build(:tip)
       post(other_tip)
@@ -277,174 +267,172 @@ RSpec.describe '検索する', type: :system do
 end
 
 RSpec.describe '詳細検索', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let(:tip) {FactoryBot.create(:tip)}
+  let(:tag) {FactoryBot.create(:tag)}
 
   context '詳細検索に成功する' do
     it 'タイトルを入力すると入力した内容を含むタイトルが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_title_cont', with: @tip.title
+      fill_in 'q_title_cont', with: tip.title
       click_on 'search-submit'
-      expect(page).to have_content(@tip.title)
+      expect(page).to have_content(tip.title)
     end
 
     it 'タグを入力すると入力した内容を含むタグが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
+      fill_in 'q_tip_tag_relations_tag_name_cont', with: tag.name
       click_on 'search-submit'
-      expect(page).to have_content(@tag.name)
+      expect(page).to have_content(tag.name)
     end
 
     it 'カテゴリーを入力すると入力した内容を含むタグが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
+      select Category.data[tip.category_id - 1][:name], from: 'q_category_id_eq'
       click_on 'search-submit'
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
     end
 
     it 'ユーザーを入力すると入力した内容を含むユーザーが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_user_nickname_cont', with: @tip.user.nickname
+      fill_in 'q_user_nickname_cont', with: tip.user.nickname
       click_on 'search-submit'
-      expect(page).to have_content(@tip.user.nickname)
+      expect(page).to have_content(tip.user.nickname)
     end
 
     it '説明を入力すると入力した内容を含むキーワードが表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_description_cont', with: @tip.description
+      fill_in 'q_description_cont', with: tip.description
       click_on 'search-submit'
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.description)
     end
 
     it '複数の項目を入力すると入力した内容を含む投稿が表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_title_cont', with: @tip.title
-      fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
-      select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
-      fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-      fill_in 'q_description_cont', with: @tip.description
+      fill_in 'q_title_cont', with: tip.title
+      fill_in 'q_tip_tag_relations_tag_name_cont', with: tag.name
+      select Category.data[tip.category_id - 1][:name], from: 'q_category_id_eq'
+      fill_in 'q_user_nickname_cont', with: tip.user.nickname
+      fill_in 'q_description_cont', with: tip.description
       click_on 'search-submit'
-      expect(page).to have_content(@tip.title)
-      expect(page).to have_content(@tag.name)
-      expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-      expect(page).to have_content(@tip.user.nickname)
-      expect(page).to have_content(@tip.description)
+      expect(page).to have_content(tip.title)
+      expect(page).to have_content(tag.name)
+      expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+      expect(page).to have_content(tip.user.nickname)
+      expect(page).to have_content(tip.description)
     end
   end
 
   it ' pdfを含めた投稿が成功し、検索が可能なこと ' do
     # ログイン
-    sign_in(@tip.user)
+    sign_in(tip.user)
     # 新規投稿
-    post_pdf(@tip)
+    post_pdf(tip)
     # 詳細検索
     find(:xpath, "//*[text()='詳細検索']").click
-    fill_in 'q_title_cont', with: @tip.title
-    fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
-    select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
-    fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-    fill_in 'q_description_cont', with: @tip.description
+    fill_in 'q_title_cont', with: tip.title
+    fill_in 'q_tip_tag_relations_tag_name_cont', with: tag.name
+    select Category.data[tip.category_id - 1][:name], from: 'q_category_id_eq'
+    fill_in 'q_user_nickname_cont', with: tip.user.nickname
+    fill_in 'q_description_cont', with: tip.description
     click_on 'search-submit'
-    expect(page).to have_content(@tip.title)
-    expect(page).to have_content(@tag.name)
-    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
-    expect(page).to have_content(@tip.user.nickname)
-    expect(page).to have_content(@tip.description)
+    expect(page).to have_content(tip.title)
+    expect(page).to have_content(tag.name)
+    expect(page).to have_content(Category.data[tip.category_id - 1][:name])
+    expect(page).to have_content(tip.user.nickname)
+    expect(page).to have_content(tip.description)
   end
 
   context '詳細検索に失敗する' do
     it 'タイトルに入力した内容がヒットしなけば、投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_title_cont', with: @tip.title + 'abc'
+      fill_in 'q_title_cont', with: tip.title + 'abc'
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
     it 'タグに入力した内容がヒットしなけば、投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name + 'abc'
+      fill_in 'q_tip_tag_relations_tag_name_cont', with: tag.name + 'abc'
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
     it 'ユーザーに入力した内容がヒットしなけば、投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_user_nickname_cont', with: @tip.user.nickname + 'abc'
+      fill_in 'q_user_nickname_cont', with: tip.user.nickname + 'abc'
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
     it '説明に入力した内容がヒットしなけば、投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_description_cont', with: @tip.description + 'abc'
+      fill_in 'q_description_cont', with: tip.description + 'abc'
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
 
     it '一つでもヒットしない項目があれば、投稿はありませんと表示される' do
       # ログイン
-      sign_in(@tip.user)
+      sign_in(tip.user)
       # 新規投稿
-      post(@tip)
+      post(tip)
       # 詳細検索
       find(:xpath, "//*[text()='詳細検索']").click
-      fill_in 'q_title_cont', with: @tip.title + 'abc'
-      fill_in 'q_tip_tag_relations_tag_name_cont', with: @tag.name
-      select Category.data[@tip.category_id - 1][:name], from: 'q_category_id_eq'
-      fill_in 'q_user_nickname_cont', with: @tip.user.nickname
-      expect(page).to have_content(@tip.description)
+      fill_in 'q_title_cont', with: tip.title + 'abc'
+      fill_in 'q_tip_tag_relations_tag_name_cont', with: tag.name
+      select Category.data[tip.category_id - 1][:name], from: 'q_category_id_eq'
+      fill_in 'q_user_nickname_cont', with: tip.user.nickname
+      expect(page).to have_content(tip.description)
       click_on 'search-submit'
       expect(page).to have_content('投稿はありません')
     end
@@ -452,16 +440,14 @@ RSpec.describe '詳細検索', type: :system do
 end
 
 RSpec.describe 'トレンド', type: :system do
-  before do
-    @tip = FactoryBot.create(:tip)
-    @tag = FactoryBot.create(:tag)
-  end
+  let(:tip) {FactoryBot.create(:tip)}
+  let(:tag) {FactoryBot.create(:tag)}
 
   it 'いいねをしたらトレンドの中にいいねした投稿が表示される', js: true do
-    like(@tip)
+    like(tip)
     find('.logo-image').click
     find('#trend-btn').click
-    expect(page).to have_content(@tip.title)
-    expect(page).to have_content(Category.data[@tip.category_id - 1][:name])
+    expect(page).to have_content(tip.title)
+    expect(page).to have_content(Category.data[tip.category_id - 1][:name])
   end
 end
