@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system do
-  let(:tip)      {FactoryBot.create(:tip)}
-  let(:comment) {FactoryBot.create(:comment)}
+  let(:tip)      {create(:tip)}
+  let(:comment)  {create(:comment)}
 
   it 'コメントが投稿できること' do
     # ログイン

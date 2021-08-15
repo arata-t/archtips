@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  let!(:tip) {FactoryBot.create(:tip)}
-  let!(:tag) {FactoryBot.create(:tag)}
+  let!(:tip) {create(:tip)}
+  let!(:tag) {create(:tag)}
 
   context '新規登録をする' do
     it '新規登録を成功させること' do
-      other_user = FactoryBot.build(:user)
+      other_user = build(:user)
       visit new_user_registration_path
       fill_in 'user_nickname', with: other_user.nickname
       fill_in 'user_email', with: other_user.email

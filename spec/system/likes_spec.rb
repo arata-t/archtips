@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Likes', type: :system do
-  let(:tip) {FactoryBot.create(:tip)}
-  let(:tag) {FactoryBot.create(:tag)}
+  let(:tip) {create(:tip)}
+  let(:tag) {create(:tag)}
 
   context 'いいいねができる' do
     it 'showページからいいいねを押すといいねが切り替わり数が１増えること', js: true do
