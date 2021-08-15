@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Tip, type: :model do
-  let(:tip){FactoryBot.create(:tip)}
+  let(:tip){create(:tip)}
 
   describe '投稿する' do
     context '投稿できる' do

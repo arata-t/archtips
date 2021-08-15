@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
-  let(:user){FactoryBot.create(:user)}
+  let(:user){create(:user)}
 
   describe 'ユーザーの新規登録' do
     context '新規登録がうまくいく時' do
@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
       end
       it '- メールアドレスが一意性でないと登録できない' do
         user.save!
-        another_user = FactoryBot.build(:user)
+        another_user = build(:user)
         another_user.email = user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include 'Email has already been taken'

@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe TipTagRelation, type: :model do
-  let(:tip_tag_relation){FactoryBot.create(:tip_tag_relation)}
+  let(:tip_tag_relation){create(:tip_tag_relation)}
 
   context '正常系' do
     it 'tip_idとtag_idがあれば正常' do
       expect(tip_tag_relation).to be_valid
     end
     it 'tag_idが同じでもtip_idが異なればあれば正常' do
-      tip_tag_relation = FactoryBot.create(:tip_tag_relation)
-      expect(FactoryBot.create(:tip_tag_relation, tag_id: tip_tag_relation.tag_id)).to be_valid
+      tip_tag_relation = create(:tip_tag_relation)
+      expect(create(:tip_tag_relation, tag_id: tip_tag_relation.tag_id)).to be_valid
     end
     it 'tip_idが同じでもtag_idが異なればあれば正常' do
-      tip_tag_relation = FactoryBot.create(:tip_tag_relation)
-      expect(FactoryBot.create(:tip_tag_relation, tip_id: tip_tag_relation.tip_id)).to be_valid
+      tip_tag_relation = create(:tip_tag_relation)
+      expect(create(:tip_tag_relation, tip_id: tip_tag_relation.tip_id)).to be_valid
     end
   end
 

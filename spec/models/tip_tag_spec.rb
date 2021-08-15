@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe TipTag, type: :model do
-  let(:tip){FactoryBot.create(:tip)}
-  let(:tag){FactoryBot.create(:tag)}
+  let(:tip){create(:tip)}
+  let(:tag){create(:tag)}
 
   describe '投稿する' do
     context '投稿できる' do

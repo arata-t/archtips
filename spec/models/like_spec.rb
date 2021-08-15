@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  let(:like){FactoryBot.create(:like)}
+  let(:like){create(:like)}
 
   context 'いいねできる' do
     it 'user_idとtip_idがあればいいねができる' do
       expect(like).to be_valid
     end
     it 'tip_idが同じでもuser_idが違えばいいねできる' do
-      like = FactoryBot.create(:like)
-      expect(FactoryBot.create(:like, tip_id: like.tip_id)).to be_valid
+      like = create(:like)
+      expect(create(:like, tip_id: like.tip_id)).to be_valid
     end
     it 'user_idが同じでもtip_idが違えばいいねできる' do
-      like = FactoryBot.create(:like)
-      expect(FactoryBot.create(:like, user_id: like.user_id)).to be_valid
+      like = create(:like)
+      expect(create(:like, user_id: like.user_id)).to be_valid
     end
   end
 
