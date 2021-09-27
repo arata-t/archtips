@@ -29,11 +29,14 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        
+    - name: Budle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
     - name:  SetupDB
       env:
         RAILS_ENV: test
       run: |
         sudo /etc/init.d/mysql start
-        rails db:create
-        rails db:schema:load
+        bin/rails db:create
+        bin/rails db:schema:load
