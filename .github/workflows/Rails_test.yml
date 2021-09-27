@@ -29,8 +29,11 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         
     - name: SetUp Database
-        sudo /etc/init.d/mysql start 
-        bundle exec rails  db:create
-        bundle exec rails  db:schema:load
+        env:
+          RAILS_ENV: test
+        run: |
+          sudo /etc/init.d/mysql start
+          bundle exec rails  db:create
+          bundle exec rails  db:schema:load
     - name: Run tests
       run: bin/rspec
