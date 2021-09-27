@@ -27,13 +27,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        
-    - name: SetUp Database
-        env:
-          RAILS_ENV: test
-        run: |
-          sudo /etc/init.d/mysql start
-          bundle exec rails  db:create
-          bundle exec rails  db:schema:load
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
-      run: bin/rspec
+      run: |
+        bin/rspec
