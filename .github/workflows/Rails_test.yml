@@ -35,5 +35,5 @@ jobs:
         RAILS_ENV: test
       run: |
         sudo /etc/init.d/mysql start
-        bundle exec rails  db:create
-        bundle exec rails db:schema:load
+        rails db:create
+        rails db:schema:load
