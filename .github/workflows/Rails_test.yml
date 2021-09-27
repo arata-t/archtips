@@ -29,5 +29,10 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
+      env:
+        RAILS_ENV:test
       run: |
+        sudo /etc/init.d/mysql start # ここを追加
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
         bin/rspec
