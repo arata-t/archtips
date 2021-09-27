@@ -30,7 +30,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       env:
-        RAILS_ENV:test
+        RAILS_ENV: test
       run: |
         sudo /etc/init.d/mysql start # ここを追加
         bundle exec rake db:create
